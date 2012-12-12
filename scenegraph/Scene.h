@@ -40,6 +40,9 @@ public:
     static void parse(Scene *sceneToFill, CS123ISceneParser *parser);
 
     Matrix4x4 calcTransMat(std::vector<CS123SceneTransformation*> tranVect);
+    QList<SimplePrimitive> getPrimList();
+    QList<CS123SceneLightData> getLightList();
+    CS123SceneGlobalData getGlobalData();
 
     void printMat(Matrix4x4 mat);
 
@@ -66,6 +69,10 @@ protected:
     CS123ISceneParser* m_parser;
 
     CS123SceneGlobalData m_globalData;
+
+    QList<CS123SceneLightData>* m_lightList;
+    QList<SimplePrimitive>* m_primList;
+
 
 private:
     //Camera *m_camera;

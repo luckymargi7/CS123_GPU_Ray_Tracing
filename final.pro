@@ -17,11 +17,7 @@ SOURCES += main.cpp \
     view.cpp \
     scenegraph/OpenGLScene.cpp \
     scenegraph/Point.cpp \
-    scenegraph/RayScene.cpp \
     scenegraph/Scene.cpp \
-    scenegraph/SceneviewScene.cpp \
-    scenegraph/SelectionRecorder.cpp \
-    scenegraph/ShapesScene.cpp \
     math/CS123Matrix.cpp \
     math/CS123Matrix.inl \
     math/CS123Vector.inl \
@@ -33,11 +29,7 @@ HEADERS += mainwindow.h \
     view.h \
     scenegraph/OpenGLScene.h \
     scenegraph/Point.h \
-    scenegraph/RayScene.h \
     scenegraph/Scene.h \
-    scenegraph/SceneviewScene.h \
-    scenegraph/SelectionRecorder.h \
-    scenegraph/ShapesScene.h \
     math/CS123Algebra.h \
     math/TA_Tester.h \
     lib/CS123Common.h \

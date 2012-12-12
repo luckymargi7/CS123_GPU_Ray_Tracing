@@ -1,5 +1,4 @@
 #include "Scene.h"
-#include "Camera.h"
 #include "CS123SceneData.h"
 #include "CS123ISceneParser.h"
 #include <QtGlobal>
@@ -7,13 +6,30 @@
 
 Scene::Scene() //: m_camera(NULL)//
 {
-
+    m_lightList = new QList<CS123SceneLightData>();
+    m_primList = new QList<SimplePrimitive>();
 }
 
 Scene::~Scene()
 {
-    // Do not delete m_camera, it is owned by SupportCanvas3D
+    delete m_lightList;
+    delete m_primList;
+}
 
+QList<SimplePrimitive> Scene::getPrimList(){
+    QList<SimplePrimitive>* list = new QList<SimplePrimitive>();
+    list->append(*m_primList);
+    return *list;
+}
+
+CS123SceneGlobalData Scene::getGlobalData(){
+    return m_globalData;
+}
+
+QList<CS123SceneLightData> Scene::getLightList(){
+    QList<CS123SceneLightData>* list = new QList<CS123SceneLightData>();
+    list->append(*m_lightList);
+    return *list;
 }
 
 void Scene::parse(Scene *sceneToFill, CS123ISceneParser *parser)
@@ -40,19 +56,25 @@ void Scene::parse(Scene *sceneToFill, CS123ISceneParser *parser)
 //    m_camera = newCamera;//
 //}//
 
-void Scene::addPrimitive(const CS123ScenePrimitive &scenePrimitive, const Matrix4x4 &matrix){}
+void Scene::addPrimitive(const CS123ScenePrimitive &scenePrimitive, const Matrix4x4 &matrix){
 
-void Scene::addLight(const CS123SceneLightData &sceneLight){}
+    SimplePrimitive cprim;
+    cprim.material = scenePrimitive.material;
+    cprim.filemap = *scenePrimitive.material.textureMap;
+    cprim.type = scenePrimitive.type;
+    cprim.transMat = matrix;
 
-void Scene::setGlobal(const CS123SceneGlobalData &global)
-{
+    m_primList->append(cprim);
 
+}
+
+void Scene::addLight(const CS123SceneLightData &sceneLight){
+    CS123SceneLightData cLight = sceneLight;
+    m_lightList->append(cLight);
+}
+
+void Scene::setGlobal(const CS123SceneGlobalData &global){
     m_globalData = global;
-    m_kd = global.kd;
-    m_ks = global.ks;
-    m_ka = global.ka;
-    m_kt = global.kt;
-
 }
 
 void Scene::finishParsing(CS123SceneNode cNode, Scene *sceneToFill, Matrix4x4 oldTM){
@@ -62,15 +84,6 @@ void Scene::finishParsing(CS123SceneNode cNode, Scene *sceneToFill, Matrix4x4 ol
 
     for(j = primVect.begin(); j!=primVect.end(); j++){
         CS123ScenePrimitive cprim = **j;
-
-        cprim.material.cDiffuse.r = cprim.material.cDiffuse.r*m_kd;
-        cprim.material.cDiffuse.g = cprim.material.cDiffuse.g*m_kd;
-        cprim.material.cDiffuse.b = cprim.material.cDiffuse.b*m_kd;
-
-        cprim.material.cAmbient.r = cprim.material.cAmbient.r*m_ka;
-        cprim.material.cAmbient.g = cprim.material.cAmbient.g*m_ka;
-        cprim.material.cAmbient.b = cprim.material.cAmbient.b*m_ka;
-
         sceneToFill->addPrimitive(cprim, transmat);
     }
 
@@ -80,7 +93,6 @@ void Scene::finishParsing(CS123SceneNode cNode, Scene *sceneToFill, Matrix4x4 ol
     for(int k = 0; k<childVect.size(); k++){
         finishParsing(*childVect.at(k), sceneToFill, transmat);
     }
-
 
 }
 
