@@ -11,8 +11,8 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include <CS123Algebra.h>
-#include "CS123SceneData.h"
+#include <math/CS123Algebra.h>
+#include "lib/CS123SceneData.h"
 
 class Camera;
 class CS123ISceneParser;

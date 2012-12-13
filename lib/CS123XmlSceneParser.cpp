@@ -5,10 +5,12 @@
 #include "CS123XmlSceneParser.h"
 #include "CS123SceneData.h"
 
-#include <CS123Common.h>
+#include <lib/CS123Common.h>
 #include <assert.h>
 #include <string.h>
 #include <string>
+#include <QtXml>
+#include <QFile>
 
 using namespace std;
 

@@ -1,6 +1,5 @@
 #include "OpenGLScene.h"
-#include "Settings.h"
-#include "Camera.h"
+#include "camera/Camera.h"
 
 #include <SupportCanvas3D.h>
 #include <qgl.h>

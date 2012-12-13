@@ -19,6 +19,7 @@
 #include <map>
 
 #include <QtXml>
+#include <QFile>
 
 
 //! This class parses the scene graph specified by the CS123 Xml file format.

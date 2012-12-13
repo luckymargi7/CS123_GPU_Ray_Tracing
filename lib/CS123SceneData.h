@@ -10,7 +10,7 @@
 #define __CS123_SCENE_DATA__
 
 /* Includes */
-#include "CS123Algebra.h"
+#include "math/CS123Algebra.h"
 #include <vector>
 #include <string>
 using namespace std;
