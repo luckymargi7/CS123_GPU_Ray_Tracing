@@ -1,3 +1,5 @@
 final.pro.user
 *.o
 final
+moc_*.cpp
+ui_*.h
