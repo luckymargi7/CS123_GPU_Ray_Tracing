@@ -1,12 +1,14 @@
-#include "Scene.h"
+#include "RayScene.h"
 #include "lib/CS123SceneData.h"
 #include <QtGlobal>
 
-void Scene::initScene( InitialCameraData& camera_data )
+using namespace std;
+
+void RayScene::initScene( InitialCameraData& camera_data )
 {
     // set up path to ptx file 
     //this isn't going to work...
-    _ptx_path = ptxpath( "scene", "scene.cu" );
+    _ptx_path = ptxpath( "scene", "RayScene.cu" );
     
     // context 
     _context->setRayTypeCount( 2 );
@@ -73,13 +75,13 @@ void Scene::initScene( InitialCameraData& camera_data )
 }
 
 
-Buffer Scene::getOutputBuffer()
+Buffer RayScene::getOutputBuffer()
 {
     return _context["output_buffer"]->getBuffer();
 }
 
 
-void Scene::trace( const RayGenCameraData& camera_data )
+void RayScene::trace( const RayGenCameraData& camera_data )
 {
     _context["eye"]->setFloat( camera_data.eye );
     _context["U"]->setFloat( camera_data.U );
@@ -95,61 +97,131 @@ void Scene::trace( const RayGenCameraData& camera_data )
 }
 
 
-void Scene::doResize( unsigned int width, unsigned int height )
+void RayScene::doResize( unsigned int width, unsigned int height )
 {
     // output buffer handled in SampleScene::resize
 }
 
-string Scene::texpath( const string& base )
+string RayScene::texpath( const string& base )
 {
     return texture_path + "/" + base;
 }
 
-void Scene::createGeometry()
-{ //this is all us!
-    //so the _dp has a getPrimList() method that returns a QList of
-    // SimplePrimitives (see CS123SceneData) which can be used to fill
-    // in this section.
-
-    string cube_ptx( ptxpath( "scene", "cube.cu" ) ); 
-    Program cube_bounds = _context->createProgramFromPTXFile( cube_ptx, "cube_bounds" );
-    Program cube_intersect = _context->createProgramFromPTXFile( cube_ptx, "cube_intersect" );
-
-    // Create cube
-    Geometry cube = _context->createGeometry();
-    cube->setPrimitiveCount( 1u );
-    cube->setBoundingcubeProgram( cube_bounds );
-    cube->setIntersectionProgram( cube_intersect );
-    cube["cubemin"]->setFloat( -2.0f, 0.0f, -2.0f );
-    cube["cubemax"]->setFloat(  2.0f, 7.0f,  2.0f );
+void RayScene::createCone(SimplePrimitive prim) {
+    CS123SceneMaterial matl = prim.material;
+    Matrix4x4 transMat = prim.transMat;
+    
+    string cone_ptx( ptxpath( "scene", "cone.cu" ) ); 
+    Program cone_bounds = _context->createProgramFromPTXFile( cone_ptx, "cone_bounds" );
+    Program cone_intersect = _context->createProgramFromPTXFile( cone_ptx, "cone_intersect" );
+    
+    // Create cone
+    Geometry cone = _context->createGeometry();
+    cone->setPrimitiveCount( 1u );
+    cone->setBoundingconeProgram( cone_bounds );
+    cone->setIntersectionProgram( cone_intersect );
+    cone["conemin"]->setFloat( -0.5f, 0.5f, -0.5f );
+    cone["conemax"]->setFloat(  0.5f, 0.5f,  0.5f );
 
     // Materials
-    string cube_chname = "closest_hit_radiance1";
+    string cone_chname = "closest_hit_lighting";
 
-    Material cube_matl = _context->createMaterial();
-    Program cube_ch = _context->createProgramFromPTXFile( _ptx_path, cube_chname );
-    cube_matl->setClosestHitProgram( 0, cube_ch );
-    cube_matl["Ka"]->setFloat( 0.3f, 0.3f, 0.3f );
-    cube_matl["Kd"]->setFloat( 0.6f, 0.7f, 0.8f );
-    cube_matl["Ks"]->setFloat( 0.8f, 0.9f, 0.8f );
-    cube_matl["phong_exp"]->setFloat( 88 );
-    cube_matl["reflectivity_n"]->setFloat( 0.2f, 0.2f, 0.2f );
+    Material cone_matl = _context->createMaterial();
+    Program cone_ch = _context->createProgramFromPTXFile( _ptx_path, cone_chname );
+    cone_matl->setClosestHitProgram( 0, cone_ch );
+    //cone_matl["Ka"]->setFloat( 0.3f, 0.3f, 0.3f );
+    //cone_matl["Kd"]->setFloat( 0.6f, 0.7f, 0.8f );
+    //cone_matl["Ks"]->setFloat( 0.8f, 0.9f, 0.8f );
+    //cone_matl["phong_exp"]->setFloat( 88 );
+    //cone_matl["reflectivity_n"]->setFloat( 0.2f, 0.2f, 0.2f );
 
     // Create GIs for each piece of geometry
-    std::vector<GeometryInstance> gis;
-    gis.push_back( _context->createGeometryInstance( cube, &cube_matl, &cube_matl+1 ) );
+    Geometry cone = _context->createGeometryInstance( cone, &cone_matl, &cone_matl+1 );
 
     // Place all in group
     GeometryGroup geometrygroup = _context->createGeometryGroup();
-    geometrygroup->setChildCount( static_cast<unsigned int>(gis.size()) );
-    geometrygroup->setChild( 0, gis[0] );
-    geometrygroup->setChild( 1, gis[1] );
-    if(chull.get())
-    geometrygroup->setChild( 2, gis[2] );
+    geometrygroup->setChildCount(1);
+    geometrygroup->setChild( 0, cone );
     geometrygroup->setAcceleration( _context->createAcceleration("NoAccel","NoAccel") );
 
-    _context["top_object"]->set( geometrygroup );
-    _context["top_shadower"]->set( geometrygroup );
+    Transform transform = _context->createTransform();
+    transform.setChild(geometrygroup);
+
+    tNodes.push_back(transform);
+}
+
+void RayScene::createGeometry()
+{ 
+    //this is all us!
+    //so the _dp has a getPrimList() method that returns a QList of
+    // SimplePrimitives (see CS123SceneData) which can be used to fill
+    // in this section.
+    
+    //Create all geometry instances here
+
+    QList<SimplePrimitive> prims = _dp.getPrimList();
+    for(int i = 0; i < prims->size(); i++) {
+        SimplePrimitive prim = prims[i];
+        Program prim_bounds;
+        Program prim_intersect;
+        Material prim_matl;
+        switch(prim.type) {
+            case PRIMITIVE_CUBE:
+                createCube(prim, prim_bounds, prim_intersect, prim_matl);
+                break;
+            case PRIMITIVE_CONE:
+                createCone(prim, prim_bounds, prim_intersect, prim_matl);
+                break;
+            case PRIMITIVE_CYLINDER:
+                createCylinder(prim, prim_bounds, prim_intersect, prim_matl);
+                break;
+
+            case PRIMITIVE_SPHERE:
+                createSphere(prim, prim_bounds, prim_intersect, prim_matl);
+                break;
+
+            default:
+                break;
+        }
+
+    }
+        string cube_ptx( ptxpath( "scene", "cube.cu" ) ); 
+        Program cube_bounds = _context->createProgramFromPTXFile( cube_ptx, "cube_bounds" );
+        Program cube_intersect = _context->createProgramFromPTXFile( cube_ptx, "cube_intersect" );
+
+        // Create cube
+        Geometry cube = _context->createGeometry();
+        cube->setPrimitiveCount( 1u );
+        cube->setBoundingcubeProgram( cube_bounds );
+        cube->setIntersectionProgram( cube_intersect );
+        cube["cubemin"]->setFloat( -2.0f, 0.0f, -2.0f );
+        cube["cubemax"]->setFloat(  2.0f, 7.0f,  2.0f );
+
+        // Materials
+        string cube_chname = "closest_hit_radiance1";
+
+        Material cube_matl = _context->createMaterial();
+        Program cube_ch = _context->createProgramFromPTXFile( _ptx_path, cube_chname );
+        cube_matl->setClosestHitProgram( 0, cube_ch );
+        cube_matl["Ka"]->setFloat( 0.3f, 0.3f, 0.3f );
+        cube_matl["Kd"]->setFloat( 0.6f, 0.7f, 0.8f );
+        cube_matl["Ks"]->setFloat( 0.8f, 0.9f, 0.8f );
+        cube_matl["phong_exp"]->setFloat( 88 );
+        cube_matl["reflectivity_n"]->setFloat( 0.2f, 0.2f, 0.2f );
+
+        // Create GIs for each piece of geometry
+        vector<GeometryInstance> gis;
+        gis.push_back( _context->createGeometryInstance( cube, &cube_matl, &cube_matl+1 ) );
+
+        // Place all in group
+        GeometryGroup geometrygroup = _context->createGeometryGroup();
+        geometrygroup->setChildCount( static_cast<unsigned int>(gis.size()) );
+        geometrygroup->setChild( 0, gis[0] );
+        geometrygroup->setChild( 1, gis[1] );
+        geometrygroup->setAcceleration( _context->createAcceleration("NoAccel","NoAccel") );
+
+        _context["top_object"]->set( geometrygroup );
+        _context["top_shadower"]->set( geometrygroup );
 }
 
 

@@ -5,9 +5,14 @@
 
 using namespace optix;
 
+// For bounding boxes
 rtDeclareVariable(float3, cubemin, , );
 rtDeclareVariable(float3, cubemax, , );
+
+//Ray
 rtDeclareVariable(optix::Ray, ray, rtCurrentRay, );
+
+//Texture + Normals
 rtDeclareVariable(float3, texcoord, attribute texcoord, ); 
 rtDeclareVariable(float3, geometric_normal, attribute geometric_normal, ); 
 rtDeclareVariable(float3, shading_normal, attribute shading_normal, ); 

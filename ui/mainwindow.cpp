@@ -42,7 +42,7 @@ void MainWindow::fileNew()
 
 void MainWindow::fileOpen()
 {
-    QString file = QFileDialog::getOpenFileName(this, QString(), "/course/cs123/", "All files (*.*)");
+    QString file = QFileDialog::getOpenFileName(this, QString(), "/course/cs123/data/", "All files (*.*)");
     if (!file.isNull())
     {
         if (file.endsWith(".xml"))

@@ -1,6 +1,5 @@
 #include <optix_world.h>
-
-//HAVE NOT BEEN WORKED ON AT ALL!!!
+#include <float.h>
 
 using namespace optix;
 
@@ -10,57 +9,85 @@ rtDeclareVariable(float3, geometric_normal, attribute geometric_normal, );
 rtDeclareVariable(float3, shading_normal, attribute shading_normal, ); 
 rtDeclareVariable(optix::Ray, ray, rtCurrentRay, );
 
+__device__ bool withinConstraint(float3 eye, float3 dir, float t) {
+    float3 interPt = eye + dir*t;
+
+    float dist = interPt.x*interPt.x + interPt.z*interPt.z;
+
+    return dist <= 0.25;
+}
+
+__device__ float instersectPlane(float3 eye, float3 dir, float3 point, float3 normal) {
+    //Calculate t's
+    float t = (dot(normal, point) - dot(eye, normal))/dot(dir, normal);
+    
+    return (withinConstraint(eye, dir, t)) ? t : -1;
+        
+}
+
 template<bool use_robust_method>
 __device__
 void intersect_cylinder(void)
 {
-  float3 center = make_float3(cylinder);
-  float3 O = ray.origin - center;
-  float3 D = ray.direction;
-  float radius = cylinder.w;
+    float3 points[2];
+    points[0] = float3(0, 0.5, 0);
+    points[1] = float3(0,-0.5, 0);
+    
+    float3 normals[2];
+    normals[0] = float3( 0, 1, 0);
+    normals[1] = float3( 0,-1, 0);
+    
+    float3 eye = ray.origin;
+    float3 dir = ray.direction;
+    float final_t = FLT_MAX;
+    int final_i = 0;
 
-  float b = dot(O, D);
-  float c = dot(O, O)-radius*radius;
-  float disc = b*b-c;
-  if(disc > 0.0f){
-    float sdisc = sqrtf(disc);
-    float root1 = (-b - sdisc);
+    for (int i = 0; i < 2; i++) {
+        float3 p = points[i];
+        float3 n = normals[i];
+        float t = intersectPlane(eye, dir, p, n);
 
-    bool do_refine = false;
+        if (rtPotentialIntersection(t) && t < final_t){
+            final_t = t;
+            final_i = i;
+        }
+    }
+ 
+    //Calculate t's
+    float a = dir.x*dir.x + dir.z*dir.z;
+    float b = 2*eye.x*dir.x + 2*eye.z*dir.z;
+    float c = eye.x*eye.x + eye.z*eye.z + 0.25;
 
-    float root11 = 0.0f;
-
-    if(use_robust_method && fabsf(root1) > 10.f * radius) {
-      do_refine = true;
+    float d = b*b - 4*a*c;
+    float t0 = t1 = -1;
+    if (d >= 0) {
+        t0 = (-1*b + sqrtf(d))/(2*a);
+        t1 = (-1*b - sqrtf(d))/(2*a);
     }
 
-    if(do_refine) {
-      // refine root1
-      float3 O1 = O + root1 * ray.direction;
-      b = dot(O1, D);
-      c = dot(O1, O1) - radius*radius;
-      disc = b*b - c;
-
-      if(disc > 0.0f) {
-        sdisc = sqrtf(disc);
-        root11 = (-b - sdisc);
-      }
+    if (rtPotentialIntersection(t0) && t0 < final_t) {
+        final_t = t0;
+        final_i = -1;
+    }
+    
+    if (rtPotentialIntersection(t1) && t1 < final_t) {
+        final_t = t1;
+        final_i = -1;
     }
 
-    bool check_second = true;
-    if( rtPotentialIntersection( root1 + root11 ) ) {
-      shading_normal = geometric_normal = (O + (root1 + root11)*D)/radius;
-      if(rtReportIntersection(0))
-        check_second = false;
-    } 
-    if(check_second) {
-      float root2 = (-b + sdisc) + (do_refine ? root1 : 0);
-      if( rtPotentialIntersection( root2 ) ) {
-        shading_normal = geometric_normal = (O + root2*D)/radius;
+    if (rtPotentialIntersection(final_t)){
+        if (final_i != -1) {
+            shading_normal = geometric_normal = normals[final_i];
+        } else {
+            float3 interPt = eye + dir(final_t);
+            float3 normal = float3(interPt.x, 0, interPt.z);
+            shading_normal = geometric_normal = normalize(normal);
+        }
+
         rtReportIntersection(0);
-      }
     }
-  }
+    
+    
 }
 
 

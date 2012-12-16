@@ -3,7 +3,7 @@
    but basically everything is the same because this was a pretty
    much bare bones implementation of only the absolutely necessary
    things already.  (Much of it was taken from tutorial1.cu)
-   */
+*/
 
 #include "RayScene.h"
 

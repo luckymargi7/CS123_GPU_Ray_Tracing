@@ -12,55 +12,40 @@ template<bool use_robust_method>
 __device__
 void intersect_sphere(void)
 {
-  float3 center = make_float3(sphere);
-  float3 O = ray.origin - center;
-  float3 D = ray.direction;
-  float radius = sphere.w;
 
-  float b = dot(O, D);
-  float c = dot(O, O)-radius*radius;
-  float disc = b*b-c;
-  if(disc > 0.0f){
-    float sdisc = sqrtf(disc);
-    float root1 = (-b - sdisc);
+    //Because of the transform groups, the ray should be transformed to hit the uniform sphere.
+    float3 eye = ray.origin;
+    float3 dir = ray.direction;
+    
+    float final_t = FLT_MAX; //Calculate t's
+    float a = dot(dir, dir);
+    float b = 2*eye.x*dir.x + 2*eye.y*dir.y + 2*eye.z*dir.z;
+    float c = dot(eye, eye);
 
-    bool do_refine = false;
-
-    float root11 = 0.0f;
-
-    if(use_robust_method && fabsf(root1) > 10.f * radius) {
-      do_refine = true;
+    float d = b*b - 4*a*c;
+    float t0 = t1 = -1;
+    if (d >= 0) {
+        t0 = (-1*b + sqrtf(d))/(2*a);
+        t1 = (-1*b - sqrtf(d))/(2*a);
     }
-
-    if(do_refine) {
-      // refine root1
-      float3 O1 = O + root1 * ray.direction;
-      b = dot(O1, D);
-      c = dot(O1, O1) - radius*radius;
-      disc = b*b - c;
-
-      if(disc > 0.0f) {
-        sdisc = sqrtf(disc);
-        root11 = (-b - sdisc);
-      }
-    }
-
-    bool check_second = true;
-    if( rtPotentialIntersection( root1 + root11 ) ) {
-      shading_normal = geometric_normal = (O + (root1 + root11)*D)/radius;
-      if(rtReportIntersection(0))
-        check_second = false;
-    } 
-    if(check_second) {
-      float root2 = (-b + sdisc) + (do_refine ? root1 : 0);
-      if( rtPotentialIntersection( root2 ) ) {
-        shading_normal = geometric_normal = (O + root2*D)/radius;
+    
+    if (rtPotentialIntersection(t0) && t0 < final_t) 
+        final_t = t0;
+    
+    if (rtPotentialIntersection(t1) && t1 < final_t) 
+        final_t = t1;
+    
+    if(rtPotentialIntersection(final_t))  {
+        float3 interPt = eye + dir*t0;
+        shading_normal = geometric_normal = normalize(interPt);
         rtReportIntersection(0);
-      }
     }
-  }
+
 }
 
+float3 normalize(float3 v) {
+    return rsqrt(dot(v,v))*v;
+}
 
 RT_PROGRAM void intersect(int primIdx)
 {
