@@ -1,2 +1,15 @@
 README!
-What a cool readme
+
+final_proj folder = the folder where we have all of our final project in.
+
+To make MakeFile:
+1. Have the "CMake", "CMakeFiles", "sutil", "cuda" folders in final_proj folder
+2. Have the "CMakesList.txt" in the final_proj folder and final_proj/ddfinal folder
+3. Make sure that the library files "include" and "lib" are in the parent folder of final_proj folder.
+4. run "cmake ."
+
+To build .ptx from .cu files in ddfinal:
+1. cd ddfinal
+2. make
+
+

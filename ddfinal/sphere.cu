@@ -1,4 +1,9 @@
+#include <optix.h>
 #include <optix_world.h>
+#include <optixu/optixu_math_namespace.h>
+#include <optixu/optixu_matrix_namespace.h>
+#include <optixu/optixu_aabb_namespace.h>
+#include <float.h>
 
 using namespace optix;
 
@@ -23,7 +28,8 @@ void intersect_sphere(void)
     float c = dot(eye, eye);
 
     float d = b*b - 4*a*c;
-    float t0 = t1 = -1;
+    float t0, t1;
+    t0 = t1 = -1;
     if (d >= 0) {
         t0 = (-1*b + sqrtf(d))/(2*a);
         t1 = (-1*b - sqrtf(d))/(2*a);

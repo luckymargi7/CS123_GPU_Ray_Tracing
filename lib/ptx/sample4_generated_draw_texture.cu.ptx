@@ -1,0 +1,158 @@
+	.version 1.4
+	.target sm_10, map_f64_to_f32
+	// compiled with /usr/lib/nvidia-cuda-toolkit/lib//be
+	// nvopencc 4.1 built on 2012-04-05
+
+	.func _ZN5optix16rt_undefined_useEi (.reg .u32 %ra1)
+
+	//-----------------------------------------------------------
+	// Compiling /tmp/tmpxft_00002168_00000000-9_draw_texture.cpp3.i (/tmp/ccBI#.juWSA8)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_10, Endian:little, Pointer Size:32
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"<command-line>"
+	.file	2	"/tmp/tmpxft_00002168_00000000-8_draw_texture.cudafe2.gpu"
+	.file	3	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/optix_device.h"
+	.file	4	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/internal/optix_defines.h"
+	.file	5	"/gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/bin/../lib/gcc/i686-pc-linux-gnu/4.6.3/include/stddef.h"
+	.file	6	"/usr/include/crt/device_runtime.h"
+	.file	7	"/usr/include/host_defines.h"
+	.file	8	"/usr/include/builtin_types.h"
+	.file	9	"/usr/include/device_types.h"
+	.file	10	"/usr/include/driver_types.h"
+	.file	11	"/usr/include/surface_types.h"
+	.file	12	"/usr/include/texture_types.h"
+	.file	13	"/usr/include/vector_types.h"
+	.file	14	"/usr/include/device_launch_parameters.h"
+	.file	15	"/usr/include/crt/storage_class.h"
+	.file	16	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/internal/../optix_sizet.h"
+	.file	17	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/optix-examples/sample4/draw_texture.cu"
+	.file	18	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/internal/optix_internal.h"
+	.file	19	"/usr/include/common_functions.h"
+	.file	20	"/usr/include/math_functions.h"
+	.file	21	"/usr/include/math_constants.h"
+	.file	22	"/usr/include/device_functions.h"
+	.file	23	"/usr/include/sm_11_atomic_functions.h"
+	.file	24	"/usr/include/sm_12_atomic_functions.h"
+	.file	25	"/usr/include/sm_13_double_functions.h"
+	.file	26	"/usr/include/sm_20_atomic_functions.h"
+	.file	27	"/usr/include/sm_20_intrinsics.h"
+	.file	28	"/usr/include/sm_30_intrinsics.h"
+	.file	29	"/usr/include/surface_functions.h"
+	.file	30	"/usr/include/texture_fetch_functions.h"
+	.file	31	"/usr/include/math_functions_dbl_ptx1.h"
+
+	.global .align 1 .b8 result_buffer[1];
+	.tex .u32 input_texture;
+	.global .align 8 .b8 launch_index[8];
+
+	.entry _Z12draw_texturev
+	{
+	.reg .u32 %ra1;
+	.reg .u32 %r<42>;
+	.reg .f32 %f<14>;
+	.loc	17	33	0
+$LDWbegin__Z12draw_texturev:
+	.loc	18	81	0
+	mov.u32 	%r1, result_buffer;
+	mov.u32 	%r2, %r1;
+	mov.u32 	%r3, 2;
+	mov.u32 	%r4, %r3;
+	mov.u32 	%r5, 16;
+	mov.u32 	%r6, %r5;
+	call (%r7, %r8, %r9, %r10), _rt_buffer_get_size, (%r2, %r4, %r6);
+	mov.s32 	%r11, %r7;
+	mov.s32 	%r12, %r8;
+	ld.global.v2.u32 	{%r13,%r14}, [launch_index+0];
+	.loc	17	38	0
+	cvt.rn.f32.u32 	%f1, %r13;
+	cvt.rn.f32.u32 	%f2, %r11;
+	div.approx.f32 	%f3, %f1, %f2;
+	mov.f32 	%f4, %f3;
+	cvt.rn.f32.u32 	%f5, %r14;
+	cvt.rn.f32.u32 	%f6, %r12;
+	div.approx.f32 	%f7, %f5, %f6;
+	mov.f32 	%f8, %f7;
+	mov.f32 	%f9, 0f00000000;     	// 0
+	mov.f32 	%f10, %f9;
+	mov.f32 	%f11, 0f00000000;    	// 0
+	mov.f32 	%f12, %f11;
+	tex.2d.v4.u32.f32 {%r15,%r16,%r17,%r18},[input_texture,{%f4,%f8,%f10,%f12}];
+	mov.s32 	%r19, %r15;
+	mov.s32 	%r20, %r16;
+	mov.s32 	%r21, %r17;
+	mov.s32 	%r22, %r18;
+	.loc	18	63	0
+	mov.u32 	%r23, result_buffer;
+	mov.u32 	%r24, %r23;
+	mov.u32 	%r25, 2;
+	mov.u32 	%r26, %r25;
+	mov.u32 	%r27, 16;
+	mov.u32 	%r28, %r27;
+	mov.u32 	%r29, %r13;
+	mov.u32 	%r30, %r14;
+	mov.u32 	%r31, 0;
+	mov.u32 	%r32, %r31;
+	mov.u32 	%r33, 0;
+	mov.u32 	%r34, %r33;
+	call (%r35), _rt_buffer_get, (%r24, %r26, %r28, %r29, %r30, %r32, %r34);
+	mov.s32 	%r36, %r35;
+	.loc	18	72	0
+	mov.s32 	%ra1, %r36;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	17	38	0
+	mov.s32 	%r37, %r19;
+	mov.s32 	%r38, %r20;
+	mov.s32 	%r39, %r21;
+	mov.s32 	%r40, %r22;
+	st.global.v4.s32 	[%r36+0], {%r37,%r38,%r39,%r40};
+	.loc	17	39	0
+	exit;
+$LDWend__Z12draw_texturev:
+	} // _Z12draw_texturev
+
+	.func _ZN5optix16rt_undefined_useEi (.reg .u32 %ra1)
+	{
+	.loc	18	39	0
+$LDWbegin__ZN5optix16rt_undefined_useEi:
+	.loc	18	41	0
+	ret;
+$LDWend__ZN5optix16rt_undefined_useEi:
+	} // _ZN5optix16rt_undefined_useEi
+	.global .u32 _ZN21rti_internal_register20reg_bitness_detectorE;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail0E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail1E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail2E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail3E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail4E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail5E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail6E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail7E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail8E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail9E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail0E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail1E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail2E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail3E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail4E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail5E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail6E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail7E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail8E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail9E;
+	.global .u32 _ZN21rti_internal_register14reg_rayIndex_xE;
+	.global .u32 _ZN21rti_internal_register14reg_rayIndex_yE;
+	.global .u32 _ZN21rti_internal_register14reg_rayIndex_zE;
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo12launch_indexE[8] = {82,97,121,0,8,0,0,0};
+	.global .align 1 .b8 _ZN21rti_internal_typename12launch_indexE[6] = {0x75,0x69,0x6e,0x74,0x32,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic12launch_indexE[14] = {0x72,0x74,0x4c,0x61,0x75,0x6e,0x63,0x68,0x49,0x6e,0x64,0x65,0x78,0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation12launch_indexE[1] = {0x0};
+

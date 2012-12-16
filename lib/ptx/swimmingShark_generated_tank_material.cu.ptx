@@ -1,0 +1,466 @@
+	.version 1.4
+	.target sm_10, map_f64_to_f32
+	// compiled with /usr/lib/nvidia-cuda-toolkit/lib//be
+	// nvopencc 4.1 built on 2012-04-05
+
+	.func _ZN5optix16rt_undefined_useEi (.reg .u32 %ra1)
+
+	//-----------------------------------------------------------
+	// Compiling /tmp/tmpxft_00003034_00000000-9_tank_material.cpp3.i (/tmp/ccBI#.IBCclI)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_10, Endian:little, Pointer Size:32
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"<command-line>"
+	.file	2	"/tmp/tmpxft_00003034_00000000-8_tank_material.cudafe2.gpu"
+	.file	3	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/internal/optix_defines.h"
+	.file	4	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/optix_device.h"
+	.file	5	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/optix-examples/swimmingShark/tank_material.cu"
+	.file	6	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/internal/optix_datatypes.h"
+	.file	7	"/gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/bin/../lib/gcc/i686-pc-linux-gnu/4.6.3/include/stddef.h"
+	.file	8	"/usr/include/crt/device_runtime.h"
+	.file	9	"/usr/include/host_defines.h"
+	.file	10	"/usr/include/builtin_types.h"
+	.file	11	"/usr/include/device_types.h"
+	.file	12	"/usr/include/driver_types.h"
+	.file	13	"/usr/include/surface_types.h"
+	.file	14	"/usr/include/texture_types.h"
+	.file	15	"/usr/include/vector_types.h"
+	.file	16	"/usr/include/device_launch_parameters.h"
+	.file	17	"/usr/include/crt/storage_class.h"
+	.file	18	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/internal/optix_internal.h"
+	.file	19	"/usr/include/common_functions.h"
+	.file	20	"/usr/include/math_functions.h"
+	.file	21	"/usr/include/math_constants.h"
+	.file	22	"/usr/include/device_functions.h"
+	.file	23	"/usr/include/sm_11_atomic_functions.h"
+	.file	24	"/usr/include/sm_12_atomic_functions.h"
+	.file	25	"/usr/include/sm_13_double_functions.h"
+	.file	26	"/usr/include/sm_20_atomic_functions.h"
+	.file	27	"/usr/include/sm_20_intrinsics.h"
+	.file	28	"/usr/include/sm_30_intrinsics.h"
+	.file	29	"/usr/include/surface_functions.h"
+	.file	30	"/usr/include/texture_fetch_functions.h"
+	.file	31	"/usr/include/math_functions_dbl_ptx1.h"
+
+	.global .align 16 .b8 prd_shadow[12];
+
+	.entry _Z14any_hit_shadowv
+	{
+	.reg .f32 %f<5>;
+	.loc	5	72	0
+$LDWbegin__Z14any_hit_shadowv:
+	.loc	5	75	0
+	mov.f32 	%f1, 0f00000000;     	// 0
+	mov.f32 	%f2, 0f00000000;     	// 0
+	st.global.v2.f32 	[prd_shadow+0], {%f1,%f2};
+	mov.f32 	%f3, 0f00000000;     	// 0
+	st.global.f32 	[prd_shadow+8], %f3;
+	.loc	18	133	0
+	call _rt_terminate_ray, ();
+	.loc	5	77	0
+	exit;
+$LDWend__Z14any_hit_shadowv:
+	} // _Z14any_hit_shadowv
+	.global .f32 t_hit;
+	.global .align 4 .b8 top_object[4];
+	.global .f32 scene_epsilon;
+	.global .s32 max_depth;
+	.global .u32 radiance_ray_type;
+	.global .f32 attenuation_density;
+	.global .f32 caustic_map_scale;
+	.global .f32 diffuse_map_scale;
+	.global .f32 Kr;
+	.tex .u32 diffuse_map;
+	.tex .u32 caustic_map;
+	.global .align 16 .b8 ray[36];
+	.global .align 16 .b8 prd[20];
+	.global .align 16 .b8 geometric_normal[12];
+	.global .align 16 .b8 shading_normal[12];
+	.global .align 8 .b8 texcoord[12];
+	.global .align 16 .b8 emission_color[12];
+	.global .align 16 .b8 ambient_light_color[12];
+	.global .align 16 .b8 caustic_light_color[12];
+	.global .align 16 .b8 attenuation_color[12];
+	.global .align 16 .b8 light_dir[12];
+
+	.entry _Z20closest_hit_radiancev
+	{
+	.reg .u32 %ra1;
+	.reg .u32 %r<26>;
+	.reg .f32 %f<182>;
+	.reg .pred %p<5>;
+	.local .align 4 .b8 __cuda___cuda_local_var_18369_25_non_const_new_prd_16164[20];
+	.loc	5	79	0
+$LDWbegin__Z20closest_hit_radiancev:
+	.loc	5	81	0
+	ld.global.f32 	%f1, [ray+12];
+	ld.global.v2.f32 	{%f2,%f3}, [ray+16];
+	.loc	18	178	0
+	mov.s32 	%r1, 7937;
+	mov.u32 	%r2, %r1;
+	ld.global.v4.f32 	{%f4,%f5,%f6,_}, [shading_normal+0];
+	mov.f32 	%f7, %f4;
+	mov.f32 	%f8, %f5;
+	mov.f32 	%f9, %f6;
+	mov.f32 	%f10, 0f00000000;    	// 0
+	mov.f32 	%f11, %f10;
+	call (%f12, %f13, %f14, %f15), _rt_transform_tuple, (%r2, %f7, %f8, %f9, %f11);
+	mov.f32 	%f16, %f12;
+	mov.f32 	%f17, %f13;
+	mov.f32 	%f18, %f14;
+	mov.f32 	%f19, %f15;
+	.loc	18	182	0
+	cvt.rzi.s32.f32 	%ra1, %f16;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	18	183	0
+	cvt.rzi.s32.f32 	%ra1, %f17;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	18	184	0
+	cvt.rzi.s32.f32 	%ra1, %f18;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	18	185	0
+	cvt.rzi.s32.f32 	%ra1, %f19;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	5	82	0
+	mul.f32 	%f20, %f17, %f17;
+	mad.f32 	%f21, %f16, %f16, %f20;
+	mad.f32 	%f22, %f18, %f18, %f21;
+	sqrt.approx.f32 	%f23, %f22;
+	rcp.approx.f32 	%f24, %f23;
+	mul.f32 	%f25, %f24, %f16;
+	mul.f32 	%f26, %f24, %f17;
+	mul.f32 	%f27, %f24, %f18;
+	.loc	18	178	0
+	mov.s32 	%r3, 7937;
+	mov.u32 	%r4, %r3;
+	ld.global.v4.f32 	{%f28,%f29,%f30,_}, [geometric_normal+0];
+	mov.f32 	%f31, %f28;
+	mov.f32 	%f32, %f29;
+	mov.f32 	%f33, %f30;
+	mov.f32 	%f34, 0f00000000;    	// 0
+	mov.f32 	%f35, %f34;
+	call (%f36, %f37, %f38, %f39), _rt_transform_tuple, (%r4, %f31, %f32, %f33, %f35);
+	mov.f32 	%f40, %f36;
+	mov.f32 	%f41, %f37;
+	mov.f32 	%f42, %f38;
+	mov.f32 	%f43, %f39;
+	.loc	18	182	0
+	cvt.rzi.s32.f32 	%ra1, %f40;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	18	183	0
+	cvt.rzi.s32.f32 	%ra1, %f41;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	18	184	0
+	cvt.rzi.s32.f32 	%ra1, %f42;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	18	185	0
+	cvt.rzi.s32.f32 	%ra1, %f43;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	20	2996	0
+	mul.f32 	%f44, %f41, %f41;
+	mad.f32 	%f45, %f40, %f40, %f44;
+	mad.f32 	%f46, %f42, %f42, %f45;
+	sqrt.approx.f32 	%f47, %f46;
+	rcp.approx.f32 	%f48, %f47;
+	mul.f32 	%f49, %f48, %f41;
+	mul.f32 	%f50, %f2, %f49;
+	mul.f32 	%f51, %f48, %f40;
+	neg.f32 	%f52, %f1;
+	mul.f32 	%f53, %f51, %f52;
+	sub.f32 	%f54, %f53, %f50;
+	mul.f32 	%f55, %f48, %f42;
+	neg.f32 	%f56, %f3;
+	mad.f32 	%f57, %f55, %f56, %f54;
+	mov.b32 	%r5, %f57;
+	and.b32 	%r6, %r5, -2147483648;
+	or.b32 	%r7, %r6, 1065353216;
+	mov.b32 	%f58, %r7;
+	.loc	22	1283	0
+	ld.global.f32 	%f59, [t_hit];
+	ld.global.f32 	%f60, [attenuation_density];
+	mul.f32 	%f61, %f60, %f59;
+	mov.f32 	%f62, 0f3fb8aa3b;    	// 1.4427
+	mul.f32 	%f63, %f61, %f62;
+	ex2.approx.f32 	%f64, %f63;
+	.loc	5	91	0
+	ld.global.f32 	%f65, [diffuse_map_scale];
+	ld.global.v2.f32 	{%f66,%f67}, [texcoord+0];
+	mul.f32 	%f68, %f66, %f65;
+	mov.f32 	%f69, %f68;
+	mul.f32 	%f70, %f67, %f65;
+	mov.f32 	%f71, %f70;
+	mov.f32 	%f72, 0f00000000;    	// 0
+	mov.f32 	%f73, %f72;
+	mov.f32 	%f74, 0f00000000;    	// 0
+	mov.f32 	%f75, %f74;
+	tex.2d.v4.f32.f32 {%f76,%f77,%f78,%f79},[diffuse_map,{%f69,%f71,%f73,%f75}];
+	mov.f32 	%f80, %f76;
+	mov.f32 	%f81, %f77;
+	mov.f32 	%f82, %f78;
+	ld.global.v4.f32 	{%f83,%f84,%f85,_}, [emission_color+0];
+	ld.global.v4.f32 	{%f86,%f87,%f88,_}, [ambient_light_color+0];
+	.loc	5	94	0
+	mad.f32 	%f89, %f86, %f80, %f83;
+	mad.f32 	%f90, %f87, %f81, %f84;
+	mad.f32 	%f91, %f88, %f82, %f85;
+	mul.f32 	%f92, %f58, %f26;
+	mul.f32 	%f93, %f58, %f25;
+	mul.f32 	%f94, %f58, %f27;
+	ld.global.v4.f32 	{%f95,%f96,%f97,_}, [light_dir+0];
+	mul.f32 	%f98, %f96, %f92;
+	mad.f32 	%f99, %f93, %f95, %f98;
+	mad.f32 	%f100, %f94, %f97, %f99;
+	mov.f32 	%f101, 0f00000000;   	// 0
+	setp.gt.f32 	%p1, %f100, %f101;
+	@!%p1 bra 	$Lt_1_2818;
+	.loc	5	102	0
+	ld.global.f32 	%f102, [caustic_map_scale];
+	ld.global.f32 	%f103, [ray+0];
+	ld.global.f32 	%f104, [ray+12];
+	mad.f32 	%f105, %f104, %f59, %f103;
+	mul.f32 	%f106, %f102, %f105;
+	mov.f32 	%f107, %f106;
+	ld.global.f32 	%f108, [ray+8];
+	ld.global.f32 	%f109, [ray+20];
+	mad.f32 	%f110, %f109, %f59, %f108;
+	mul.f32 	%f111, %f102, %f110;
+	mov.f32 	%f112, %f111;
+	mov.f32 	%f113, 0f00000000;   	// 0
+	mov.f32 	%f114, %f113;
+	mov.f32 	%f115, 0f00000000;   	// 0
+	mov.f32 	%f116, %f115;
+	tex.2d.v4.f32.f32 {%f117,%f118,%f119,%f120},[caustic_map,{%f107,%f112,%f114,%f116}];
+	mov.f32 	%f121, %f117;
+	ld.global.v4.f32 	{%f122,%f123,%f124,_}, [caustic_light_color+0];
+	.loc	5	105	0
+	mul.f32 	%f125, %f122, %f121;
+	mul.f32 	%f126, %f100, %f80;
+	mad.f32 	%f89, %f125, %f126, %f89;
+	mul.f32 	%f127, %f123, %f121;
+	mul.f32 	%f128, %f100, %f81;
+	mad.f32 	%f90, %f127, %f128, %f90;
+	mul.f32 	%f129, %f124, %f121;
+	mul.f32 	%f130, %f100, %f82;
+	mad.f32 	%f91, %f129, %f130, %f91;
+$Lt_1_2818:
+	ld.global.f32 	%f131, [Kr];
+	mov.f32 	%f132, 0f00000000;   	// 0
+	setp.gt.f32 	%p2, %f131, %f132;
+	@!%p2 bra 	$Lt_1_3330;
+	.loc	5	111	0
+	ld.global.f32 	%f133, [prd+12];
+	mul.f32 	%f134, %f133, %f131;
+	mul.f32 	%f135, %f134, %f64;
+	st.local.f32 	[__cuda___cuda_local_var_18369_25_non_const_new_prd_16164+12], %f135;
+	.loc	5	112	0
+	ld.global.s32 	%r8, [prd+16];
+	add.s32 	%r9, %r8, 1;
+	st.local.s32 	[__cuda___cuda_local_var_18369_25_non_const_new_prd_16164+16], %r9;
+	ld.global.s32 	%r10, [max_depth];
+	set.ge.u32.s32 	%r11, %r10, %r9;
+	neg.s32 	%r12, %r11;
+	mov.f32 	%f136, 0f3c23d70a;   	// 0.01
+	set.ge.u32.f32 	%r13, %f135, %f136;
+	neg.s32 	%r14, %r13;
+	and.b32 	%r15, %r12, %r14;
+	mov.u32 	%r16, 0;
+	setp.eq.s32 	%p3, %r15, %r16;
+	@%p3 bra 	$Lt_1_3842;
+	.loc	5	118	0
+	ld.global.u32 	%r17, [top_object+0];
+	ld.global.f32 	%f137, [ray+12];
+	ld.global.v4.f32 	{%f138,%f139,%f140,_}, [ray+0];
+	mad.f32 	%f141, %f59, %f137, %f138;
+	ld.global.v2.f32 	{%f142,%f143}, [ray+16];
+	mad.f32 	%f144, %f59, %f142, %f139;
+	mad.f32 	%f145, %f59, %f143, %f140;
+	mul.f32 	%f146, %f92, %f142;
+	mad.f32 	%f147, %f93, %f137, %f146;
+	mad.f32 	%f148, %f94, %f143, %f147;
+	add.f32 	%f149, %f93, %f93;
+	mul.f32 	%f150, %f149, %f148;
+	sub.f32 	%f151, %f137, %f150;
+	add.f32 	%f152, %f92, %f92;
+	mul.f32 	%f153, %f152, %f148;
+	sub.f32 	%f154, %f142, %f153;
+	add.f32 	%f155, %f94, %f94;
+	mul.f32 	%f156, %f155, %f148;
+	sub.f32 	%f157, %f143, %f156;
+	ld.global.u32 	%r18, [radiance_ray_type];
+	ld.global.f32 	%f158, [scene_epsilon];
+	.loc	18	97	0
+	mov.u32 	%ra1, __cuda___cuda_local_var_18369_25_non_const_new_prd_16164;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	18	99	0
+	mov.u32 	%r19, %r17;
+	mov.f32 	%f159, %f141;
+	mov.f32 	%f160, %f144;
+	mov.f32 	%f161, %f145;
+	mov.f32 	%f162, %f151;
+	mov.f32 	%f163, %f154;
+	mov.f32 	%f164, %f157;
+	mov.u32 	%r20, %r18;
+	mov.f32 	%f165, %f158;
+	mov.f32 	%f166, 0f6c4ecb8f;   	// 1e+27
+	mov.f32 	%f167, %f166;
+	mov.u32 	%r21, __cuda___cuda_local_var_18369_25_non_const_new_prd_16164;
+	mov.u32 	%r22, %r21;
+	mov.u32 	%r23, 20;
+	mov.u32 	%r24, %r23;
+	call _rt_trace, (%r19, %f159, %f160, %f161, %f162, %f163, %f164, %r20, %f165, %f167, %r22, %r24);
+	.loc	5	119	0
+	ld.global.f32 	%f168, [Kr];
+	ld.local.f32 	%f169, [__cuda___cuda_local_var_18369_25_non_const_new_prd_16164+0];
+	mad.f32 	%f89, %f169, %f168, %f89;
+	ld.local.f32 	%f170, [__cuda___cuda_local_var_18369_25_non_const_new_prd_16164+4];
+	mad.f32 	%f90, %f170, %f168, %f90;
+	ld.local.f32 	%f171, [__cuda___cuda_local_var_18369_25_non_const_new_prd_16164+8];
+	mad.f32 	%f91, %f171, %f168, %f91;
+$Lt_1_3842:
+$Lt_1_3330:
+	ld.global.v4.f32 	{%f172,%f173,%f174,_}, [attenuation_color+0];
+	.loc	5	126	0
+	sub.f32 	%f175, %f89, %f172;
+	mad.f32 	%f176, %f64, %f175, %f172;
+	sub.f32 	%f177, %f90, %f173;
+	mad.f32 	%f178, %f64, %f177, %f173;
+	st.global.v2.f32 	[prd+0], {%f176,%f178};
+	sub.f32 	%f179, %f91, %f174;
+	mad.f32 	%f180, %f64, %f179, %f174;
+	st.global.f32 	[prd+8], %f180;
+	.loc	5	127	0
+	exit;
+$LDWend__Z20closest_hit_radiancev:
+	} // _Z20closest_hit_radiancev
+
+	.func _ZN5optix16rt_undefined_useEi (.reg .u32 %ra1)
+	{
+	.loc	18	39	0
+$LDWbegin__ZN5optix16rt_undefined_useEi:
+	.loc	18	41	0
+	ret;
+$LDWend__ZN5optix16rt_undefined_useEi:
+	} // _ZN5optix16rt_undefined_useEi
+	.global .align 4 .b8 top_shadower[4];
+	.global .u32 shadow_ray_type;
+	.global .u32 _ZN21rti_internal_register20reg_bitness_detectorE;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail0E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail1E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail2E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail3E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail4E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail5E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail6E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail7E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail8E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail9E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail0E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail1E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail2E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail3E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail4E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail5E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail6E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail7E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail8E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail9E;
+	.global .u32 _ZN21rti_internal_register14reg_rayIndex_xE;
+	.global .u32 _ZN21rti_internal_register14reg_rayIndex_yE;
+	.global .u32 _ZN21rti_internal_register14reg_rayIndex_zE;
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo5t_hitE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo3rayE[8] = {82,97,121,0,36,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo3prdE[8] = {82,97,121,0,20,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo10prd_shadowE[8] = {82,97,121,0,12,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo16geometric_normalE[8] = {82,97,121,0,12,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo14shading_normalE[8] = {82,97,121,0,12,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo8texcoordE[8] = {82,97,121,0,12,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo10top_objectE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo12top_shadowerE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo13scene_epsilonE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo9max_depthE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo17radiance_ray_typeE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo15shadow_ray_typeE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo19attenuation_densityE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo17caustic_map_scaleE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo17diffuse_map_scaleE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo2KrE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo14emission_colorE[8] = {82,97,121,0,12,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo19ambient_light_colorE[8] = {82,97,121,0,12,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo19caustic_light_colorE[8] = {82,97,121,0,12,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo17attenuation_colorE[8] = {82,97,121,0,12,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo9light_dirE[8] = {82,97,121,0,12,0,0,0};
+	.global .align 1 .b8 _ZN21rti_internal_typename5t_hitE[6] = {0x66,0x6c,0x6f,0x61,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename3rayE[11] = {0x6f,0x70,0x74,0x69,0x78,0x3a,0x3a,0x52,0x61,0x79,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename3prdE[20] = {0x50,0x65,0x72,0x52,0x61,0x79,0x44,0x61,0x74,0x61,0x5f,0x72,0x61,0x64,0x69,0x61,0x6e,0x63,0x65,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename10prd_shadowE[18] = {0x50,0x65,0x72,0x52,0x61,0x79,0x44,0x61,0x74,0x61,0x5f,0x73,0x68,0x61,0x64,0x6f,0x77,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename16geometric_normalE[7] = {0x66,0x6c,0x6f,0x61,0x74,0x33,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename14shading_normalE[7] = {0x66,0x6c,0x6f,0x61,0x74,0x33,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename8texcoordE[7] = {0x66,0x6c,0x6f,0x61,0x74,0x33,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename10top_objectE[9] = {0x72,0x74,0x4f,0x62,0x6a,0x65,0x63,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename12top_shadowerE[9] = {0x72,0x74,0x4f,0x62,0x6a,0x65,0x63,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename13scene_epsilonE[6] = {0x66,0x6c,0x6f,0x61,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename9max_depthE[4] = {0x69,0x6e,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename17radiance_ray_typeE[13] = {0x75,0x6e,0x73,0x69,0x67,0x6e,0x65,0x64,0x20,0x69,0x6e,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename15shadow_ray_typeE[13] = {0x75,0x6e,0x73,0x69,0x67,0x6e,0x65,0x64,0x20,0x69,0x6e,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename19attenuation_densityE[6] = {0x66,0x6c,0x6f,0x61,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename17caustic_map_scaleE[6] = {0x66,0x6c,0x6f,0x61,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename17diffuse_map_scaleE[6] = {0x66,0x6c,0x6f,0x61,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename2KrE[6] = {0x66,0x6c,0x6f,0x61,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename14emission_colorE[7] = {0x66,0x6c,0x6f,0x61,0x74,0x33,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename19ambient_light_colorE[7] = {0x66,0x6c,0x6f,0x61,0x74,0x33,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename19caustic_light_colorE[7] = {0x66,0x6c,0x6f,0x61,0x74,0x33,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename17attenuation_colorE[7] = {0x66,0x6c,0x6f,0x61,0x74,0x33,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename9light_dirE[7] = {0x66,0x6c,0x6f,0x61,0x74,0x33,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic5t_hitE[23] = {0x72,0x74,0x49,0x6e,0x74,0x65,0x72,0x73,0x65,0x63,0x74,0x69,0x6f,0x6e,0x44,0x69,0x73,0x74,0x61,0x6e,0x63,0x65,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic3rayE[13] = {0x72,0x74,0x43,0x75,0x72,0x72,0x65,0x6e,0x74,0x52,0x61,0x79,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic3prdE[10] = {0x72,0x74,0x50,0x61,0x79,0x6c,0x6f,0x61,0x64,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic10prd_shadowE[10] = {0x72,0x74,0x50,0x61,0x79,0x6c,0x6f,0x61,0x64,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic16geometric_normalE[27] = {0x61,0x74,0x74,0x72,0x69,0x62,0x75,0x74,0x65,0x20,0x67,0x65,0x6f,0x6d,0x65,0x74,0x72,0x69,0x63,0x5f,0x6e,0x6f,0x72,0x6d,0x61,0x6c,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic14shading_normalE[25] = {0x61,0x74,0x74,0x72,0x69,0x62,0x75,0x74,0x65,0x20,0x73,0x68,0x61,0x64,0x69,0x6e,0x67,0x5f,0x6e,0x6f,0x72,0x6d,0x61,0x6c,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic8texcoordE[19] = {0x61,0x74,0x74,0x72,0x69,0x62,0x75,0x74,0x65,0x20,0x74,0x65,0x78,0x63,0x6f,0x6f,0x72,0x64,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic10top_objectE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic12top_shadowerE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic13scene_epsilonE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic9max_depthE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic17radiance_ray_typeE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic15shadow_ray_typeE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic19attenuation_densityE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic17caustic_map_scaleE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic17diffuse_map_scaleE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic2KrE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic14emission_colorE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic19ambient_light_colorE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic19caustic_light_colorE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic17attenuation_colorE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic9light_dirE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation5t_hitE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation3rayE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation3prdE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation10prd_shadowE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation16geometric_normalE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation14shading_normalE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation8texcoordE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation10top_objectE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation12top_shadowerE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation13scene_epsilonE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation9max_depthE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation17radiance_ray_typeE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation15shadow_ray_typeE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation19attenuation_densityE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation17caustic_map_scaleE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation17diffuse_map_scaleE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation2KrE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation14emission_colorE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation19ambient_light_colorE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation19caustic_light_colorE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation17attenuation_colorE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation9light_dirE[1] = {0x0};
+
