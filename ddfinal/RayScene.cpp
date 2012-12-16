@@ -40,10 +40,12 @@ void RayScene::initScene( InitialCameraData& camera_data )
     _context["bg_color"]->setFloat( make_float3( 0.34f, 0.55f, 0.85f ) );
 
     // Lights 
-    QList<CS123SceneLightData> oldL = _dp.getLightList();
-    CS123SceneLightData lights[oldL.size()];
-    for(int i=0; i<oldL.size(); i++)
-        lights[i] = oldL.at(i);                         
+    std::vector<CS123SceneLightData>* oldL = _dp.getLightLists();
+    CS123SceneLightData lights[(*oldL).size()];
+    for(int i=0; i<(*oldL).size(); i++){
+        lights[i] = (*oldL).back();
+        (*oldL).pop_back();
+    }
 
     Buffer light_buffer = _context->createBuffer(RT_BUFFER_INPUT);
     light_buffer->setFormat(RT_FORMAT_USER);
@@ -100,16 +102,10 @@ void RayScene::doResize( unsigned int width, unsigned int height )
 {
     // output buffer handled in SampleScene::resize
 }
-
-string RayScene::texpath( const string& base )
-{
-    return texture_path + "/" + base;
-}
                                             
 //Graph structure:
 // TopGroup(noaccel)->TopTransform(Identity)->ShapeGroup(Sbvh)->AllTransforms(shape specific)
 // When we need to rotate or scale the objects then we will change the top transform
-
 void RayScene::createGeometry()
 { 
     //Load Each Basic Shape
@@ -147,11 +143,12 @@ void RayScene::createGeometry()
 
     //Load Image
     std::vector<RTtransform> transes;
-    QList<SimplePrimitive> prims = _dp.getPrimList();
+    std::vector<SimplePrimitive>* prims = _dp.getPrimLists();
     CS123SceneGlobalData gdata = _dp.getGlobalData();
 
-    for(int i=0; i<prims.size(); i++){
-        SimplePrimitive cprim = prims.at(i);
+    for(int i=0; i<(*prims).size(); i++){
+        SimplePrimitive cprim = (*prims).back();
+        (*prims).pop_back();
 
         //make transformation
         RTtransform currt;
@@ -164,7 +161,7 @@ void RayScene::createGeometry()
         rtTransformSetMatrix(currt, 0, tm, 0);
 
         //make material
-        CS123SceneMaterial smatl = prims.material;
+        CS123SceneMaterial smatl = cprim.material;
         Material cmatl = _context->createMaterial();
         Program closestHitP = _context->createProgramFromPTXFile(_ptx_path, "closest_hit");
         cmatl->setClosestHitProgram(0,closestHitP);
@@ -246,53 +243,6 @@ void RayScene::createGeometry()
     //Finish up
     _context["top_object"]->set(topGroup);
     _context["top_shadower"]->set(topGroup);
-
-
-
-
-
-
-
-
-
-    
-        string cube_ptx( ptxpath( "scene", "cube.cu" ) ); 
-        Program cube_bounds = _context->createProgramFromPTXFile( cube_ptx, "cube_bounds" );
-        Program cube_intersect = _context->createProgramFromPTXFile( cube_ptx, "cube_intersect" );
-
-        // Create cube
-        Geometry cube = _context->createGeometry();
-        cube->setPrimitiveCount( 1u );
-        cube->setBoundingcubeProgram( cube_bounds );
-        cube->setIntersectionProgram( cube_intersect );
-        cube["cubemin"]->setFloat( -2.0f, 0.0f, -2.0f );
-        cube["cubemax"]->setFloat(  2.0f, 7.0f,  2.0f );
-
-        // Materials
-        string cube_chname = "closest_hit_radiance1";
-
-        Material cube_matl = _context->createMaterial();
-        Program cube_ch = _context->createProgramFromPTXFile( _ptx_path, cube_chname );
-        cube_matl->setClosestHitProgram( 0, cube_ch );
-        cube_matl["Ka"]->setFloat( 0.3f, 0.3f, 0.3f );
-        cube_matl["Kd"]->setFloat( 0.6f, 0.7f, 0.8f );
-        cube_matl["Ks"]->setFloat( 0.8f, 0.9f, 0.8f );
-        cube_matl["phong_exp"]->setFloat( 88 );
-        cube_matl["reflectivity_n"]->setFloat( 0.2f, 0.2f, 0.2f );
-
-        // Create GIs for each piece of geometry
-        vector<GeometryInstance> gis;
-        gis.push_back( _context->createGeometryInstance( cube, &cube_matl, &cube_matl+1 ) );
-
-        // Place all in group
-        GeometryGroup geometrygroup = _context->createGeometryGroup();
-        geometrygroup->setChildCount( static_cast<unsigned int>(gis.size()) );
-        geometrygroup->setChild( 0, gis[0] );
-        geometrygroup->setChild( 1, gis[1] );
-        geometrygroup->setAcceleration( _context->createAcceleration("NoAccel","NoAccel") );
-
-        _context["top_object"]->set( geometrygroup );
-        _context["top_shadower"]->set( geometrygroup );
 }
 
 

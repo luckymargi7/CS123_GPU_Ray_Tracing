@@ -63,7 +63,6 @@ class RayScene : public Scene
         Buffer getOutputBuffer();
 
     private:
-        string texpath( const std::string& base );
         void createGeometry();
 
         unsigned int _width;

@@ -11,6 +11,19 @@
 int main(int argc, char *argv[])
 {
 
+    /* From old main.cpp
+        QString file = "/course/cs123/data/scenes/intersect/ctc_isect.xml";
+        CS123XmlSceneParser parser(file.toAscii().data());
+        if(parser.parse()){
+                DataProcessor dp = new DataProcessor();
+                dp.parse(&parser);
+                RayScene scene(texture_path, dp);
+                scene.setDimensions( width, height );
+                GLUTDisplay::run( title.str(), &scene );
+        }
+        */
+
+
     //This is parsing the file
     QString file = "/course/cs123/data/scenes/intersect/ctc_isect.xml";
     CS123XmlSceneParser parser(file.toAscii().data());

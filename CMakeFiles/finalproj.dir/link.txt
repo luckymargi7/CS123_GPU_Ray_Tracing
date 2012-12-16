@@ -1,0 +1,1 @@
+/usr/bin/c++       -fPIC -march=opteron -mtune=opteron   -msse -msse2 -msse3 -mfpmath=sse  -O3 -DNDEBUG -g3 -funroll-loops   CMakeFiles/finalproj.dir/main.cpp.o CMakeFiles/finalproj.dir/ui/mainwindow.cpp.o CMakeFiles/finalproj.dir/moc_mainwindow.cxx.o  -o finalproj -rdynamic 

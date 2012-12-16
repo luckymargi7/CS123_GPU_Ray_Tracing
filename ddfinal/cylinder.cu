@@ -109,16 +109,9 @@ RT_PROGRAM void robust_intersect(int primIdx)
 
 RT_PROGRAM void bounds (int, float result[6])
 {
-  const float3 cen = make_float3( cylinder );
-  const float3 rad = make_float3( cylinder.w );
-
+  const float3 cubemin = make_float3(-.5,-.5,-.5);
+  const float3 cubemax = make_float3(.5,.5,.5);
   optix::Aabb* aabb = (optix::Aabb*)result;
-  
-  if( rad.x > 0.0f  && !isinf(rad.x) ) {
-    aabb->m_min = cen - rad;
-    aabb->m_max = cen + rad;
-  } else {
-    aabb->invalidate();
-  }
+  aabb->set(cubemin, cubemax);
 }
 
