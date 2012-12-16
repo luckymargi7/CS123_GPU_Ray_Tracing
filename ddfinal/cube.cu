@@ -6,8 +6,6 @@
 
 using namespace optix;
 
-rtDeclareVariable(float3, cubemin, , );
-rtDeclareVariable(float3, cubemax, , );
 rtDeclareVariable(optix::Ray, ray, rtCurrentRay, );
 rtDeclareVariable(float3, texcoord, attribute texcoord, ); 
 rtDeclareVariable(float3, geometric_normal, attribute geometric_normal, ); 
@@ -70,6 +68,8 @@ RT_PROGRAM void cube_intersect(int)
 
 RT_PROGRAM void cube_bounds (int, float result[6])
 {
+    const float3 cubemin = make_float3(-.5,-.5,-.5);
+    const float3 cubemax = make_float3(.5,.5,.5);
     optix::Aabb* aabb = (optix::Aabb*)result;
     aabb->set(cubemin, cubemax);
 }

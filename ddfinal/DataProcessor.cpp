@@ -5,36 +5,25 @@
 
 
 DataProcessor::DataProcessor()
-{
-    m_lightList = new QList<CS123SceneLightData>();
-    m_primList = new QList<SimplePrimitive>();
-}
+{}
 
 DataProcessor::~DataProcessor()
-{
-    delete m_lightList;
-    delete m_primList;
-}
-
-QList<SimplePrimitive> DataProcessor::getPrimList(){
-    QList<SimplePrimitive>* list = new QList<SimplePrimitive>();
-    list->append(*m_primList);
-    return *list;
-}
+{}
 
 CS123SceneGlobalData DataProcessor::getGlobalData(){
     return m_globalData;
 }
 
-QList<CS123SceneLightData> DataProcessor::getLightList(){
-    QList<CS123SceneLightData>* list = new QList<CS123SceneLightData>();
-    list->append(*m_lightList);
-    return *list;
+std::vector<SimplePrimitive>* DataProcessor::getPrimLists(){
+    return &m_primLists;
+}
+
+std::vector<CS123SceneLightData>* DataProcessor::getLightLists(){
+    return &m_lightLists;;
 }
 
 void DataProcessor::parse(CS123ISceneParser *parser)
 {
-
     CS123SceneGlobalData gdata;
     parser->getGlobalData(gdata);
     setGlobal(gdata);
@@ -56,13 +45,12 @@ void DataProcessor::addPrimitive(const CS123ScenePrimitive &scenePrimitive, cons
     cprim.type = scenePrimitive.type;
     cprim.transMat = matrix;
 
-    m_primList->append(cprim);
-
+    m_primLists.push_back(cprim);
 }
 
 void DataProcessor::addLight(const CS123SceneLightData &sceneLight){
     CS123SceneLightData cLight = sceneLight;
-    m_lightList->append(cLight);
+    m_lightLists.push_back(cLight);
 }
 
 void DataProcessor::setGlobal(const CS123SceneGlobalData &global){
@@ -119,15 +107,4 @@ Matrix4x4 DataProcessor::calcTransMat(std::vector<CS123SceneTransformation*> tra
     return totalMat;
 
 }
-
-void DataProcessor::printMat(Matrix4x4 mat){
-
-    cout << mat.a << " "<<mat.b<< " "<<mat.c << " " << mat.d<<"\n"
-            << mat.e << " " << mat.f << " "<< mat.g << " " <<mat.h<<"\n"
-            <<mat.i<< " " << mat.j<< " " << mat.k<<" "<< mat.l<<"\n"
-            <<mat.m << " " <<mat.n<< " "<<mat.o<<" " << mat.p<<"\n\n"<<flush;
-}
-
-
-
 

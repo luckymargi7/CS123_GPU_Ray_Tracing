@@ -15,11 +15,9 @@ public:
     static void parse(CS123ISceneParser *parser);
 
     Matrix4x4 calcTransMat(std::vector<CS123SceneTransformation*> tranVect);
-    QList<SimplePrimitive> getPrimList();
-    QList<CS123SceneLightData> getLightList();
+    std::vector<CS123SceneLightData>* getLightLists();
+    std::vector<SimplePrimitive>* getPrimLists();
     CS123SceneGlobalData getGlobalData();
-
-    void printMat(Matrix4x4 mat);
 
 protected:
 
@@ -38,8 +36,8 @@ protected:
 
     CS123SceneGlobalData m_globalData;
 
-    QList<CS123SceneLightData>* m_lightList;
-    QList<SimplePrimitive>* m_primList;
+    std::vector<CS123SceneLightData> m_lightLists;
+    std::vector<SimplePrimitive> m_primLists;
 };
 
 #endif // DATAPROCESSOR_H
