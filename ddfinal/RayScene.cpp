@@ -39,17 +39,16 @@ void RayScene::initScene( InitialCameraData& camera_data )
     //_context["envmap"]->settexturesampler( loadtexture( _context, texpath("cedarcity.hdr"), default_color) );
     _context["bg_color"]->setFloat( make_float3( 0.34f, 0.55f, 0.85f ) );
 
-    // Lights-we need to import our own lights! Then we need to do the steps listed
-    //below to pass the information into the context 
-    
-    //So the data processor is _dp and it has a getLightList() method that
-    //returns a QList of CS123SceneLightData which can be used to fill
-    //this light buffer.
+    // Lights 
+    QList<CS123SceneLightData> oldL = _dp.getLightList();
+    CS123SceneLightData lights[oldL.size()];
+    for(int i=0; i<oldL.size(); i++)
+        lights[i] = oldL.at(i);                         
 
     Buffer light_buffer = _context->createBuffer(RT_BUFFER_INPUT);
     light_buffer->setFormat(RT_FORMAT_USER);
-    light_buffer->setElementSize(sizeof(BasicLight));
-    light_buffer->setSize( sizeof(lights)/sizeof(lights[0]) );
+    light_buffer->setElementSize(sizeof(CS123SceneLightData));
+    light_buffer->setSize(sizeof(lights)/sizeof(lights[0]));
     memcpy(light_buffer->map(), lights, sizeof(lights));
     light_buffer->unmap();
 
@@ -106,85 +105,157 @@ string RayScene::texpath( const string& base )
 {
     return texture_path + "/" + base;
 }
-
-void RayScene::createCone(SimplePrimitive prim) {
-    CS123SceneMaterial matl = prim.material;
-    Matrix4x4 transMat = prim.transMat;
-    
-    string cone_ptx( ptxpath( "scene", "cone.cu" ) ); 
-    Program cone_bounds = _context->createProgramFromPTXFile( cone_ptx, "cone_bounds" );
-    Program cone_intersect = _context->createProgramFromPTXFile( cone_ptx, "cone_intersect" );
-    
-    // Create cone
-    Geometry cone = _context->createGeometry();
-    cone->setPrimitiveCount( 1u );
-    cone->setBoundingconeProgram( cone_bounds );
-    cone->setIntersectionProgram( cone_intersect );
-    cone["conemin"]->setFloat( -0.5f, 0.5f, -0.5f );
-    cone["conemax"]->setFloat(  0.5f, 0.5f,  0.5f );
-
-    // Materials
-    string cone_chname = "closest_hit_lighting";
-
-    Material cone_matl = _context->createMaterial();
-    Program cone_ch = _context->createProgramFromPTXFile( _ptx_path, cone_chname );
-    cone_matl->setClosestHitProgram( 0, cone_ch );
-    //cone_matl["Ka"]->setFloat( 0.3f, 0.3f, 0.3f );
-    //cone_matl["Kd"]->setFloat( 0.6f, 0.7f, 0.8f );
-    //cone_matl["Ks"]->setFloat( 0.8f, 0.9f, 0.8f );
-    //cone_matl["phong_exp"]->setFloat( 88 );
-    //cone_matl["reflectivity_n"]->setFloat( 0.2f, 0.2f, 0.2f );
-
-    // Create GIs for each piece of geometry
-    Geometry cone = _context->createGeometryInstance( cone, &cone_matl, &cone_matl+1 );
-
-    // Place all in group
-    GeometryGroup geometrygroup = _context->createGeometryGroup();
-    geometrygroup->setChildCount(1);
-    geometrygroup->setChild( 0, cone );
-    geometrygroup->setAcceleration( _context->createAcceleration("NoAccel","NoAccel") );
-
-    Transform transform = _context->createTransform();
-    transform.setChild(geometrygroup);
-
-    tNodes.push_back(transform);
-}
+                                            
+//Graph structure:
+// TopGroup(noaccel)->TopTransform(Identity)->ShapeGroup(Sbvh)->AllTransforms(shape specific)
+// When we need to rotate or scale the objects then we will change the top transform
 
 void RayScene::createGeometry()
 { 
-    //this is all us!
-    //so the _dp has a getPrimList() method that returns a QList of
-    // SimplePrimitives (see CS123SceneData) which can be used to fill
-    // in this section.
-    
-    //Create all geometry instances here
+    //Load Each Basic Shape
+    std::string cube_ptx(ptxpath("tutorial","cube.cu"));
+    Program cube_bounds = _contex->createProgramFromPTXFile(cube_ptx, "cube_bounds");
+    Program cube_bounds = _contex->createProgramFromPTXFile(cube_ptx, "cube_intersect");
+    Geometry cube = _context->createGeometry();
+    cube->setPrimitiveCount(1u);
+    cube->setBoundingBoxProgram(cube_bounds);
+    cube->setIntersectionProgram(cube_intersect);
 
+    std::string cone_ptx(ptxpath("tutorial","cone.cu"));
+    Program cone_bounds = _contex->createProgramFromPTXFile(cone_ptx, "cone_bounds");
+    Program cone_bounds = _contex->createProgramFromPTXFile(cone_ptx, "cone_intersect");
+    Geometry cone = _context->createGeometry();
+    cone->setPrimitiveCount(1u);
+    cone->setBoundingBoxProgram(cone_bounds);
+    cone->setIntersectionProgram(cone_intersect);
+
+    std::string sphere_ptx(ptxpath("tutorial","sphere.cu"));
+    Program sphere_bounds = _contex->createProgramFromPTXFile(sphere_ptx, "sphere_bounds");
+    Program sphere_bounds = _contex->createProgramFromPTXFile(sphere_ptx, "sphere_intersect");
+    Geometry sphere = _context->createGeometry();
+    sphere->setPrimitiveCount(1u);
+    sphere->setBoundingBoxProgram(sphere_bounds);
+    sphere->setIntersectionProgram(sphere_intersect);
+
+    std::string cylinder_ptx(ptxpath("tutorial","cylinder.cu"));
+    Program cylinder_bounds = _contex->createProgramFromPTXFile(cylinder_ptx, "cylinder_bounds");
+    Program cylinder_bounds = _contex->createProgramFromPTXFile(cylinder_ptx, "cylinder_intersect");
+    Geometry cylinder = _context->createGeometry();
+    cylinder->setPrimitiveCount(1u);
+    cylinder->setBoundingBoxProgram(cylinder_bounds);
+    cylinder->setIntersectionProgram(cylinder_intersect);
+
+    //Load Image
+    std::vector<RTtransform> transes;
     QList<SimplePrimitive> prims = _dp.getPrimList();
-    for(int i = 0; i < prims->size(); i++) {
-        SimplePrimitive prim = prims[i];
-        Program prim_bounds;
-        Program prim_intersect;
-        Material prim_matl;
-        switch(prim.type) {
+    CS123SceneGlobalData gdata = _dp.getGlobalData();
+
+    for(int i=0; i<prims.size(); i++){
+        SimplePrimitive cprim = prims.at(i);
+
+        //make transformation
+        RTtransform currt;
+        rtTransformCreate(_context, &currt);
+        Matrix4x4 om = cprim.transMat;
+        const float tm[16] = {om.a,om.b,om.c,om.d,
+                              om.e,om.f,om.g,om.h,
+                              om.i,om.j,om.k,om.l,
+                              om.m,om.n,om.o,om.p };
+        rtTransformSetMatrix(currt, 0, tm, 0);
+
+        //make material
+        CS123SceneMaterial smatl = prims.material;
+        Material cmatl = _context->createMaterial();
+        Program closestHitP = _context->createProgramFromPTXFile(_ptx_path, "closest_hit");
+        cmatl->setClosestHitProgram(0,closestHitP);
+        if(useShadows){
+            Program anyHitP = _context->createProgramFromPTXFile(_ptx_path, "any_hit_shadow");
+            cmatl->setAnyHitProgram(1,anyHitP);
+        }
+        cmatl["cDiffuse"]->setFloat(gdata.kd*smatl.cDiffuse.r,gdata.kd*smatl.cDiffuse.g,gdata.kd*smatl.cDiffuse.b);
+        cmatl["cAmbient"]->setFloat(gdata.ka*smatl.cAmbient.r,gdata.ka*smatl.cAmbient.g,gdata.ka*smatl.cAmbient.b);
+        cmatl["cSpecular"]->setFloat(gdata.ks*smatl.cSpecular.r,gdata.ks*smatl.cSpecular.g,gdata.ks*smatl.cSpecular.b);
+        cmatl["blend"]->setFloat(smatl.blend);
+        cmatl["shininess"]->setFloat(smatl.shininess);
+        cmatl["ior"]->setFloat(smatl.ior);
+        //we'll do texture when we get the rest working
+
+        rtGeometryInstance cinstance;
+        switch(cprim.type) {
             case PRIMITIVE_CUBE:
-                createCube(prim, prim_bounds, prim_intersect, prim_matl);
-                break;
+                cinstance = _context->createGeometryInstance(cube, &cmatl, &cmatl+1);
+                break;                                                      
             case PRIMITIVE_CONE:
-                createCone(prim, prim_bounds, prim_intersect, prim_matl);
+                cinstance = _context->createGeometryInstance(cone, &cmatl, &cmatl+1);
                 break;
             case PRIMITIVE_CYLINDER:
-                createCylinder(prim, prim_bounds, prim_intersect, prim_matl);
+                cinstance = _context->createGeometryInstance(cylinder, &cmatl, &cmatl+1);
                 break;
-
             case PRIMITIVE_SPHERE:
-                createSphere(prim, prim_bounds, prim_intersect, prim_matl);
+                cinstance = _context->createGeometryInstance(sphere, &cmatl, &cmatl+1);
                 break;
-
             default:
+                cinstance = _context->createGeometryInstance(cube, &cmatl, &cmatl+1);
                 break;
         }
 
+        rtGeometryGroup cgroup = _context->createGeometryGroup();
+        cgroup->setChildCount(1);
+        cgroup->setChild(0,cinstance);
+
+        rtTransformSetChild(currt, cgroup);
+        transes.push_back(currt);
     }
+
+    //Create Scene Group and add all transforms to it
+    rtGroup sceneGroup;
+    rtGroupCreate(_context, &sceneGroup);
+    rtGroupSetChildCount(sceneGroup, transes.size());
+
+    rtAcceleration sceneAcceleration;
+    rtAccelerationCreate(_context, &sceneAcceleration);
+    rtAccelerationSetBuilder(sceneAcceleration,"Sbvh");
+    rtAccelerationSetTraverser(sceneAcceleration,"bvhCompact");
+    rtGroupSetAcceleration(sceneGroup,sceneAcceleration);
+
+    for(int i=0; i<transes.size(); i++)
+        rtGroupSetChild(sceneGroup, transes[i]);
+
+    //Create the Top Group and its transform
+    rtGroup topGroup;
+    rtGroupCreate(_context, &topGroup);
+    rtGroupSetChildCount(topGroup, 1);
+    
+    rtAcceleration topAcceleration;
+    rtAccelerationCreate(_context, &topAcceleration);
+    rtAccelerationSetBuilder(topAcceleration, "NoAccel");
+    rtAccelerationSetTraverser(topAcceleration, "NoAccel");
+    rtGroupSetAcceleration(topGroup, topAcceleration);
+
+    RTtransform topTrans;
+    rtTransformCreate(_context, &topTrans);
+    const float tm[16] = {1,0,0,0,
+                          0,1,0,0,
+                          0,0,1,0,
+                          0,0,0,1 };
+    rtTransformSetMatrix(topTrans,0,tm,0);
+    rtTransformSetChild(topTrans,sceneGroup);
+
+    rtGroupSetChild(topGroup,topTrans);
+
+    //Finish up
+    _context["top_object"]->set(topGroup);
+    _context["top_shadower"]->set(topGroup);
+
+
+
+
+
+
+
+
+
+    
         string cube_ptx( ptxpath( "scene", "cube.cu" ) ); 
         Program cube_bounds = _context->createProgramFromPTXFile( cube_ptx, "cube_bounds" );
         Program cube_intersect = _context->createProgramFromPTXFile( cube_ptx, "cube_intersect" );
