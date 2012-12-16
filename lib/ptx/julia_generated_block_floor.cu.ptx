@@ -1,0 +1,3619 @@
+	.version 1.4
+	.target sm_10, map_f64_to_f32
+	// compiled with /usr/lib/nvidia-cuda-toolkit/lib//be
+	// nvopencc 4.1 built on 2012-04-05
+
+	.func _ZN5optix16rt_undefined_useEi (.reg .u32 %ra1)
+
+	//-----------------------------------------------------------
+	// Compiling /tmp/tmpxft_00000e0f_00000000-9_block_floor.cpp3.i (/tmp/ccBI#.JWR3Kp)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_10, Endian:little, Pointer Size:32
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"<command-line>"
+	.file	2	"/tmp/tmpxft_00000e0f_00000000-8_block_floor.cudafe2.gpu"
+	.file	3	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/optix_device.h"
+	.file	4	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/optix-examples/julia/block_floor.cu"
+	.file	5	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/optixu/optixu_aabb_namespace.h"
+	.file	6	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/optix-examples/julia/distance_field.h"
+	.file	7	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/internal/optix_datatypes.h"
+	.file	8	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/internal/optix_defines.h"
+	.file	9	"/tmp/tmpxft_00000e0f_00000000-1_block_floor.cudafe1.gpu"
+	.file	10	"/gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/bin/../lib/gcc/i686-pc-linux-gnu/4.6.3/include/stddef.h"
+	.file	11	"/usr/include/crt/device_runtime.h"
+	.file	12	"/usr/include/host_defines.h"
+	.file	13	"/usr/include/builtin_types.h"
+	.file	14	"/usr/include/device_types.h"
+	.file	15	"/usr/include/driver_types.h"
+	.file	16	"/usr/include/surface_types.h"
+	.file	17	"/usr/include/texture_types.h"
+	.file	18	"/usr/include/vector_types.h"
+	.file	19	"/usr/include/device_launch_parameters.h"
+	.file	20	"/usr/include/crt/storage_class.h"
+	.file	21	"/home/mk20/Downloads/NVIDIA-OptiX-SDK-2.5.0-linux32/include/internal/optix_internal.h"
+	.file	22	"/usr/include/common_functions.h"
+	.file	23	"/usr/include/math_functions.h"
+	.file	24	"/usr/include/math_constants.h"
+	.file	25	"/usr/include/device_functions.h"
+	.file	26	"/usr/include/sm_11_atomic_functions.h"
+	.file	27	"/usr/include/sm_12_atomic_functions.h"
+	.file	28	"/usr/include/sm_13_double_functions.h"
+	.file	29	"/usr/include/sm_20_atomic_functions.h"
+	.file	30	"/usr/include/sm_20_intrinsics.h"
+	.file	31	"/usr/include/sm_30_intrinsics.h"
+	.file	32	"/usr/include/surface_functions.h"
+	.file	33	"/usr/include/texture_fetch_functions.h"
+	.file	34	"/usr/include/math_functions_dbl_ptx1.h"
+
+	.global .f32 floor_time;
+	.global .align 16 .b8 ray[36];
+	.global .align 16 .b8 normal[12];
+
+	.entry _Z9intersecti (
+		.param .s32 __cudaparm__Z9intersecti_primIdx)
+	{
+	.reg .u32 %r<125>;
+	.reg .f32 %f<833>;
+	.reg .pred %p<126>;
+	.local .align 4 .b8 __cuda___cuda___T2148_1688[104];
+	.local .align 4 .b8 __cuda___cuda___cudaparm__Z14intersect_aabbI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEbRNS2_3RayET__prim_120192[104];
+	.local .align 4 .b8 __cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296[104];
+	.local .align 4 .b8 __cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400[104];
+	.loc	4	537	0
+$LDWbegin__Z9intersecti:
+	.loc	4	404	0
+	mov.u32 	%r1, 320;
+	st.local.u32 	[__cuda___cuda___T2148_1688+0], %r1;
+	.loc	5	194	0
+	mov.f32 	%f1, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda___T2148_1688+4], %f1;
+	mov.f32 	%f2, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda___T2148_1688+8], %f2;
+	mov.f32 	%f3, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda___T2148_1688+12], %f3;
+	.loc	5	195	0
+	mov.f32 	%f4, 0ffcf0bdc2;     	// -1e+37
+	st.local.f32 	[__cuda___cuda___T2148_1688+16], %f4;
+	mov.f32 	%f5, 0ffcf0bdc2;     	// -1e+37
+	st.local.f32 	[__cuda___cuda___T2148_1688+20], %f5;
+	mov.f32 	%f6, 0ffcf0bdc2;     	// -1e+37
+	st.local.f32 	[__cuda___cuda___T2148_1688+24], %f6;
+	.loc	4	404	0
+	mov.u32 	%r2, 320;
+	st.local.u32 	[__cuda___cuda___T2148_1688+28], %r2;
+	mov.f32 	%f7, 0fc2c80ccd;     	// -100.025
+	st.local.f32 	[__cuda___cuda___T2148_1688+32], %f7;
+	mov.f32 	%f8, 0fc0000000;     	// -2
+	st.local.f32 	[__cuda___cuda___T2148_1688+36], %f8;
+	mov.f32 	%f9, 0fc2c80000;     	// -100
+	st.local.f32 	[__cuda___cuda___T2148_1688+40], %f9;
+	mov.f32 	%f10, 0f43480000;    	// 200
+	mov.f32 	%f11, 0f43a00000;    	// 320
+	div.approx.f32 	%f12, %f10, %f11;
+	mov.f32 	%f13, 0fc2c80000;    	// -100
+	add.f32 	%f14, %f12, %f13;
+	mov.f32 	%f15, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f16, %f14, %f15;
+	mov.f32 	%f17, 0f42c80000;    	// 100
+	add.f32 	%f18, %f16, %f17;
+	mov.f32 	%f19, 0f3d4ccccd;    	// 0.05
+	add.f32 	%f20, %f18, %f19;
+	mov.f32 	%f21, 0fc2c80ccd;    	// -100.025
+	mov.f32 	%f22, 0f43a00000;    	// 320
+	mad.f32 	%f23, %f22, %f20, %f21;
+	st.local.f32 	[__cuda___cuda___T2148_1688+44], %f23;
+	mov.f32 	%f24, 0fbf800000;    	// -1
+	st.local.f32 	[__cuda___cuda___T2148_1688+48], %f24;
+	st.local.f32 	[__cuda___cuda___T2148_1688+52], %f16;
+	mov.f32 	%f25, 0fc2c80000;    	// -100
+	st.local.f32 	[__cuda___cuda___T2148_1688+56], %f25;
+	mov.f32 	%f26, 0fc0000000;    	// -2
+	st.local.f32 	[__cuda___cuda___T2148_1688+60], %f26;
+	mov.f32 	%f27, 0fc2c80000;    	// -100
+	st.local.f32 	[__cuda___cuda___T2148_1688+64], %f27;
+	st.local.f32 	[__cuda___cuda___T2148_1688+68], %f14;
+	mov.f32 	%f28, 0fbf800000;    	// -1
+	st.local.f32 	[__cuda___cuda___T2148_1688+72], %f28;
+	st.local.f32 	[__cuda___cuda___T2148_1688+76], %f14;
+	mov.f32 	%f29, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2148_1688+80], %f29;
+	st.local.f32 	[__cuda___cuda___T2148_1688+84], %f20;
+	mov.f32 	%f30, 0f3ccccccd;    	// 0.025
+	st.local.f32 	[__cuda___cuda___T2148_1688+88], %f30;
+	mov.f32 	%f31, 0f3ccccccd;    	// 0.025
+	st.local.f32 	[__cuda___cuda___T2148_1688+100], %f31;
+	.loc	6	203	0
+	mov.f32 	%f32, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2148_1688+4], %f32;
+	mov.f32 	%f33, 0fc0000000;    	// -2
+	st.local.f32 	[__cuda___cuda___T2148_1688+8], %f33;
+	mov.f32 	%f34, 0fc2c80000;    	// -100
+	st.local.f32 	[__cuda___cuda___T2148_1688+12], %f34;
+	mov.f32 	%f35, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f36, %f23, %f35;
+	st.local.f32 	[__cuda___cuda___T2148_1688+16], %f36;
+	mov.f32 	%f37, 0fbf800000;    	// -1
+	st.local.f32 	[__cuda___cuda___T2148_1688+20], %f37;
+	st.local.f32 	[__cuda___cuda___T2148_1688+24], %f16;
+	.loc	4	404	0
+	mov.f32 	%f38, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2148_1688+92], %f38;
+	st.local.f32 	[__cuda___cuda___T2148_1688+96], %f20;
+	mov.f32 	%f39, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2148_1688+12], %f39;
+	st.local.f32 	[__cuda___cuda___T2148_1688+24], %f23;
+	.loc	4	543	0
+	ld.global.f32 	%f40, [ray+28];
+	.loc	4	544	0
+	mov.u32 	%r3, __cuda___cuda___T2148_1688;
+	mov.u32 	%r4, __cuda___cuda___cudaparm__Z14intersect_aabbI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEbRNS2_3RayET__prim_120192;
+	mov.s32 	%r5, %r3;
+	mov.s32 	%r6, %r4;
+	mov.s32 	%r7, 26;
+$L_0_610562:
+ //<loop> Loop body line 544, nesting depth: 1, iterations: 26
+	ld.local.u32 	%r8, [%r5+0];
+	st.local.u32 	[%r6+0], %r8;
+	add.u32 	%r5, %r5, 4;
+	add.u32 	%r6, %r6, 4;
+	sub.s32 	%r7, %r7, 1;
+	mov.u32 	%r9, 0;
+	setp.gt.s32 	%p1, %r7, %r9;
+	@%p1 bra 	$L_0_610562;
+	.loc	4	522	0
+	ld.local.f32 	%f41, [__cuda___cuda___cudaparm__Z14intersect_aabbI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEbRNS2_3RayET__prim_120192+16];
+	mov.f32 	%f42, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f43, %f41, %f42;
+	ld.local.f32 	%f44, [__cuda___cuda___cudaparm__Z14intersect_aabbI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEbRNS2_3RayET__prim_120192+4];
+	mov.f32 	%f45, 0f7cf0bdc2;    	// 1e+37
+	min.f32 	%f46, %f44, %f45;
+	ld.local.f32 	%f47, [__cuda___cuda___cudaparm__Z14intersect_aabbI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEbRNS2_3RayET__prim_120192+20];
+	mov.f32 	%f48, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f49, %f47, %f48;
+	ld.local.f32 	%f50, [__cuda___cuda___cudaparm__Z14intersect_aabbI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEbRNS2_3RayET__prim_120192+8];
+	mov.f32 	%f51, 0f7cf0bdc2;    	// 1e+37
+	min.f32 	%f52, %f50, %f51;
+	ld.local.f32 	%f53, [__cuda___cuda___cudaparm__Z14intersect_aabbI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEbRNS2_3RayET__prim_120192+24];
+	mov.f32 	%f54, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f55, %f53, %f54;
+	ld.local.f32 	%f56, [__cuda___cuda___cudaparm__Z14intersect_aabbI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEbRNS2_3RayET__prim_120192+12];
+	mov.f32 	%f57, 0f7cf0bdc2;    	// 1e+37
+	min.f32 	%f58, %f56, %f57;
+	ld.global.v4.f32 	{%f59,%f60,%f61,%f62}, [ray+0];
+	sub.f32 	%f63, %f43, %f59;
+	sub.f32 	%f64, %f46, %f59;
+	sub.f32 	%f65, %f49, %f60;
+	sub.f32 	%f66, %f52, %f60;
+	sub.f32 	%f67, %f55, %f61;
+	sub.f32 	%f68, %f58, %f61;
+	div.approx.f32 	%f69, %f63, %f62;
+	div.approx.f32 	%f70, %f64, %f62;
+	ld.global.v2.f32 	{%f71,%f72}, [ray+16];
+	div.approx.f32 	%f73, %f65, %f71;
+	div.approx.f32 	%f74, %f66, %f71;
+	div.approx.f32 	%f75, %f67, %f72;
+	div.approx.f32 	%f76, %f68, %f72;
+	min.f32 	%f77, %f69, %f70;
+	min.f32 	%f78, %f73, %f74;
+	min.f32 	%f79, %f75, %f76;
+	max.f32 	%f80, %f77, %f78;
+	max.f32 	%f81, %f79, %f80;
+	ld.global.f32 	%f82, [ray+32];
+	set.le.u32.f32 	%r10, %f81, %f82;
+	neg.s32 	%r11, %r10;
+	max.f32 	%f83, %f75, %f76;
+	max.f32 	%f84, %f69, %f70;
+	max.f32 	%f85, %f73, %f74;
+	min.f32 	%f86, %f84, %f85;
+	min.f32 	%f87, %f83, %f86;
+	set.le.u32.f32 	%r12, %f81, %f87;
+	neg.s32 	%r13, %r12;
+	and.b32 	%r14, %r11, %r13;
+	mov.u32 	%r15, 0;
+	setp.eq.s32 	%p2, %r14, %r15;
+	@%p2 bra 	$Lt_0_572674;
+	.loc	4	529	0
+	max.f32 	%f40, %f81, %f40;
+	.loc	4	530	0
+	mov.s32 	%r16, 1;
+	bra.uni 	$LDWendi__ZN5optix4Aabb10invalidateEv_262_110;
+$Lt_0_572674:
+	.loc	4	533	0
+	mov.s32 	%r16, 0;
+$LDWendi__ZN5optix4Aabb10invalidateEv_262_110:
+	.loc	4	544	0
+	mov.u32 	%r17, 0;
+	setp.eq.s32 	%p3, %r16, %r17;
+	@%p3 bra 	$Lt_0_578818;
+	.loc	4	549	0
+	mov.u32 	%r18, __cuda___cuda___T2148_1688;
+	mov.u32 	%r19, __cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296;
+	mov.s32 	%r20, %r18;
+	mov.s32 	%r21, %r19;
+	mov.s32 	%r22, 26;
+$L_0_610818:
+ //<loop> Loop body line 549, nesting depth: 1, iterations: 26
+	ld.local.u32 	%r23, [%r20+0];
+	st.local.u32 	[%r21+0], %r23;
+	add.u32 	%r20, %r20, 4;
+	add.u32 	%r21, %r21, 4;
+	sub.s32 	%r22, %r22, 1;
+	mov.u32 	%r24, 0;
+	setp.gt.s32 	%p4, %r22, %r24;
+	@%p4 bra 	$L_0_610818;
+	.loc	6	74	0
+	mad.f32 	%f88, %f62, %f40, %f59;
+	mad.f32 	%f89, %f71, %f40, %f60;
+	mad.f32 	%f90, %f72, %f40, %f61;
+	.loc	6	76	0
+	mov.f32 	%f91, %f40;
+	.loc	6	79	0
+	mov.u32 	%r25, 0;
+	ld.local.f32 	%f92, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+60];
+	ld.local.f32 	%f93, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+72];
+	sub.f32 	%f94, %f93, %f92;
+	ld.local.f32 	%f95, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+96];
+	ld.local.f32 	%f96, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+92];
+	add.f32 	%f97, %f95, %f96;
+	ld.local.f32 	%f98, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+84];
+	ld.local.f32 	%f99, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+80];
+	add.f32 	%f100, %f98, %f99;
+	ld.local.f32 	%f101, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+88];
+	ld.local.f32 	%f102, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+100];
+	ld.local.f32 	%f103, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+64];
+	ld.local.f32 	%f104, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+56];
+	ld.global.f32 	%f105, [floor_time];
+	ld.local.f32 	%f106, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+44];
+	ld.local.f32 	%f107, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+24];
+$Lt_0_574210:
+ //<loop> Loop body line 79, nesting depth: 1, iterations: 1000
+	.loc	6	81	0
+	mov.f32 	%f108, %f90;
+	mov.f32 	%f109, %f108;
+	.loc	4	325	0
+	mov.f32 	%f110, 0f00000000;   	// 0
+	setp.gt.f32 	%p5, %f108, %f107;
+	@!%p5 bra 	$Lt_0_574722;
+	.loc	4	330	0
+	sub.f32 	%f111, %f107, %f95;
+	sub.f32 	%f112, %f111, %f96;
+	sub.f32 	%f109, %f108, %f112;
+	.loc	4	331	0
+	ld.local.u32 	%r26, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+0];
+	sub.u32 	%r27, %r26, 1;
+	cvt.rn.f32.u32 	%f110, %r27;
+	bra.uni 	$Lt_0_574978;
+$Lt_0_574722:
+	ld.local.f32 	%f113, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+12];
+	setp.le.f32 	%p6, %f113, %f108;
+	@!%p6 bra 	$Lt_0_574978;
+	.loc	4	337	0
+	sub.f32 	%f114, %f108, %f96;
+	.loc	4	120	0
+	div.approx.f32 	%f115, %f114, %f95;
+	cvt.rmi.f32.f32 	%f116, %f115;
+	mov.f32 	%f110, %f116;
+	.loc	4	121	0
+	mul.f32 	%f117, %f116, %f95;
+	sub.f32 	%f118, %f114, %f117;
+	add.f32 	%f119, %f118, %f95;
+	mov.f32 	%f120, 0f00000000;   	// 0
+	setp.lt.f32 	%p7, %f114, %f120;
+	selp.f32 	%f121, %f119, %f118, %p7;
+	.loc	4	343	0
+	add.f32 	%f109, %f121, %f96;
+$Lt_0_574978:
+$Lt_0_574466:
+	.loc	4	346	0
+	mov.f32 	%f122, %f88;
+	mov.f32 	%f123, %f122;
+	.loc	4	180	0
+	mov.f32 	%f124, 0f00000000;   	// 0
+	setp.gt.f32 	%p8, %f122, %f106;
+	@!%p8 bra 	$Lt_0_575746;
+	.loc	4	185	0
+	sub.f32 	%f125, %f106, %f98;
+	sub.f32 	%f126, %f125, %f99;
+	sub.f32 	%f123, %f122, %f126;
+	.loc	4	186	0
+	ld.local.u32 	%r28, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+28];
+	sub.u32 	%r29, %r28, 1;
+	cvt.rn.f32.u32 	%f124, %r29;
+	bra.uni 	$Lt_0_576002;
+$Lt_0_575746:
+	ld.local.f32 	%f127, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+32];
+	setp.le.f32 	%p9, %f127, %f122;
+	@!%p9 bra 	$Lt_0_576002;
+	.loc	4	192	0
+	sub.f32 	%f128, %f122, %f99;
+	.loc	4	120	0
+	div.approx.f32 	%f129, %f128, %f98;
+	cvt.rmi.f32.f32 	%f130, %f129;
+	mov.f32 	%f124, %f130;
+	.loc	4	121	0
+	mul.f32 	%f131, %f130, %f98;
+	sub.f32 	%f132, %f128, %f131;
+	add.f32 	%f133, %f132, %f98;
+	mov.f32 	%f134, 0f00000000;   	// 0
+	setp.lt.f32 	%p10, %f128, %f134;
+	selp.f32 	%f135, %f133, %f132, %p10;
+	.loc	4	198	0
+	add.f32 	%f123, %f135, %f99;
+$Lt_0_576002:
+$Lt_0_575490:
+	.loc	4	93	0
+	cvt.rzi.u32.f32 	%r30, %f124;
+	shr.u32 	%r31, %r30, 16;
+	xor.b32 	%r32, %r30, %r31;
+	xor.b32 	%r33, %r32, 61;
+	shl.b32 	%r34, %r33, 3;
+	add.u32 	%r35, %r33, %r34;
+	shr.u32 	%r36, %r35, 4;
+	xor.b32 	%r37, %r35, %r36;
+	mul.lo.u32 	%r38, %r37, 668265261;
+	shr.u32 	%r39, %r38, 15;
+	xor.b32 	%r40, %r38, %r39;
+	cvt.rzi.u32.f32 	%r41, %f110;
+	add.u32 	%r42, %r41, %r40;
+	shr.u32 	%r43, %r42, 16;
+	xor.b32 	%r44, %r42, %r43;
+	xor.b32 	%r45, %r44, 61;
+	shl.b32 	%r46, %r45, 3;
+	add.u32 	%r47, %r45, %r46;
+	shr.u32 	%r48, %r47, 4;
+	xor.b32 	%r49, %r47, %r48;
+	mul.lo.u32 	%r50, %r49, 668265261;
+	shr.u32 	%r51, %r50, 15;
+	xor.b32 	%r52, %r50, %r51;
+	.loc	5	349	0
+	cvt.rn.f32.u32 	%f136, %r52;
+	mov.f32 	%f137, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f138, %f136, %f137;
+	cvt.rn.f32.u32 	%f139, %r30;
+	add.f32 	%f140, %f139, %f105;
+	sin.approx.f32 	%f141, %f140;
+	mov.f32 	%f142, 0f3f800000;   	// 1
+	add.f32 	%f143, %f141, %f142;
+	mov.f32 	%f144, 0f3f000000;   	// 0.5
+	mul.f32 	%f145, %f143, %f144;
+	mul.f32 	%f146, %f138, %f145;
+	mad.f32 	%f147, %f146, %f94, %f92;
+	sub.f32 	%f148, %f147, %f92;
+	sub.f32 	%f149, %f123, %f104;
+	mov.f32 	%f150, 0f00000000;   	// 0
+	setp.lt.f32 	%p11, %f149, %f150;
+	@!%p11 bra 	$Lt_0_576770;
+	.loc	5	363	0
+	mov.f32 	%f151, %f149;
+	bra.uni 	$Lt_0_576514;
+$Lt_0_576770:
+	.loc	5	364	0
+	ld.local.f32 	%f152, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+68];
+	sub.f32 	%f153, %f152, %f104;
+	sub.f32 	%f154, %f149, %f153;
+	mov.f32 	%f155, 0f00000000;   	// 0
+	setp.gt.f32 	%p12, %f149, %f153;
+	selp.f32 	%f151, %f154, %f155, %p12;
+$Lt_0_576514:
+	.loc	5	366	0
+	mul.f32 	%f156, %f151, %f151;
+	sub.f32 	%f157, %f89, %f92;
+	mov.f32 	%f158, 0f00000000;   	// 0
+	setp.lt.f32 	%p13, %f157, %f158;
+	@!%p13 bra 	$Lt_0_577282;
+	.loc	5	370	0
+	mov.f32 	%f151, %f157;
+	bra.uni 	$Lt_0_577026;
+$Lt_0_577282:
+	.loc	5	371	0
+	sub.f32 	%f159, %f157, %f148;
+	mov.f32 	%f160, 0f00000000;   	// 0
+	setp.gt.f32 	%p14, %f157, %f148;
+	selp.f32 	%f151, %f159, %f160, %p14;
+$Lt_0_577026:
+	.loc	5	373	0
+	mad.f32 	%f156, %f151, %f151, %f156;
+	sub.f32 	%f161, %f109, %f103;
+	mov.f32 	%f162, 0f00000000;   	// 0
+	setp.lt.f32 	%p15, %f161, %f162;
+	@!%p15 bra 	$Lt_0_577794;
+	.loc	5	377	0
+	mov.f32 	%f151, %f161;
+	bra.uni 	$Lt_0_577538;
+$Lt_0_577794:
+	.loc	5	378	0
+	ld.local.f32 	%f163, [__cuda___cuda___cudaparm__Z21adaptive_sphere_traceILj1000E19DistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEEfRKNS3_3RayET0_R6float3fff_distance_224296+76];
+	sub.f32 	%f164, %f163, %f103;
+	sub.f32 	%f165, %f161, %f164;
+	mov.f32 	%f166, 0f00000000;   	// 0
+	setp.gt.f32 	%p16, %f161, %f164;
+	selp.f32 	%f151, %f165, %f166, %p16;
+$Lt_0_577538:
+	.loc	5	380	0
+	mad.f32 	%f156, %f151, %f151, %f156;
+	.loc	6	84	0
+	sub.f32 	%f167, %f109, %f96;
+	sub.f32 	%f168, %f123, %f99;
+	sqrt.approx.f32 	%f169, %f156;
+	add.f32 	%f170, %f167, %f102;
+	add.f32 	%f171, %f168, %f101;
+	sub.f32 	%f172, %f97, %f109;
+	sub.f32 	%f173, %f100, %f123;
+	add.f32 	%f174, %f172, %f102;
+	add.f32 	%f175, %f173, %f101;
+	min.f32 	%f176, %f170, %f174;
+	min.f32 	%f177, %f171, %f175;
+	min.f32 	%f178, %f169, %f177;
+	min.f32 	%f179, %f176, %f178;
+	mov.f32 	%f180, 0f3aa3d70a;   	// 0.00125
+	mul.f32 	%f181, %f91, %f180;
+	mov.f32 	%f182, 0f3ccccccd;   	// 0.025
+	min.f32 	%f183, %f181, %f182;
+	setp.lt.f32 	%p17, %f179, %f183;
+	@%p17 bra 	$Lt_0_600834;
+	.loc	6	89	0
+	mad.f32 	%f88, %f179, %f62, %f122;
+	mad.f32 	%f89, %f179, %f71, %f89;
+	mad.f32 	%f90, %f179, %f72, %f108;
+	.loc	6	90	0
+	add.f32 	%f91, %f179, %f91;
+	.loc	6	93	0
+	setp.gt.f32 	%p18, %f91, %f82;
+	@%p18 bra 	$Lt_0_600834;
+	.loc	6	79	0
+	add.u32 	%r25, %r25, 1;
+	mov.u32 	%r53, 1000;
+	setp.ne.u32 	%p19, %r25, %r53;
+	@%p19 bra 	$Lt_0_574210;
+$Lt_0_600834:
+$LDWendi_fdividef_262_109:
+	.loc	4	549	0
+	setp.lt.f32 	%p20, %f91, %f82;
+	@!%p20 bra 	$Lt_0_578818;
+	.loc	21	109	0
+	mov.f32 	%f184, %f91;
+	call (%r54), _rt_potential_intersection, (%f184);
+	mov.s32 	%r55, %r54;
+	.loc	4	552	0
+	mov.u32 	%r56, 0;
+	setp.eq.s32 	%p21, %r55, %r56;
+	@%p21 bra 	$Lt_0_578818;
+	.loc	6	118	0
+	mov.u32 	%r57, __cuda___cuda___T2148_1688;
+	mov.u32 	%r58, __cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400;
+	mov.s32 	%r59, %r57;
+	mov.s32 	%r60, %r58;
+	mov.s32 	%r61, 26;
+$L_0_611074:
+ //<loop> Loop body line 118, nesting depth: 1, iterations: 26
+	ld.local.u32 	%r62, [%r59+0];
+	st.local.u32 	[%r60+0], %r62;
+	add.u32 	%r59, %r59, 4;
+	add.u32 	%r60, %r60, 4;
+	sub.s32 	%r61, %r61, 1;
+	mov.u32 	%r63, 0;
+	setp.gt.s32 	%p22, %r61, %r63;
+	@%p22 bra 	$L_0_611074;
+	.loc	6	104	0
+	mov.f32 	%f185, %f90;
+	mov.f32 	%f186, %f185;
+	.loc	4	325	0
+	mov.f32 	%f187, 0f00000000;   	// 0
+	ld.local.f32 	%f188, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+24];
+	setp.gt.f32 	%p23, %f185, %f188;
+	ld.local.f32 	%f189, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+96];
+	ld.local.f32 	%f190, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+92];
+	@!%p23 bra 	$Lt_0_579586;
+	.loc	4	330	0
+	sub.f32 	%f191, %f188, %f189;
+	sub.f32 	%f192, %f191, %f190;
+	sub.f32 	%f186, %f185, %f192;
+	.loc	4	331	0
+	ld.local.u32 	%r64, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+0];
+	sub.u32 	%r65, %r64, 1;
+	cvt.rn.f32.u32 	%f187, %r65;
+	bra.uni 	$Lt_0_579842;
+$Lt_0_579586:
+	ld.local.f32 	%f193, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+12];
+	setp.le.f32 	%p24, %f193, %f185;
+	@!%p24 bra 	$Lt_0_579842;
+	.loc	4	337	0
+	sub.f32 	%f194, %f185, %f190;
+	.loc	4	120	0
+	div.approx.f32 	%f195, %f194, %f189;
+	cvt.rmi.f32.f32 	%f196, %f195;
+	mov.f32 	%f187, %f196;
+	.loc	4	121	0
+	mul.f32 	%f197, %f196, %f189;
+	sub.f32 	%f198, %f194, %f197;
+	add.f32 	%f199, %f198, %f189;
+	mov.f32 	%f200, 0f00000000;   	// 0
+	setp.lt.f32 	%p25, %f194, %f200;
+	selp.f32 	%f201, %f199, %f198, %p25;
+	.loc	4	343	0
+	add.f32 	%f186, %f201, %f190;
+$Lt_0_579842:
+$Lt_0_579330:
+	.loc	4	346	0
+	mov.f32 	%f202, %f88;
+	mov.f32 	%f203, 0f3727c5ac;   	// 1e-05
+	add.f32 	%f204, %f202, %f203;
+	mov.f32 	%f205, %f204;
+	.loc	4	180	0
+	mov.f32 	%f206, 0f00000000;   	// 0
+	ld.local.f32 	%f207, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+84];
+	ld.local.f32 	%f208, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+80];
+	ld.local.f32 	%f209, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+44];
+	setp.gt.f32 	%p26, %f204, %f209;
+	@!%p26 bra 	$Lt_0_580610;
+	.loc	4	185	0
+	sub.f32 	%f210, %f209, %f207;
+	sub.f32 	%f211, %f210, %f208;
+	sub.f32 	%f205, %f204, %f211;
+	.loc	4	186	0
+	ld.local.u32 	%r66, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+28];
+	sub.u32 	%r67, %r66, 1;
+	cvt.rn.f32.u32 	%f206, %r67;
+	bra.uni 	$Lt_0_580866;
+$Lt_0_580610:
+	ld.local.f32 	%f212, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+32];
+	setp.le.f32 	%p27, %f212, %f204;
+	@!%p27 bra 	$Lt_0_580866;
+	.loc	4	192	0
+	sub.f32 	%f213, %f204, %f208;
+	.loc	4	120	0
+	div.approx.f32 	%f214, %f213, %f207;
+	cvt.rmi.f32.f32 	%f215, %f214;
+	mov.f32 	%f206, %f215;
+	.loc	4	121	0
+	mul.f32 	%f216, %f215, %f207;
+	sub.f32 	%f217, %f213, %f216;
+	add.f32 	%f218, %f217, %f207;
+	mov.f32 	%f219, 0f00000000;   	// 0
+	setp.lt.f32 	%p28, %f213, %f219;
+	selp.f32 	%f220, %f218, %f217, %p28;
+	.loc	4	198	0
+	add.f32 	%f205, %f208, %f220;
+$Lt_0_580866:
+$Lt_0_580354:
+	.loc	4	93	0
+	cvt.rzi.u32.f32 	%r68, %f206;
+	shr.u32 	%r69, %r68, 16;
+	xor.b32 	%r70, %r68, %r69;
+	xor.b32 	%r71, %r70, 61;
+	shl.b32 	%r72, %r71, 3;
+	add.u32 	%r73, %r71, %r72;
+	shr.u32 	%r74, %r73, 4;
+	xor.b32 	%r75, %r73, %r74;
+	mul.lo.u32 	%r76, %r75, 668265261;
+	shr.u32 	%r77, %r76, 15;
+	xor.b32 	%r78, %r76, %r77;
+	cvt.rzi.u32.f32 	%r79, %f187;
+	add.u32 	%r80, %r79, %r78;
+	shr.u32 	%r81, %r80, 16;
+	xor.b32 	%r82, %r80, %r81;
+	xor.b32 	%r83, %r82, 61;
+	shl.b32 	%r84, %r83, 3;
+	add.u32 	%r85, %r83, %r84;
+	shr.u32 	%r86, %r85, 4;
+	xor.b32 	%r87, %r85, %r86;
+	mul.lo.u32 	%r88, %r87, 668265261;
+	shr.u32 	%r89, %r88, 15;
+	xor.b32 	%r90, %r88, %r89;
+	.loc	5	333	0
+	ld.local.f32 	%f221, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+60];
+	ld.local.f32 	%f222, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+72];
+	ld.local.f32 	%f223, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+56];
+	setp.le.f32 	%p29, %f223, %f205;
+	@!%p29 bra 	$Lt_0_601346;
+	ld.local.f32 	%f224, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	setp.ge.f32 	%p30, %f224, %f205;
+	@!%p30 bra 	$Lt_0_601602;
+	cvt.rn.f32.u32 	%f225, %r90;
+	sub.f32 	%f226, %f222, %f221;
+	cvt.rn.f32.u32 	%f227, %r68;
+	add.f32 	%f228, %f227, %f105;
+	setp.le.f32 	%p31, %f221, %f89;
+	@!%p31 bra 	$Lt_0_601858;
+	mov.f32 	%f229, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f230, %f225, %f229;
+	sin.approx.f32 	%f231, %f228;
+	mov.f32 	%f232, 0f3f800000;   	// 1
+	add.f32 	%f233, %f231, %f232;
+	mov.f32 	%f234, 0f3f000000;   	// 0.5
+	mul.f32 	%f235, %f233, %f234;
+	mul.f32 	%f236, %f235, %f230;
+	mul.f32 	%f237, %f236, %f226;
+	add.f32 	%f238, %f237, %f221;
+	ld.local.f32 	%f239, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+64];
+	setp.ge.f32 	%p32, %f238, %f89;
+	@!%p32 bra 	$Lt_0_602370;
+	setp.le.f32 	%p33, %f239, %f186;
+	@!%p33 bra 	$Lt_0_602370;
+	ld.local.f32 	%f240, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	setp.ge.f32 	%p34, %f240, %f186;
+	@!%p34 bra 	$Lt_0_602370;
+	.loc	5	337	0
+	sub.f32 	%f241, %f89, %f221;
+	sub.f32 	%f242, %f238, %f89;
+	min.f32 	%f243, %f241, %f242;
+	.loc	5	341	0
+	sub.f32 	%f244, %f240, %f186;
+	sub.f32 	%f245, %f186, %f239;
+	min.f32 	%f246, %f244, %f245;
+	min.f32 	%f247, %f243, %f246;
+	sub.f32 	%f248, %f224, %f205;
+	sub.f32 	%f249, %f205, %f223;
+	min.f32 	%f250, %f248, %f249;
+	min.f32 	%f251, %f247, %f250;
+	neg.f32 	%f252, %f251;
+	bra.uni 	$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_107;
+$Lt_0_601346:
+	cvt.rn.f32.u32 	%f253, %r90;
+	sub.f32 	%f226, %f222, %f221;
+	cvt.rn.f32.u32 	%f254, %r68;
+	mov.f32 	%f255, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f256, %f253, %f255;
+	add.f32 	%f257, %f254, %f105;
+	sin.approx.f32 	%f258, %f257;
+	mov.f32 	%f259, 0f3f800000;   	// 1
+	add.f32 	%f260, %f258, %f259;
+	mov.f32 	%f261, 0f3f000000;   	// 0.5
+	mul.f32 	%f262, %f260, %f261;
+	mul.f32 	%f263, %f262, %f256;
+	mul.f32 	%f264, %f263, %f226;
+	add.f32 	%f238, %f264, %f221;
+	ld.local.f32 	%f239, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+64];
+	bra.uni 	$Lt_0_602370;
+$Lt_0_601602:
+	cvt.rn.f32.u32 	%f265, %r90;
+	sub.f32 	%f226, %f222, %f221;
+	cvt.rn.f32.u32 	%f266, %r68;
+	mov.f32 	%f267, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f268, %f265, %f267;
+	add.f32 	%f269, %f266, %f105;
+	sin.approx.f32 	%f270, %f269;
+	mov.f32 	%f271, 0f3f800000;   	// 1
+	add.f32 	%f272, %f270, %f271;
+	mov.f32 	%f273, 0f3f000000;   	// 0.5
+	mul.f32 	%f274, %f272, %f273;
+	mul.f32 	%f275, %f274, %f268;
+	mul.f32 	%f276, %f275, %f226;
+	add.f32 	%f238, %f276, %f221;
+	ld.local.f32 	%f239, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+64];
+	bra.uni 	$Lt_0_602370;
+$Lt_0_601858:
+	mov.f32 	%f277, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f278, %f225, %f277;
+	sin.approx.f32 	%f279, %f228;
+	mov.f32 	%f280, 0f3f800000;   	// 1
+	add.f32 	%f281, %f279, %f280;
+	mov.f32 	%f282, 0f3f000000;   	// 0.5
+	mul.f32 	%f283, %f281, %f282;
+	mul.f32 	%f284, %f283, %f278;
+	mul.f32 	%f285, %f284, %f226;
+	add.f32 	%f238, %f285, %f221;
+	ld.local.f32 	%f239, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+64];
+$Lt_0_602370:
+$L_0_563458:
+	.loc	5	349	0
+	sub.f32 	%f286, %f238, %f221;
+	sub.f32 	%f287, %f205, %f223;
+	mov.f32 	%f288, 0f00000000;   	// 0
+	setp.lt.f32 	%p35, %f287, %f288;
+	@!%p35 bra 	$Lt_0_581634;
+	.loc	5	363	0
+	mov.f32 	%f289, %f287;
+	bra.uni 	$Lt_0_581378;
+$Lt_0_581634:
+	.loc	5	364	0
+	ld.local.f32 	%f290, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	sub.f32 	%f291, %f290, %f223;
+	sub.f32 	%f292, %f287, %f291;
+	mov.f32 	%f293, 0f00000000;   	// 0
+	setp.lt.f32 	%p36, %f291, %f287;
+	selp.f32 	%f289, %f292, %f293, %p36;
+$Lt_0_581378:
+	.loc	5	366	0
+	mul.f32 	%f294, %f289, %f289;
+	sub.f32 	%f241, %f89, %f221;
+	mov.f32 	%f295, 0f00000000;   	// 0
+	setp.lt.f32 	%p37, %f241, %f295;
+	@!%p37 bra 	$Lt_0_582146;
+	.loc	5	370	0
+	mov.f32 	%f289, %f241;
+	bra.uni 	$Lt_0_581890;
+$Lt_0_582146:
+	.loc	5	371	0
+	sub.f32 	%f296, %f241, %f286;
+	mov.f32 	%f297, 0f00000000;   	// 0
+	setp.gt.f32 	%p38, %f241, %f286;
+	selp.f32 	%f289, %f296, %f297, %p38;
+$Lt_0_581890:
+	.loc	5	373	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	sub.f32 	%f298, %f186, %f239;
+	mov.f32 	%f299, 0f00000000;   	// 0
+	setp.lt.f32 	%p39, %f298, %f299;
+	@!%p39 bra 	$Lt_0_582658;
+	.loc	5	377	0
+	mov.f32 	%f289, %f298;
+	bra.uni 	$Lt_0_582402;
+$Lt_0_582658:
+	.loc	5	378	0
+	ld.local.f32 	%f300, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	sub.f32 	%f301, %f300, %f239;
+	sub.f32 	%f302, %f298, %f301;
+	mov.f32 	%f303, 0f00000000;   	// 0
+	setp.lt.f32 	%p40, %f301, %f298;
+	selp.f32 	%f289, %f302, %f303, %p40;
+$Lt_0_582402:
+	.loc	5	380	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	.loc	5	344	0
+	sqrt.approx.f32 	%f252, %f294;
+$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_107:
+	.loc	4	366	0
+	add.f32 	%f304, %f207, %f208;
+	add.f32 	%f305, %f189, %f190;
+	ld.local.f32 	%f306, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+100];
+	ld.local.f32 	%f307, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+88];
+	sub.f32 	%f308, %f304, %f205;
+	add.f32 	%f309, %f307, %f308;
+	sub.f32 	%f310, %f205, %f208;
+	add.f32 	%f311, %f307, %f310;
+	min.f32 	%f312, %f309, %f311;
+	min.f32 	%f313, %f252, %f312;
+	sub.f32 	%f314, %f305, %f186;
+	add.f32 	%f315, %f306, %f314;
+	sub.f32 	%f316, %f186, %f190;
+	add.f32 	%f317, %f306, %f316;
+	min.f32 	%f318, %f315, %f317;
+	min.f32 	%f319, %f313, %f318;
+	.loc	6	104	0
+	mov.f32 	%f320, %f185;
+	.loc	4	325	0
+	mov.f32 	%f187, 0f00000000;   	// 0
+	@!%p23 bra 	$Lt_0_583170;
+	.loc	4	330	0
+	sub.f32 	%f321, %f188, %f189;
+	sub.f32 	%f322, %f321, %f190;
+	sub.f32 	%f320, %f185, %f322;
+	.loc	4	331	0
+	ld.local.u32 	%r91, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+0];
+	sub.u32 	%r92, %r91, 1;
+	cvt.rn.f32.u32 	%f187, %r92;
+	bra.uni 	$Lt_0_583426;
+$Lt_0_583170:
+	ld.local.f32 	%f323, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+12];
+	setp.le.f32 	%p41, %f323, %f185;
+	@!%p41 bra 	$Lt_0_583426;
+	.loc	4	337	0
+	sub.f32 	%f194, %f185, %f190;
+	.loc	4	120	0
+	div.approx.f32 	%f195, %f194, %f189;
+	cvt.rmi.f32.f32 	%f196, %f195;
+	mov.f32 	%f187, %f196;
+	.loc	4	121	0
+	mul.f32 	%f324, %f196, %f189;
+	sub.f32 	%f198, %f194, %f324;
+	add.f32 	%f325, %f198, %f189;
+	mov.f32 	%f326, 0f00000000;   	// 0
+	setp.lt.f32 	%p42, %f194, %f326;
+	selp.f32 	%f201, %f325, %f198, %p42;
+	.loc	4	343	0
+	add.f32 	%f320, %f201, %f190;
+$Lt_0_583426:
+$Lt_0_582914:
+	.loc	4	346	0
+	mov.f32 	%f327, 0fb727c5ac;   	// -1e-05
+	add.f32 	%f328, %f202, %f327;
+	mov.f32 	%f205, %f328;
+	.loc	4	180	0
+	mov.f32 	%f206, 0f00000000;   	// 0
+	setp.gt.f32 	%p43, %f328, %f209;
+	@!%p43 bra 	$Lt_0_584194;
+	.loc	4	185	0
+	sub.f32 	%f329, %f209, %f207;
+	sub.f32 	%f330, %f329, %f208;
+	sub.f32 	%f205, %f328, %f330;
+	.loc	4	186	0
+	ld.local.u32 	%r93, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+28];
+	sub.u32 	%r94, %r93, 1;
+	cvt.rn.f32.u32 	%f206, %r94;
+	bra.uni 	$Lt_0_584450;
+$Lt_0_584194:
+	ld.local.f32 	%f331, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+32];
+	setp.le.f32 	%p44, %f331, %f328;
+	@!%p44 bra 	$Lt_0_584450;
+	.loc	4	192	0
+	sub.f32 	%f332, %f328, %f208;
+	.loc	4	120	0
+	div.approx.f32 	%f333, %f332, %f207;
+	cvt.rmi.f32.f32 	%f334, %f333;
+	mov.f32 	%f206, %f334;
+	.loc	4	121	0
+	mul.f32 	%f335, %f334, %f207;
+	sub.f32 	%f336, %f332, %f335;
+	add.f32 	%f337, %f336, %f207;
+	mov.f32 	%f338, 0f00000000;   	// 0
+	setp.lt.f32 	%p45, %f332, %f338;
+	selp.f32 	%f339, %f337, %f336, %p45;
+	.loc	4	198	0
+	add.f32 	%f205, %f208, %f339;
+$Lt_0_584450:
+$Lt_0_583938:
+	.loc	4	93	0
+	cvt.rzi.u32.f32 	%r68, %f206;
+	shr.u32 	%r69, %r68, 16;
+	xor.b32 	%r70, %r68, %r69;
+	xor.b32 	%r71, %r70, 61;
+	shl.b32 	%r72, %r71, 3;
+	add.u32 	%r73, %r71, %r72;
+	shr.u32 	%r74, %r73, 4;
+	xor.b32 	%r75, %r73, %r74;
+	mul.lo.u32 	%r76, %r75, 668265261;
+	shr.u32 	%r95, %r76, 15;
+	xor.b32 	%r78, %r76, %r95;
+	cvt.rzi.u32.f32 	%r79, %f187;
+	add.u32 	%r80, %r79, %r78;
+	shr.u32 	%r81, %r80, 16;
+	xor.b32 	%r82, %r80, %r81;
+	xor.b32 	%r83, %r82, 61;
+	shl.b32 	%r84, %r83, 3;
+	add.u32 	%r85, %r83, %r84;
+	shr.u32 	%r86, %r85, 4;
+	xor.b32 	%r87, %r85, %r86;
+	mul.lo.u32 	%r88, %r87, 668265261;
+	shr.u32 	%r96, %r88, 15;
+	xor.b32 	%r90, %r88, %r96;
+	.loc	5	333	0
+	setp.le.f32 	%p46, %f223, %f205;
+	@!%p46 bra 	$Lt_0_602882;
+	ld.local.f32 	%f224, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	setp.ge.f32 	%p47, %f224, %f205;
+	@!%p47 bra 	$Lt_0_603138;
+	cvt.rn.f32.u32 	%f340, %r90;
+	cvt.rn.f32.u32 	%f341, %r68;
+	add.f32 	%f342, %f341, %f105;
+	setp.le.f32 	%p48, %f221, %f89;
+	@!%p48 bra 	$Lt_0_603394;
+	mov.f32 	%f343, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f344, %f340, %f343;
+	sin.approx.f32 	%f345, %f342;
+	mov.f32 	%f346, 0f3f800000;   	// 1
+	add.f32 	%f347, %f345, %f346;
+	mov.f32 	%f348, 0f3f000000;   	// 0.5
+	mul.f32 	%f349, %f347, %f348;
+	mul.f32 	%f350, %f349, %f344;
+	mul.f32 	%f351, %f350, %f226;
+	add.f32 	%f352, %f351, %f221;
+	setp.ge.f32 	%p49, %f352, %f89;
+	@!%p49 bra 	$Lt_0_603906;
+	setp.ge.f32 	%p50, %f320, %f239;
+	@!%p50 bra 	$Lt_0_603906;
+	ld.local.f32 	%f240, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	setp.le.f32 	%p51, %f320, %f240;
+	@!%p51 bra 	$Lt_0_603906;
+	.loc	5	337	0
+	sub.f32 	%f353, %f352, %f89;
+	min.f32 	%f243, %f241, %f353;
+	.loc	5	341	0
+	sub.f32 	%f354, %f320, %f239;
+	sub.f32 	%f355, %f240, %f320;
+	min.f32 	%f356, %f354, %f355;
+	min.f32 	%f357, %f243, %f356;
+	sub.f32 	%f358, %f224, %f205;
+	sub.f32 	%f359, %f205, %f223;
+	min.f32 	%f360, %f358, %f359;
+	min.f32 	%f361, %f357, %f360;
+	neg.f32 	%f252, %f361;
+	bra.uni 	$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_89;
+$Lt_0_602882:
+	cvt.rn.f32.u32 	%f362, %r90;
+	cvt.rn.f32.u32 	%f363, %r68;
+	mov.f32 	%f364, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f365, %f362, %f364;
+	add.f32 	%f366, %f363, %f105;
+	sin.approx.f32 	%f367, %f366;
+	mov.f32 	%f368, 0f3f800000;   	// 1
+	add.f32 	%f369, %f367, %f368;
+	mov.f32 	%f370, 0f3f000000;   	// 0.5
+	mul.f32 	%f371, %f369, %f370;
+	mul.f32 	%f372, %f371, %f365;
+	mul.f32 	%f373, %f372, %f226;
+	add.f32 	%f352, %f373, %f221;
+	bra.uni 	$Lt_0_603906;
+$Lt_0_603138:
+	cvt.rn.f32.u32 	%f374, %r90;
+	cvt.rn.f32.u32 	%f375, %r68;
+	mov.f32 	%f376, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f377, %f374, %f376;
+	add.f32 	%f378, %f375, %f105;
+	sin.approx.f32 	%f379, %f378;
+	mov.f32 	%f380, 0f3f800000;   	// 1
+	add.f32 	%f381, %f379, %f380;
+	mov.f32 	%f382, 0f3f000000;   	// 0.5
+	mul.f32 	%f383, %f381, %f382;
+	mul.f32 	%f384, %f383, %f377;
+	mul.f32 	%f385, %f384, %f226;
+	add.f32 	%f352, %f385, %f221;
+	bra.uni 	$Lt_0_603906;
+$Lt_0_603394:
+	mov.f32 	%f386, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f387, %f340, %f386;
+	sin.approx.f32 	%f388, %f342;
+	mov.f32 	%f389, 0f3f800000;   	// 1
+	add.f32 	%f390, %f388, %f389;
+	mov.f32 	%f391, 0f3f000000;   	// 0.5
+	mul.f32 	%f392, %f390, %f391;
+	mul.f32 	%f393, %f392, %f387;
+	mul.f32 	%f394, %f393, %f226;
+	add.f32 	%f352, %f394, %f221;
+$Lt_0_603906:
+$L_0_564994:
+	.loc	5	349	0
+	sub.f32 	%f286, %f352, %f221;
+	sub.f32 	%f395, %f205, %f223;
+	mov.f32 	%f396, 0f00000000;   	// 0
+	setp.lt.f32 	%p52, %f395, %f396;
+	@!%p52 bra 	$Lt_0_585218;
+	.loc	5	363	0
+	mov.f32 	%f289, %f395;
+	bra.uni 	$Lt_0_584962;
+$Lt_0_585218:
+	.loc	5	364	0
+	ld.local.f32 	%f397, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	sub.f32 	%f291, %f397, %f223;
+	sub.f32 	%f398, %f395, %f291;
+	mov.f32 	%f399, 0f00000000;   	// 0
+	setp.gt.f32 	%p53, %f395, %f291;
+	selp.f32 	%f289, %f398, %f399, %p53;
+$Lt_0_584962:
+	.loc	5	366	0
+	mul.f32 	%f294, %f289, %f289;
+	mov.f32 	%f400, 0f00000000;   	// 0
+	setp.lt.f32 	%p54, %f241, %f400;
+	@!%p54 bra 	$Lt_0_585730;
+	.loc	5	370	0
+	mov.f32 	%f289, %f241;
+	bra.uni 	$Lt_0_585474;
+$Lt_0_585730:
+	.loc	5	371	0
+	sub.f32 	%f401, %f241, %f286;
+	mov.f32 	%f402, 0f00000000;   	// 0
+	setp.gt.f32 	%p55, %f241, %f286;
+	selp.f32 	%f289, %f401, %f402, %p55;
+$Lt_0_585474:
+	.loc	5	373	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	sub.f32 	%f403, %f320, %f239;
+	mov.f32 	%f404, 0f00000000;   	// 0
+	setp.lt.f32 	%p56, %f403, %f404;
+	@!%p56 bra 	$Lt_0_586242;
+	.loc	5	377	0
+	mov.f32 	%f289, %f403;
+	bra.uni 	$Lt_0_585986;
+$Lt_0_586242:
+	.loc	5	378	0
+	ld.local.f32 	%f405, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	sub.f32 	%f301, %f405, %f239;
+	sub.f32 	%f406, %f403, %f301;
+	mov.f32 	%f407, 0f00000000;   	// 0
+	setp.gt.f32 	%p57, %f403, %f301;
+	selp.f32 	%f289, %f406, %f407, %p57;
+$Lt_0_585986:
+	.loc	5	380	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	.loc	5	344	0
+	sqrt.approx.f32 	%f252, %f294;
+$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_89:
+	.loc	6	104	0
+	sub.f32 	%f408, %f304, %f205;
+	add.f32 	%f409, %f307, %f408;
+	sub.f32 	%f410, %f205, %f208;
+	add.f32 	%f411, %f307, %f410;
+	min.f32 	%f412, %f409, %f411;
+	min.f32 	%f413, %f252, %f412;
+	sub.f32 	%f414, %f305, %f320;
+	add.f32 	%f415, %f306, %f414;
+	sub.f32 	%f416, %f320, %f190;
+	add.f32 	%f417, %f306, %f416;
+	min.f32 	%f418, %f415, %f417;
+	min.f32 	%f419, %f413, %f418;
+	sub.f32 	%f420, %f319, %f419;
+	.loc	6	105	0
+	mov.f32 	%f421, %f185;
+	.loc	4	325	0
+	mov.f32 	%f187, 0f00000000;   	// 0
+	@!%p23 bra 	$Lt_0_586754;
+	.loc	4	330	0
+	sub.f32 	%f422, %f188, %f189;
+	sub.f32 	%f423, %f422, %f190;
+	sub.f32 	%f421, %f185, %f423;
+	.loc	4	331	0
+	ld.local.u32 	%r97, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+0];
+	sub.u32 	%r98, %r97, 1;
+	cvt.rn.f32.u32 	%f187, %r98;
+	bra.uni 	$Lt_0_587010;
+$Lt_0_586754:
+	ld.local.f32 	%f424, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+12];
+	setp.le.f32 	%p58, %f424, %f185;
+	@!%p58 bra 	$Lt_0_587010;
+	.loc	4	337	0
+	sub.f32 	%f194, %f185, %f190;
+	.loc	4	120	0
+	div.approx.f32 	%f195, %f194, %f189;
+	cvt.rmi.f32.f32 	%f196, %f195;
+	mov.f32 	%f187, %f196;
+	.loc	4	121	0
+	mul.f32 	%f425, %f196, %f189;
+	sub.f32 	%f198, %f194, %f425;
+	add.f32 	%f426, %f198, %f189;
+	mov.f32 	%f427, 0f00000000;   	// 0
+	setp.lt.f32 	%p59, %f194, %f427;
+	selp.f32 	%f201, %f426, %f198, %p59;
+	.loc	4	343	0
+	add.f32 	%f421, %f201, %f190;
+$Lt_0_587010:
+$Lt_0_586498:
+	.loc	4	346	0
+	mov.f32 	%f205, %f202;
+	.loc	4	180	0
+	mov.f32 	%f206, 0f00000000;   	// 0
+	setp.gt.f32 	%p60, %f202, %f209;
+	@!%p60 bra 	$Lt_0_587778;
+	.loc	4	185	0
+	sub.f32 	%f428, %f209, %f207;
+	sub.f32 	%f429, %f428, %f208;
+	sub.f32 	%f205, %f202, %f429;
+	.loc	4	186	0
+	ld.local.u32 	%r99, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+28];
+	sub.u32 	%r100, %r99, 1;
+	cvt.rn.f32.u32 	%f206, %r100;
+	bra.uni 	$Lt_0_588034;
+$Lt_0_587778:
+	ld.local.f32 	%f430, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+32];
+	setp.le.f32 	%p61, %f430, %f202;
+	@!%p61 bra 	$Lt_0_588034;
+	.loc	4	192	0
+	sub.f32 	%f431, %f202, %f208;
+	.loc	4	120	0
+	div.approx.f32 	%f432, %f431, %f207;
+	cvt.rmi.f32.f32 	%f433, %f432;
+	mov.f32 	%f206, %f433;
+	.loc	4	121	0
+	mul.f32 	%f434, %f433, %f207;
+	sub.f32 	%f435, %f431, %f434;
+	add.f32 	%f436, %f435, %f207;
+	mov.f32 	%f437, 0f00000000;   	// 0
+	setp.lt.f32 	%p62, %f431, %f437;
+	selp.f32 	%f438, %f436, %f435, %p62;
+	.loc	4	198	0
+	add.f32 	%f205, %f438, %f208;
+$Lt_0_588034:
+$Lt_0_587522:
+	.loc	4	93	0
+	cvt.rzi.u32.f32 	%r68, %f206;
+	shr.u32 	%r69, %r68, 16;
+	xor.b32 	%r70, %r68, %r69;
+	xor.b32 	%r71, %r70, 61;
+	shl.b32 	%r72, %r71, 3;
+	add.u32 	%r73, %r71, %r72;
+	shr.u32 	%r74, %r73, 4;
+	xor.b32 	%r75, %r73, %r74;
+	mul.lo.u32 	%r76, %r75, 668265261;
+	shr.u32 	%r101, %r76, 15;
+	xor.b32 	%r78, %r76, %r101;
+	cvt.rzi.u32.f32 	%r79, %f187;
+	add.u32 	%r80, %r79, %r78;
+	shr.u32 	%r81, %r80, 16;
+	xor.b32 	%r82, %r80, %r81;
+	xor.b32 	%r83, %r82, 61;
+	shl.b32 	%r84, %r83, 3;
+	add.u32 	%r85, %r83, %r84;
+	shr.u32 	%r86, %r85, 4;
+	xor.b32 	%r87, %r85, %r86;
+	mul.lo.u32 	%r88, %r87, 668265261;
+	shr.u32 	%r102, %r88, 15;
+	xor.b32 	%r90, %r88, %r102;
+	.loc	5	333	0
+	setp.le.f32 	%p63, %f223, %f205;
+	@!%p63 bra 	$Lt_0_604418;
+	mov.f32 	%f439, 0f3727c5ac;   	// 1e-05
+	add.f32 	%f440, %f89, %f439;
+	ld.local.f32 	%f224, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	setp.ge.f32 	%p64, %f224, %f205;
+	@!%p64 bra 	$Lt_0_604674;
+	cvt.rn.f32.u32 	%f441, %r90;
+	cvt.rn.f32.u32 	%f442, %r68;
+	add.f32 	%f443, %f442, %f105;
+	setp.ge.f32 	%p65, %f440, %f221;
+	@!%p65 bra 	$Lt_0_604930;
+	mov.f32 	%f444, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f445, %f441, %f444;
+	sin.approx.f32 	%f446, %f443;
+	mov.f32 	%f447, 0f3f800000;   	// 1
+	add.f32 	%f448, %f446, %f447;
+	mov.f32 	%f449, 0f3f000000;   	// 0.5
+	mul.f32 	%f450, %f448, %f449;
+	mul.f32 	%f451, %f450, %f445;
+	mul.f32 	%f452, %f451, %f226;
+	add.f32 	%f453, %f452, %f221;
+	setp.ge.f32 	%p66, %f453, %f440;
+	@!%p66 bra 	$Lt_0_605442;
+	setp.ge.f32 	%p67, %f421, %f239;
+	@!%p67 bra 	$Lt_0_605442;
+	ld.local.f32 	%f240, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	setp.le.f32 	%p68, %f421, %f240;
+	@!%p68 bra 	$Lt_0_605442;
+	.loc	5	337	0
+	sub.f32 	%f454, %f453, %f440;
+	sub.f32 	%f455, %f440, %f221;
+	min.f32 	%f243, %f454, %f455;
+	.loc	5	341	0
+	sub.f32 	%f456, %f421, %f239;
+	sub.f32 	%f457, %f240, %f421;
+	min.f32 	%f458, %f456, %f457;
+	min.f32 	%f459, %f243, %f458;
+	sub.f32 	%f460, %f224, %f205;
+	sub.f32 	%f461, %f205, %f223;
+	min.f32 	%f462, %f460, %f461;
+	min.f32 	%f463, %f459, %f462;
+	neg.f32 	%f252, %f463;
+	bra.uni 	$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_71;
+$Lt_0_604418:
+	cvt.rn.f32.u32 	%f464, %r90;
+	mov.f32 	%f465, 0f3727c5ac;   	// 1e-05
+	add.f32 	%f440, %f89, %f465;
+	cvt.rn.f32.u32 	%f466, %r68;
+	mov.f32 	%f467, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f468, %f464, %f467;
+	add.f32 	%f469, %f466, %f105;
+	sin.approx.f32 	%f470, %f469;
+	mov.f32 	%f471, 0f3f800000;   	// 1
+	add.f32 	%f472, %f470, %f471;
+	mov.f32 	%f473, 0f3f000000;   	// 0.5
+	mul.f32 	%f474, %f472, %f473;
+	mul.f32 	%f475, %f474, %f468;
+	mul.f32 	%f476, %f475, %f226;
+	add.f32 	%f453, %f476, %f221;
+	bra.uni 	$Lt_0_605442;
+$Lt_0_604674:
+	cvt.rn.f32.u32 	%f477, %r90;
+	cvt.rn.f32.u32 	%f478, %r68;
+	mov.f32 	%f479, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f480, %f477, %f479;
+	add.f32 	%f481, %f478, %f105;
+	sin.approx.f32 	%f482, %f481;
+	mov.f32 	%f483, 0f3f800000;   	// 1
+	add.f32 	%f484, %f482, %f483;
+	mov.f32 	%f485, 0f3f000000;   	// 0.5
+	mul.f32 	%f486, %f484, %f485;
+	mul.f32 	%f487, %f486, %f480;
+	mul.f32 	%f488, %f487, %f226;
+	add.f32 	%f453, %f488, %f221;
+	bra.uni 	$Lt_0_605442;
+$Lt_0_604930:
+	mov.f32 	%f489, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f490, %f441, %f489;
+	sin.approx.f32 	%f491, %f443;
+	mov.f32 	%f492, 0f3f800000;   	// 1
+	add.f32 	%f493, %f491, %f492;
+	mov.f32 	%f494, 0f3f000000;   	// 0.5
+	mul.f32 	%f495, %f493, %f494;
+	mul.f32 	%f496, %f495, %f490;
+	mul.f32 	%f497, %f496, %f226;
+	add.f32 	%f453, %f497, %f221;
+$Lt_0_605442:
+$L_0_566530:
+	.loc	5	349	0
+	sub.f32 	%f286, %f453, %f221;
+	sub.f32 	%f498, %f205, %f223;
+	mov.f32 	%f499, 0f00000000;   	// 0
+	setp.lt.f32 	%p69, %f498, %f499;
+	@!%p69 bra 	$Lt_0_588802;
+	.loc	5	363	0
+	mov.f32 	%f289, %f498;
+	bra.uni 	$Lt_0_588546;
+$Lt_0_588802:
+	.loc	5	364	0
+	ld.local.f32 	%f500, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	sub.f32 	%f291, %f500, %f223;
+	sub.f32 	%f501, %f498, %f291;
+	mov.f32 	%f502, 0f00000000;   	// 0
+	setp.gt.f32 	%p70, %f498, %f291;
+	selp.f32 	%f289, %f501, %f502, %p70;
+$Lt_0_588546:
+	.loc	5	366	0
+	mul.f32 	%f294, %f289, %f289;
+	sub.f32 	%f503, %f440, %f221;
+	mov.f32 	%f504, 0f00000000;   	// 0
+	setp.lt.f32 	%p71, %f503, %f504;
+	@!%p71 bra 	$Lt_0_589314;
+	.loc	5	370	0
+	mov.f32 	%f289, %f503;
+	bra.uni 	$Lt_0_589058;
+$Lt_0_589314:
+	.loc	5	371	0
+	sub.f32 	%f505, %f503, %f286;
+	mov.f32 	%f506, 0f00000000;   	// 0
+	setp.gt.f32 	%p72, %f503, %f286;
+	selp.f32 	%f289, %f505, %f506, %p72;
+$Lt_0_589058:
+	.loc	5	373	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	sub.f32 	%f507, %f421, %f239;
+	mov.f32 	%f508, 0f00000000;   	// 0
+	setp.lt.f32 	%p73, %f507, %f508;
+	@!%p73 bra 	$Lt_0_589826;
+	.loc	5	377	0
+	mov.f32 	%f289, %f507;
+	bra.uni 	$Lt_0_589570;
+$Lt_0_589826:
+	.loc	5	378	0
+	ld.local.f32 	%f509, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	sub.f32 	%f301, %f509, %f239;
+	sub.f32 	%f510, %f507, %f301;
+	mov.f32 	%f511, 0f00000000;   	// 0
+	setp.gt.f32 	%p74, %f507, %f301;
+	selp.f32 	%f289, %f510, %f511, %p74;
+$Lt_0_589570:
+	.loc	5	380	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	.loc	5	344	0
+	sqrt.approx.f32 	%f252, %f294;
+$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_71:
+	.loc	4	366	0
+	sub.f32 	%f512, %f304, %f205;
+	add.f32 	%f513, %f307, %f512;
+	sub.f32 	%f514, %f205, %f208;
+	add.f32 	%f515, %f307, %f514;
+	min.f32 	%f516, %f513, %f515;
+	min.f32 	%f517, %f252, %f516;
+	sub.f32 	%f518, %f305, %f421;
+	add.f32 	%f519, %f306, %f518;
+	sub.f32 	%f520, %f421, %f190;
+	add.f32 	%f521, %f306, %f520;
+	min.f32 	%f522, %f519, %f521;
+	min.f32 	%f523, %f517, %f522;
+	.loc	6	105	0
+	mov.f32 	%f524, %f185;
+	.loc	4	325	0
+	mov.f32 	%f187, 0f00000000;   	// 0
+	@!%p23 bra 	$Lt_0_590338;
+	.loc	4	330	0
+	sub.f32 	%f525, %f188, %f189;
+	sub.f32 	%f526, %f525, %f190;
+	sub.f32 	%f524, %f185, %f526;
+	.loc	4	331	0
+	ld.local.u32 	%r103, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+0];
+	sub.u32 	%r104, %r103, 1;
+	cvt.rn.f32.u32 	%f187, %r104;
+	bra.uni 	$Lt_0_590594;
+$Lt_0_590338:
+	ld.local.f32 	%f527, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+12];
+	setp.le.f32 	%p75, %f527, %f185;
+	@!%p75 bra 	$Lt_0_590594;
+	.loc	4	337	0
+	sub.f32 	%f194, %f185, %f190;
+	.loc	4	120	0
+	div.approx.f32 	%f195, %f194, %f189;
+	cvt.rmi.f32.f32 	%f196, %f195;
+	mov.f32 	%f187, %f196;
+	.loc	4	121	0
+	mul.f32 	%f528, %f196, %f189;
+	sub.f32 	%f198, %f194, %f528;
+	add.f32 	%f529, %f198, %f189;
+	mov.f32 	%f530, 0f00000000;   	// 0
+	setp.lt.f32 	%p76, %f194, %f530;
+	selp.f32 	%f201, %f529, %f198, %p76;
+	.loc	4	343	0
+	add.f32 	%f524, %f201, %f190;
+$Lt_0_590594:
+$Lt_0_590082:
+	.loc	4	346	0
+	mov.f32 	%f205, %f202;
+	.loc	4	180	0
+	mov.f32 	%f206, 0f00000000;   	// 0
+	@!%p60 bra 	$Lt_0_591362;
+	.loc	4	185	0
+	sub.f32 	%f531, %f209, %f207;
+	sub.f32 	%f532, %f531, %f208;
+	sub.f32 	%f205, %f202, %f532;
+	.loc	4	186	0
+	ld.local.u32 	%r105, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+28];
+	sub.u32 	%r106, %r105, 1;
+	cvt.rn.f32.u32 	%f206, %r106;
+	bra.uni 	$Lt_0_591618;
+$Lt_0_591362:
+	ld.local.f32 	%f533, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+32];
+	setp.le.f32 	%p77, %f533, %f202;
+	@!%p77 bra 	$Lt_0_591618;
+	.loc	4	192	0
+	sub.f32 	%f431, %f202, %f208;
+	.loc	4	120	0
+	div.approx.f32 	%f432, %f431, %f207;
+	cvt.rmi.f32.f32 	%f433, %f432;
+	mov.f32 	%f206, %f433;
+	.loc	4	121	0
+	mul.f32 	%f534, %f433, %f207;
+	sub.f32 	%f435, %f431, %f534;
+	add.f32 	%f535, %f435, %f207;
+	mov.f32 	%f536, 0f00000000;   	// 0
+	setp.lt.f32 	%p78, %f431, %f536;
+	selp.f32 	%f438, %f535, %f435, %p78;
+	.loc	4	198	0
+	add.f32 	%f205, %f438, %f208;
+$Lt_0_591618:
+$Lt_0_591106:
+	.loc	4	93	0
+	cvt.rzi.u32.f32 	%r68, %f206;
+	shr.u32 	%r69, %r68, 16;
+	xor.b32 	%r70, %r68, %r69;
+	xor.b32 	%r71, %r70, 61;
+	shl.b32 	%r72, %r71, 3;
+	add.u32 	%r73, %r71, %r72;
+	shr.u32 	%r74, %r73, 4;
+	xor.b32 	%r75, %r73, %r74;
+	mul.lo.u32 	%r76, %r75, 668265261;
+	shr.u32 	%r107, %r76, 15;
+	xor.b32 	%r78, %r76, %r107;
+	cvt.rzi.u32.f32 	%r79, %f187;
+	add.u32 	%r80, %r79, %r78;
+	shr.u32 	%r81, %r80, 16;
+	xor.b32 	%r82, %r80, %r81;
+	xor.b32 	%r83, %r82, 61;
+	shl.b32 	%r84, %r83, 3;
+	add.u32 	%r85, %r83, %r84;
+	shr.u32 	%r86, %r85, 4;
+	xor.b32 	%r87, %r85, %r86;
+	mul.lo.u32 	%r88, %r87, 668265261;
+	shr.u32 	%r108, %r88, 15;
+	xor.b32 	%r90, %r88, %r108;
+	.loc	5	333	0
+	setp.le.f32 	%p79, %f223, %f205;
+	@!%p79 bra 	$Lt_0_605954;
+	mov.f32 	%f537, 0fb727c5ac;   	// -1e-05
+	add.f32 	%f538, %f89, %f537;
+	ld.local.f32 	%f224, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	setp.ge.f32 	%p80, %f224, %f205;
+	@!%p80 bra 	$Lt_0_606210;
+	cvt.rn.f32.u32 	%f539, %r90;
+	cvt.rn.f32.u32 	%f540, %r68;
+	add.f32 	%f541, %f540, %f105;
+	setp.ge.f32 	%p81, %f538, %f221;
+	@!%p81 bra 	$Lt_0_606466;
+	mov.f32 	%f542, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f543, %f539, %f542;
+	sin.approx.f32 	%f544, %f541;
+	mov.f32 	%f545, 0f3f800000;   	// 1
+	add.f32 	%f546, %f544, %f545;
+	mov.f32 	%f547, 0f3f000000;   	// 0.5
+	mul.f32 	%f548, %f546, %f547;
+	mul.f32 	%f549, %f548, %f543;
+	mul.f32 	%f550, %f549, %f226;
+	add.f32 	%f551, %f550, %f221;
+	setp.ge.f32 	%p82, %f551, %f538;
+	@!%p82 bra 	$Lt_0_606978;
+	setp.ge.f32 	%p83, %f524, %f239;
+	@!%p83 bra 	$Lt_0_606978;
+	ld.local.f32 	%f240, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	setp.le.f32 	%p84, %f524, %f240;
+	@!%p84 bra 	$Lt_0_606978;
+	.loc	5	337	0
+	sub.f32 	%f552, %f551, %f538;
+	sub.f32 	%f553, %f538, %f221;
+	min.f32 	%f243, %f552, %f553;
+	.loc	5	341	0
+	sub.f32 	%f554, %f524, %f239;
+	sub.f32 	%f555, %f240, %f524;
+	min.f32 	%f556, %f554, %f555;
+	min.f32 	%f557, %f243, %f556;
+	sub.f32 	%f558, %f224, %f205;
+	sub.f32 	%f559, %f205, %f223;
+	min.f32 	%f560, %f558, %f559;
+	min.f32 	%f561, %f557, %f560;
+	neg.f32 	%f252, %f561;
+	bra.uni 	$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_53;
+$Lt_0_605954:
+	cvt.rn.f32.u32 	%f562, %r90;
+	mov.f32 	%f563, 0fb727c5ac;   	// -1e-05
+	add.f32 	%f538, %f89, %f563;
+	cvt.rn.f32.u32 	%f564, %r68;
+	mov.f32 	%f565, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f566, %f562, %f565;
+	add.f32 	%f567, %f564, %f105;
+	sin.approx.f32 	%f568, %f567;
+	mov.f32 	%f569, 0f3f800000;   	// 1
+	add.f32 	%f570, %f568, %f569;
+	mov.f32 	%f571, 0f3f000000;   	// 0.5
+	mul.f32 	%f572, %f570, %f571;
+	mul.f32 	%f573, %f572, %f566;
+	mul.f32 	%f574, %f573, %f226;
+	add.f32 	%f551, %f574, %f221;
+	bra.uni 	$Lt_0_606978;
+$Lt_0_606210:
+	cvt.rn.f32.u32 	%f575, %r90;
+	cvt.rn.f32.u32 	%f576, %r68;
+	mov.f32 	%f577, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f578, %f575, %f577;
+	add.f32 	%f579, %f576, %f105;
+	sin.approx.f32 	%f580, %f579;
+	mov.f32 	%f581, 0f3f800000;   	// 1
+	add.f32 	%f582, %f580, %f581;
+	mov.f32 	%f583, 0f3f000000;   	// 0.5
+	mul.f32 	%f584, %f582, %f583;
+	mul.f32 	%f585, %f584, %f578;
+	mul.f32 	%f586, %f585, %f226;
+	add.f32 	%f551, %f586, %f221;
+	bra.uni 	$Lt_0_606978;
+$Lt_0_606466:
+	mov.f32 	%f587, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f588, %f539, %f587;
+	sin.approx.f32 	%f589, %f541;
+	mov.f32 	%f590, 0f3f800000;   	// 1
+	add.f32 	%f591, %f589, %f590;
+	mov.f32 	%f592, 0f3f000000;   	// 0.5
+	mul.f32 	%f593, %f591, %f592;
+	mul.f32 	%f594, %f593, %f588;
+	mul.f32 	%f595, %f594, %f226;
+	add.f32 	%f551, %f595, %f221;
+$Lt_0_606978:
+$L_0_568066:
+	.loc	5	349	0
+	sub.f32 	%f286, %f551, %f221;
+	sub.f32 	%f596, %f205, %f223;
+	mov.f32 	%f597, 0f00000000;   	// 0
+	setp.lt.f32 	%p85, %f596, %f597;
+	@!%p85 bra 	$Lt_0_592386;
+	.loc	5	363	0
+	mov.f32 	%f289, %f596;
+	bra.uni 	$Lt_0_592130;
+$Lt_0_592386:
+	.loc	5	364	0
+	ld.local.f32 	%f598, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	sub.f32 	%f291, %f598, %f223;
+	sub.f32 	%f599, %f596, %f291;
+	mov.f32 	%f600, 0f00000000;   	// 0
+	setp.gt.f32 	%p86, %f596, %f291;
+	selp.f32 	%f289, %f599, %f600, %p86;
+$Lt_0_592130:
+	.loc	5	366	0
+	mul.f32 	%f294, %f289, %f289;
+	sub.f32 	%f601, %f538, %f221;
+	mov.f32 	%f602, 0f00000000;   	// 0
+	setp.lt.f32 	%p87, %f601, %f602;
+	@!%p87 bra 	$Lt_0_592898;
+	.loc	5	370	0
+	mov.f32 	%f289, %f601;
+	bra.uni 	$Lt_0_592642;
+$Lt_0_592898:
+	.loc	5	371	0
+	sub.f32 	%f603, %f601, %f286;
+	mov.f32 	%f604, 0f00000000;   	// 0
+	setp.gt.f32 	%p88, %f601, %f286;
+	selp.f32 	%f289, %f603, %f604, %p88;
+$Lt_0_592642:
+	.loc	5	373	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	sub.f32 	%f605, %f524, %f239;
+	mov.f32 	%f606, 0f00000000;   	// 0
+	setp.lt.f32 	%p89, %f605, %f606;
+	@!%p89 bra 	$Lt_0_593410;
+	.loc	5	377	0
+	mov.f32 	%f289, %f605;
+	bra.uni 	$Lt_0_593154;
+$Lt_0_593410:
+	.loc	5	378	0
+	ld.local.f32 	%f607, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	sub.f32 	%f301, %f607, %f239;
+	sub.f32 	%f608, %f605, %f301;
+	mov.f32 	%f609, 0f00000000;   	// 0
+	setp.gt.f32 	%p90, %f605, %f301;
+	selp.f32 	%f289, %f608, %f609, %p90;
+$Lt_0_593154:
+	.loc	5	380	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	.loc	5	344	0
+	sqrt.approx.f32 	%f252, %f294;
+$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_53:
+	.loc	6	105	0
+	sub.f32 	%f610, %f304, %f205;
+	add.f32 	%f611, %f307, %f610;
+	sub.f32 	%f612, %f205, %f208;
+	add.f32 	%f613, %f307, %f612;
+	min.f32 	%f614, %f611, %f613;
+	min.f32 	%f615, %f252, %f614;
+	sub.f32 	%f616, %f305, %f524;
+	add.f32 	%f617, %f306, %f616;
+	sub.f32 	%f618, %f524, %f190;
+	add.f32 	%f619, %f306, %f618;
+	min.f32 	%f620, %f617, %f619;
+	min.f32 	%f621, %f615, %f620;
+	sub.f32 	%f622, %f523, %f621;
+	.loc	6	106	0
+	mov.f32 	%f623, 0f3727c5ac;   	// 1e-05
+	add.f32 	%f624, %f185, %f623;
+	mov.f32 	%f625, %f624;
+	.loc	4	325	0
+	mov.f32 	%f187, 0f00000000;   	// 0
+	setp.gt.f32 	%p91, %f624, %f188;
+	@!%p91 bra 	$Lt_0_593922;
+	.loc	4	330	0
+	sub.f32 	%f626, %f188, %f189;
+	sub.f32 	%f627, %f626, %f190;
+	sub.f32 	%f625, %f624, %f627;
+	.loc	4	331	0
+	ld.local.u32 	%r109, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+0];
+	sub.u32 	%r110, %r109, 1;
+	cvt.rn.f32.u32 	%f187, %r110;
+	bra.uni 	$Lt_0_594178;
+$Lt_0_593922:
+	ld.local.f32 	%f628, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+12];
+	setp.le.f32 	%p92, %f628, %f624;
+	@!%p92 bra 	$Lt_0_594178;
+	.loc	4	337	0
+	sub.f32 	%f629, %f624, %f190;
+	.loc	4	120	0
+	div.approx.f32 	%f630, %f629, %f189;
+	cvt.rmi.f32.f32 	%f631, %f630;
+	mov.f32 	%f187, %f631;
+	.loc	4	121	0
+	mul.f32 	%f632, %f631, %f189;
+	sub.f32 	%f633, %f629, %f632;
+	add.f32 	%f634, %f633, %f189;
+	mov.f32 	%f635, 0f00000000;   	// 0
+	setp.lt.f32 	%p93, %f629, %f635;
+	selp.f32 	%f636, %f634, %f633, %p93;
+	.loc	4	343	0
+	add.f32 	%f625, %f636, %f190;
+$Lt_0_594178:
+$Lt_0_593666:
+	.loc	4	346	0
+	mov.f32 	%f205, %f202;
+	.loc	4	180	0
+	mov.f32 	%f206, 0f00000000;   	// 0
+	@!%p60 bra 	$Lt_0_594946;
+	.loc	4	185	0
+	sub.f32 	%f637, %f209, %f207;
+	sub.f32 	%f638, %f637, %f208;
+	sub.f32 	%f205, %f202, %f638;
+	.loc	4	186	0
+	ld.local.u32 	%r111, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+28];
+	sub.u32 	%r112, %r111, 1;
+	cvt.rn.f32.u32 	%f206, %r112;
+	bra.uni 	$Lt_0_595202;
+$Lt_0_594946:
+	ld.local.f32 	%f639, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+32];
+	setp.le.f32 	%p94, %f639, %f202;
+	@!%p94 bra 	$Lt_0_595202;
+	.loc	4	192	0
+	sub.f32 	%f431, %f202, %f208;
+	.loc	4	120	0
+	div.approx.f32 	%f432, %f431, %f207;
+	cvt.rmi.f32.f32 	%f433, %f432;
+	mov.f32 	%f206, %f433;
+	.loc	4	121	0
+	mul.f32 	%f640, %f433, %f207;
+	sub.f32 	%f435, %f431, %f640;
+	add.f32 	%f641, %f435, %f207;
+	mov.f32 	%f642, 0f00000000;   	// 0
+	setp.lt.f32 	%p95, %f431, %f642;
+	selp.f32 	%f438, %f641, %f435, %p95;
+	.loc	4	198	0
+	add.f32 	%f205, %f438, %f208;
+$Lt_0_595202:
+$Lt_0_594690:
+	.loc	4	93	0
+	cvt.rzi.u32.f32 	%r68, %f206;
+	shr.u32 	%r69, %r68, 16;
+	xor.b32 	%r70, %r68, %r69;
+	xor.b32 	%r71, %r70, 61;
+	shl.b32 	%r72, %r71, 3;
+	add.u32 	%r73, %r71, %r72;
+	shr.u32 	%r74, %r73, 4;
+	xor.b32 	%r75, %r73, %r74;
+	mul.lo.u32 	%r76, %r75, 668265261;
+	shr.u32 	%r113, %r76, 15;
+	xor.b32 	%r78, %r76, %r113;
+	cvt.rzi.u32.f32 	%r79, %f187;
+	add.u32 	%r80, %r79, %r78;
+	shr.u32 	%r81, %r80, 16;
+	xor.b32 	%r82, %r80, %r81;
+	xor.b32 	%r83, %r82, 61;
+	shl.b32 	%r84, %r83, 3;
+	add.u32 	%r85, %r83, %r84;
+	shr.u32 	%r86, %r85, 4;
+	xor.b32 	%r87, %r85, %r86;
+	mul.lo.u32 	%r88, %r87, 668265261;
+	shr.u32 	%r114, %r88, 15;
+	xor.b32 	%r90, %r88, %r114;
+	.loc	5	333	0
+	setp.le.f32 	%p96, %f223, %f205;
+	@!%p96 bra 	$Lt_0_607490;
+	ld.local.f32 	%f224, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	setp.ge.f32 	%p97, %f224, %f205;
+	@!%p97 bra 	$Lt_0_607746;
+	cvt.rn.f32.u32 	%f643, %r90;
+	cvt.rn.f32.u32 	%f644, %r68;
+	add.f32 	%f645, %f644, %f105;
+	setp.le.f32 	%p98, %f221, %f89;
+	@!%p98 bra 	$Lt_0_608002;
+	mov.f32 	%f646, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f647, %f643, %f646;
+	sin.approx.f32 	%f648, %f645;
+	mov.f32 	%f649, 0f3f800000;   	// 1
+	add.f32 	%f650, %f648, %f649;
+	mov.f32 	%f651, 0f3f000000;   	// 0.5
+	mul.f32 	%f652, %f650, %f651;
+	mul.f32 	%f653, %f652, %f647;
+	mul.f32 	%f654, %f653, %f226;
+	add.f32 	%f655, %f654, %f221;
+	setp.ge.f32 	%p99, %f655, %f89;
+	@!%p99 bra 	$Lt_0_608514;
+	setp.ge.f32 	%p100, %f625, %f239;
+	@!%p100 bra 	$Lt_0_608514;
+	ld.local.f32 	%f240, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	setp.le.f32 	%p101, %f625, %f240;
+	@!%p101 bra 	$Lt_0_608514;
+	.loc	5	337	0
+	sub.f32 	%f656, %f655, %f89;
+	min.f32 	%f243, %f241, %f656;
+	.loc	5	341	0
+	sub.f32 	%f657, %f625, %f239;
+	sub.f32 	%f658, %f240, %f625;
+	min.f32 	%f659, %f657, %f658;
+	min.f32 	%f660, %f243, %f659;
+	sub.f32 	%f661, %f224, %f205;
+	sub.f32 	%f662, %f205, %f223;
+	min.f32 	%f663, %f661, %f662;
+	min.f32 	%f664, %f660, %f663;
+	neg.f32 	%f252, %f664;
+	bra.uni 	$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_35;
+$Lt_0_607490:
+	cvt.rn.f32.u32 	%f665, %r90;
+	cvt.rn.f32.u32 	%f666, %r68;
+	mov.f32 	%f667, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f668, %f665, %f667;
+	add.f32 	%f669, %f666, %f105;
+	sin.approx.f32 	%f670, %f669;
+	mov.f32 	%f671, 0f3f800000;   	// 1
+	add.f32 	%f672, %f670, %f671;
+	mov.f32 	%f673, 0f3f000000;   	// 0.5
+	mul.f32 	%f674, %f672, %f673;
+	mul.f32 	%f675, %f674, %f668;
+	mul.f32 	%f676, %f675, %f226;
+	add.f32 	%f655, %f676, %f221;
+	bra.uni 	$Lt_0_608514;
+$Lt_0_607746:
+	cvt.rn.f32.u32 	%f677, %r90;
+	cvt.rn.f32.u32 	%f678, %r68;
+	mov.f32 	%f679, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f680, %f677, %f679;
+	add.f32 	%f681, %f678, %f105;
+	sin.approx.f32 	%f682, %f681;
+	mov.f32 	%f683, 0f3f800000;   	// 1
+	add.f32 	%f684, %f682, %f683;
+	mov.f32 	%f685, 0f3f000000;   	// 0.5
+	mul.f32 	%f686, %f684, %f685;
+	mul.f32 	%f687, %f686, %f680;
+	mul.f32 	%f688, %f687, %f226;
+	add.f32 	%f655, %f688, %f221;
+	bra.uni 	$Lt_0_608514;
+$Lt_0_608002:
+	mov.f32 	%f689, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f690, %f643, %f689;
+	sin.approx.f32 	%f691, %f645;
+	mov.f32 	%f692, 0f3f800000;   	// 1
+	add.f32 	%f693, %f691, %f692;
+	mov.f32 	%f694, 0f3f000000;   	// 0.5
+	mul.f32 	%f695, %f693, %f694;
+	mul.f32 	%f696, %f695, %f690;
+	mul.f32 	%f697, %f696, %f226;
+	add.f32 	%f655, %f697, %f221;
+$Lt_0_608514:
+$L_0_569602:
+	.loc	5	349	0
+	sub.f32 	%f286, %f655, %f221;
+	sub.f32 	%f698, %f205, %f223;
+	mov.f32 	%f699, 0f00000000;   	// 0
+	setp.lt.f32 	%p102, %f698, %f699;
+	@!%p102 bra 	$Lt_0_595970;
+	.loc	5	363	0
+	mov.f32 	%f289, %f698;
+	bra.uni 	$Lt_0_595714;
+$Lt_0_595970:
+	.loc	5	364	0
+	ld.local.f32 	%f700, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	sub.f32 	%f291, %f700, %f223;
+	sub.f32 	%f701, %f698, %f291;
+	mov.f32 	%f702, 0f00000000;   	// 0
+	setp.gt.f32 	%p103, %f698, %f291;
+	selp.f32 	%f289, %f701, %f702, %p103;
+$Lt_0_595714:
+	.loc	5	366	0
+	mul.f32 	%f294, %f289, %f289;
+	mov.f32 	%f703, 0f00000000;   	// 0
+	setp.lt.f32 	%p104, %f241, %f703;
+	@!%p104 bra 	$Lt_0_596482;
+	.loc	5	370	0
+	mov.f32 	%f289, %f241;
+	bra.uni 	$Lt_0_596226;
+$Lt_0_596482:
+	.loc	5	371	0
+	sub.f32 	%f704, %f241, %f286;
+	mov.f32 	%f705, 0f00000000;   	// 0
+	setp.gt.f32 	%p105, %f241, %f286;
+	selp.f32 	%f289, %f704, %f705, %p105;
+$Lt_0_596226:
+	.loc	5	373	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	sub.f32 	%f706, %f625, %f239;
+	mov.f32 	%f707, 0f00000000;   	// 0
+	setp.lt.f32 	%p106, %f706, %f707;
+	@!%p106 bra 	$Lt_0_596994;
+	.loc	5	377	0
+	mov.f32 	%f289, %f706;
+	bra.uni 	$Lt_0_596738;
+$Lt_0_596994:
+	.loc	5	378	0
+	ld.local.f32 	%f708, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	sub.f32 	%f301, %f708, %f239;
+	sub.f32 	%f709, %f706, %f301;
+	mov.f32 	%f710, 0f00000000;   	// 0
+	setp.gt.f32 	%p107, %f706, %f301;
+	selp.f32 	%f289, %f709, %f710, %p107;
+$Lt_0_596738:
+	.loc	5	380	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	.loc	5	344	0
+	sqrt.approx.f32 	%f252, %f294;
+$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_35:
+	.loc	4	366	0
+	sub.f32 	%f711, %f304, %f205;
+	add.f32 	%f712, %f307, %f711;
+	sub.f32 	%f713, %f205, %f208;
+	add.f32 	%f714, %f307, %f713;
+	min.f32 	%f715, %f712, %f714;
+	min.f32 	%f716, %f252, %f715;
+	sub.f32 	%f717, %f305, %f625;
+	add.f32 	%f718, %f306, %f717;
+	sub.f32 	%f719, %f625, %f190;
+	add.f32 	%f720, %f306, %f719;
+	min.f32 	%f721, %f718, %f720;
+	min.f32 	%f722, %f716, %f721;
+	.loc	6	106	0
+	mov.f32 	%f723, 0fb727c5ac;   	// -1e-05
+	add.f32 	%f724, %f185, %f723;
+	mov.f32 	%f725, %f724;
+	.loc	4	325	0
+	mov.f32 	%f187, 0f00000000;   	// 0
+	setp.gt.f32 	%p108, %f724, %f188;
+	@!%p108 bra 	$Lt_0_597506;
+	.loc	4	330	0
+	sub.f32 	%f726, %f188, %f189;
+	sub.f32 	%f727, %f726, %f190;
+	sub.f32 	%f725, %f724, %f727;
+	.loc	4	331	0
+	ld.local.u32 	%r115, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+0];
+	sub.u32 	%r116, %r115, 1;
+	cvt.rn.f32.u32 	%f187, %r116;
+	bra.uni 	$Lt_0_597762;
+$Lt_0_597506:
+	ld.local.f32 	%f728, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+12];
+	setp.le.f32 	%p109, %f728, %f724;
+	@!%p109 bra 	$Lt_0_597762;
+	.loc	4	337	0
+	sub.f32 	%f729, %f724, %f190;
+	.loc	4	120	0
+	div.approx.f32 	%f730, %f729, %f189;
+	cvt.rmi.f32.f32 	%f731, %f730;
+	mov.f32 	%f187, %f731;
+	.loc	4	121	0
+	mul.f32 	%f732, %f731, %f189;
+	sub.f32 	%f733, %f729, %f732;
+	add.f32 	%f734, %f733, %f189;
+	mov.f32 	%f735, 0f00000000;   	// 0
+	setp.lt.f32 	%p110, %f729, %f735;
+	selp.f32 	%f736, %f734, %f733, %p110;
+	.loc	4	343	0
+	add.f32 	%f725, %f736, %f190;
+$Lt_0_597762:
+$Lt_0_597250:
+	.loc	4	346	0
+	mov.f32 	%f205, %f202;
+	.loc	4	180	0
+	mov.f32 	%f206, 0f00000000;   	// 0
+	@!%p60 bra 	$Lt_0_598530;
+	.loc	4	185	0
+	sub.f32 	%f737, %f209, %f207;
+	sub.f32 	%f738, %f737, %f208;
+	sub.f32 	%f205, %f202, %f738;
+	.loc	4	186	0
+	ld.local.u32 	%r117, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+28];
+	sub.u32 	%r118, %r117, 1;
+	cvt.rn.f32.u32 	%f206, %r118;
+	bra.uni 	$Lt_0_598786;
+$Lt_0_598530:
+	ld.local.f32 	%f739, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+32];
+	setp.le.f32 	%p111, %f739, %f202;
+	@!%p111 bra 	$Lt_0_598786;
+	.loc	4	192	0
+	sub.f32 	%f431, %f202, %f208;
+	.loc	4	120	0
+	div.approx.f32 	%f432, %f431, %f207;
+	cvt.rmi.f32.f32 	%f433, %f432;
+	mov.f32 	%f206, %f433;
+	.loc	4	121	0
+	mul.f32 	%f740, %f433, %f207;
+	sub.f32 	%f435, %f431, %f740;
+	add.f32 	%f741, %f435, %f207;
+	mov.f32 	%f742, 0f00000000;   	// 0
+	setp.lt.f32 	%p112, %f431, %f742;
+	selp.f32 	%f438, %f741, %f435, %p112;
+	.loc	4	198	0
+	add.f32 	%f205, %f438, %f208;
+$Lt_0_598786:
+$Lt_0_598274:
+	.loc	4	93	0
+	cvt.rzi.u32.f32 	%r68, %f206;
+	shr.u32 	%r69, %r68, 16;
+	xor.b32 	%r70, %r68, %r69;
+	xor.b32 	%r71, %r70, 61;
+	shl.b32 	%r72, %r71, 3;
+	add.u32 	%r73, %r71, %r72;
+	shr.u32 	%r74, %r73, 4;
+	xor.b32 	%r75, %r73, %r74;
+	mul.lo.u32 	%r76, %r75, 668265261;
+	shr.u32 	%r119, %r76, 15;
+	xor.b32 	%r78, %r76, %r119;
+	cvt.rzi.u32.f32 	%r79, %f187;
+	add.u32 	%r80, %r79, %r78;
+	shr.u32 	%r81, %r80, 16;
+	xor.b32 	%r82, %r80, %r81;
+	xor.b32 	%r83, %r82, 61;
+	shl.b32 	%r84, %r83, 3;
+	add.u32 	%r85, %r83, %r84;
+	shr.u32 	%r86, %r85, 4;
+	xor.b32 	%r87, %r85, %r86;
+	mul.lo.u32 	%r88, %r87, 668265261;
+	shr.u32 	%r120, %r88, 15;
+	xor.b32 	%r90, %r88, %r120;
+	.loc	5	333	0
+	setp.le.f32 	%p113, %f223, %f205;
+	@!%p113 bra 	$Lt_0_609026;
+	ld.local.f32 	%f224, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	setp.ge.f32 	%p114, %f224, %f205;
+	@!%p114 bra 	$Lt_0_609282;
+	cvt.rn.f32.u32 	%f743, %r90;
+	cvt.rn.f32.u32 	%f744, %r68;
+	add.f32 	%f745, %f744, %f105;
+	setp.le.f32 	%p115, %f221, %f89;
+	@!%p115 bra 	$Lt_0_609538;
+	mov.f32 	%f746, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f747, %f743, %f746;
+	sin.approx.f32 	%f748, %f745;
+	mov.f32 	%f749, 0f3f800000;   	// 1
+	add.f32 	%f750, %f748, %f749;
+	mov.f32 	%f751, 0f3f000000;   	// 0.5
+	mul.f32 	%f752, %f750, %f751;
+	mul.f32 	%f753, %f752, %f747;
+	mul.f32 	%f754, %f753, %f226;
+	add.f32 	%f755, %f754, %f221;
+	setp.ge.f32 	%p116, %f755, %f89;
+	@!%p116 bra 	$Lt_0_610050;
+	setp.ge.f32 	%p117, %f725, %f239;
+	@!%p117 bra 	$Lt_0_610050;
+	ld.local.f32 	%f240, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	setp.le.f32 	%p118, %f725, %f240;
+	@!%p118 bra 	$Lt_0_610050;
+	.loc	5	337	0
+	sub.f32 	%f756, %f755, %f89;
+	min.f32 	%f243, %f241, %f756;
+	.loc	5	341	0
+	sub.f32 	%f757, %f725, %f239;
+	sub.f32 	%f758, %f240, %f725;
+	min.f32 	%f759, %f757, %f758;
+	min.f32 	%f760, %f243, %f759;
+	sub.f32 	%f761, %f224, %f205;
+	sub.f32 	%f762, %f205, %f223;
+	min.f32 	%f763, %f761, %f762;
+	min.f32 	%f764, %f760, %f763;
+	neg.f32 	%f252, %f764;
+	bra.uni 	$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_17;
+$Lt_0_609026:
+	cvt.rn.f32.u32 	%f765, %r90;
+	cvt.rn.f32.u32 	%f766, %r68;
+	mov.f32 	%f767, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f768, %f765, %f767;
+	add.f32 	%f769, %f766, %f105;
+	sin.approx.f32 	%f770, %f769;
+	mov.f32 	%f771, 0f3f800000;   	// 1
+	add.f32 	%f772, %f770, %f771;
+	mov.f32 	%f773, 0f3f000000;   	// 0.5
+	mul.f32 	%f774, %f772, %f773;
+	mul.f32 	%f775, %f774, %f768;
+	mul.f32 	%f776, %f775, %f226;
+	add.f32 	%f755, %f776, %f221;
+	bra.uni 	$Lt_0_610050;
+$Lt_0_609282:
+	cvt.rn.f32.u32 	%f777, %r90;
+	cvt.rn.f32.u32 	%f778, %r68;
+	mov.f32 	%f779, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f780, %f777, %f779;
+	add.f32 	%f781, %f778, %f105;
+	sin.approx.f32 	%f782, %f781;
+	mov.f32 	%f783, 0f3f800000;   	// 1
+	add.f32 	%f784, %f782, %f783;
+	mov.f32 	%f785, 0f3f000000;   	// 0.5
+	mul.f32 	%f786, %f784, %f785;
+	mul.f32 	%f787, %f786, %f780;
+	mul.f32 	%f788, %f787, %f226;
+	add.f32 	%f755, %f788, %f221;
+	bra.uni 	$Lt_0_610050;
+$Lt_0_609538:
+	mov.f32 	%f789, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f790, %f743, %f789;
+	sin.approx.f32 	%f791, %f745;
+	mov.f32 	%f792, 0f3f800000;   	// 1
+	add.f32 	%f793, %f791, %f792;
+	mov.f32 	%f794, 0f3f000000;   	// 0.5
+	mul.f32 	%f795, %f793, %f794;
+	mul.f32 	%f796, %f795, %f790;
+	mul.f32 	%f797, %f796, %f226;
+	add.f32 	%f755, %f797, %f221;
+$Lt_0_610050:
+$L_0_571138:
+	.loc	5	349	0
+	sub.f32 	%f286, %f755, %f221;
+	sub.f32 	%f798, %f205, %f223;
+	mov.f32 	%f799, 0f00000000;   	// 0
+	setp.lt.f32 	%p119, %f798, %f799;
+	@!%p119 bra 	$Lt_0_599554;
+	.loc	5	363	0
+	mov.f32 	%f289, %f798;
+	bra.uni 	$Lt_0_599298;
+$Lt_0_599554:
+	.loc	5	364	0
+	ld.local.f32 	%f800, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+68];
+	sub.f32 	%f291, %f800, %f223;
+	sub.f32 	%f801, %f798, %f291;
+	mov.f32 	%f802, 0f00000000;   	// 0
+	setp.gt.f32 	%p120, %f798, %f291;
+	selp.f32 	%f289, %f801, %f802, %p120;
+$Lt_0_599298:
+	.loc	5	366	0
+	mul.f32 	%f294, %f289, %f289;
+	mov.f32 	%f803, 0f00000000;   	// 0
+	setp.lt.f32 	%p121, %f241, %f803;
+	@!%p121 bra 	$Lt_0_600066;
+	.loc	5	370	0
+	mov.f32 	%f289, %f241;
+	bra.uni 	$Lt_0_599810;
+$Lt_0_600066:
+	.loc	5	371	0
+	sub.f32 	%f804, %f241, %f286;
+	mov.f32 	%f805, 0f00000000;   	// 0
+	setp.gt.f32 	%p122, %f241, %f286;
+	selp.f32 	%f289, %f804, %f805, %p122;
+$Lt_0_599810:
+	.loc	5	373	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	sub.f32 	%f806, %f725, %f239;
+	mov.f32 	%f807, 0f00000000;   	// 0
+	setp.lt.f32 	%p123, %f806, %f807;
+	@!%p123 bra 	$Lt_0_600578;
+	.loc	5	377	0
+	mov.f32 	%f289, %f806;
+	bra.uni 	$Lt_0_600322;
+$Lt_0_600578:
+	.loc	5	378	0
+	ld.local.f32 	%f808, [__cuda___cuda___cudaparm__Z4gradI25SignedDistanceToPrimitiveI16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb0EELb0EEEE6float3T_RKS8_f_d_328400+76];
+	sub.f32 	%f301, %f808, %f239;
+	sub.f32 	%f809, %f806, %f301;
+	mov.f32 	%f810, 0f00000000;   	// 0
+	setp.gt.f32 	%p124, %f806, %f301;
+	selp.f32 	%f289, %f809, %f810, %p124;
+$Lt_0_600322:
+	.loc	5	380	0
+	mad.f32 	%f294, %f289, %f289, %f294;
+	.loc	5	344	0
+	sqrt.approx.f32 	%f252, %f294;
+$LDWendi__ZNK5optix4Aabb9distance2ERK6float3_262_17:
+	.loc	4	555	0
+	sub.f32 	%f811, %f205, %f208;
+	sub.f32 	%f812, %f725, %f190;
+	mul.f32 	%f813, %f622, %f622;
+	add.f32 	%f814, %f811, %f307;
+	sub.f32 	%f815, %f304, %f205;
+	sub.f32 	%f816, %f305, %f725;
+	add.f32 	%f817, %f812, %f306;
+	mad.f32 	%f818, %f420, %f420, %f813;
+	add.f32 	%f819, %f815, %f307;
+	add.f32 	%f820, %f816, %f306;
+	min.f32 	%f821, %f814, %f819;
+	min.f32 	%f822, %f817, %f820;
+	min.f32 	%f823, %f252, %f821;
+	min.f32 	%f824, %f822, %f823;
+	sub.f32 	%f825, %f722, %f824;
+	mad.f32 	%f826, %f825, %f825, %f818;
+	sqrt.approx.f32 	%f827, %f826;
+	rcp.approx.f32 	%f828, %f827;
+	mul.f32 	%f829, %f828, %f420;
+	mul.f32 	%f830, %f828, %f622;
+	st.global.v2.f32 	[normal+0], {%f829,%f830};
+	mul.f32 	%f831, %f825, %f828;
+	st.global.f32 	[normal+8], %f831;
+	.loc	21	119	0
+	mov.u32 	%r121, 0;
+	mov.u32 	%r122, %r121;
+	call (%r123), _rt_report_intersection, (%r122);
+$Lt_0_578818:
+$Lt_0_578306:
+$Lt_0_573186:
+	.loc	4	560	0
+	exit;
+$LDWend__Z9intersecti:
+	} // _Z9intersecti
+
+	.entry _Z6boundsiPf (
+		.param .s32 __cudaparm__Z6boundsiPf___T2260,
+		.param .u32 __cudaparm__Z6boundsiPf_result)
+	{
+	.reg .u32 %r<12>;
+	.reg .f32 %f<71>;
+	.reg .pred %p<3>;
+	.local .align 4 .b8 __cuda___cuda_local_var_19853_33_non_const_x_16512[104];
+	.local .align 4 .b8 __cuda___cuda___T2148_120616[104];
+	.loc	4	562	0
+$LDWbegin__Z6boundsiPf:
+	.loc	5	194	0
+	mov.f32 	%f1, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda_local_var_19853_33_non_const_x_16512+4], %f1;
+	mov.f32 	%f2, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda_local_var_19853_33_non_const_x_16512+8], %f2;
+	mov.f32 	%f3, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda_local_var_19853_33_non_const_x_16512+12], %f3;
+	.loc	5	195	0
+	mov.f32 	%f4, 0ffcf0bdc2;     	// -1e+37
+	st.local.f32 	[__cuda___cuda_local_var_19853_33_non_const_x_16512+16], %f4;
+	mov.f32 	%f5, 0ffcf0bdc2;     	// -1e+37
+	st.local.f32 	[__cuda___cuda_local_var_19853_33_non_const_x_16512+20], %f5;
+	mov.f32 	%f6, 0ffcf0bdc2;     	// -1e+37
+	st.local.f32 	[__cuda___cuda_local_var_19853_33_non_const_x_16512+24], %f6;
+	.loc	4	404	0
+	mov.u32 	%r1, 320;
+	st.local.u32 	[__cuda___cuda___T2148_120616+0], %r1;
+	.loc	5	194	0
+	mov.f32 	%f7, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda___T2148_120616+4], %f7;
+	mov.f32 	%f8, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda___T2148_120616+8], %f8;
+	mov.f32 	%f9, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda___T2148_120616+12], %f9;
+	.loc	5	195	0
+	mov.f32 	%f10, 0ffcf0bdc2;    	// -1e+37
+	st.local.f32 	[__cuda___cuda___T2148_120616+16], %f10;
+	mov.f32 	%f11, 0ffcf0bdc2;    	// -1e+37
+	st.local.f32 	[__cuda___cuda___T2148_120616+20], %f11;
+	mov.f32 	%f12, 0ffcf0bdc2;    	// -1e+37
+	st.local.f32 	[__cuda___cuda___T2148_120616+24], %f12;
+	.loc	4	404	0
+	mov.u32 	%r2, 320;
+	st.local.u32 	[__cuda___cuda___T2148_120616+28], %r2;
+	mov.f32 	%f13, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2148_120616+32], %f13;
+	mov.f32 	%f14, 0fc0000000;    	// -2
+	st.local.f32 	[__cuda___cuda___T2148_120616+36], %f14;
+	mov.f32 	%f15, 0fc2c80000;    	// -100
+	st.local.f32 	[__cuda___cuda___T2148_120616+40], %f15;
+	mov.f32 	%f16, 0f43480000;    	// 200
+	mov.f32 	%f17, 0f43a00000;    	// 320
+	div.approx.f32 	%f18, %f16, %f17;
+	mov.f32 	%f19, 0fc2c80000;    	// -100
+	add.f32 	%f20, %f18, %f19;
+	mov.f32 	%f21, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f22, %f20, %f21;
+	mov.f32 	%f23, 0f42c80000;    	// 100
+	add.f32 	%f24, %f22, %f23;
+	mov.f32 	%f25, 0f3d4ccccd;    	// 0.05
+	add.f32 	%f26, %f24, %f25;
+	mov.f32 	%f27, 0fc2c80ccd;    	// -100.025
+	mov.f32 	%f28, 0f43a00000;    	// 320
+	mad.f32 	%f29, %f28, %f26, %f27;
+	st.local.f32 	[__cuda___cuda___T2148_120616+44], %f29;
+	mov.f32 	%f30, 0fbf800000;    	// -1
+	st.local.f32 	[__cuda___cuda___T2148_120616+48], %f30;
+	st.local.f32 	[__cuda___cuda___T2148_120616+52], %f22;
+	mov.f32 	%f31, 0fc2c80000;    	// -100
+	st.local.f32 	[__cuda___cuda___T2148_120616+56], %f31;
+	mov.f32 	%f32, 0fc0000000;    	// -2
+	st.local.f32 	[__cuda___cuda___T2148_120616+60], %f32;
+	mov.f32 	%f33, 0fc2c80000;    	// -100
+	st.local.f32 	[__cuda___cuda___T2148_120616+64], %f33;
+	st.local.f32 	[__cuda___cuda___T2148_120616+68], %f20;
+	mov.f32 	%f34, 0fbf800000;    	// -1
+	st.local.f32 	[__cuda___cuda___T2148_120616+72], %f34;
+	st.local.f32 	[__cuda___cuda___T2148_120616+76], %f20;
+	mov.f32 	%f35, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2148_120616+80], %f35;
+	st.local.f32 	[__cuda___cuda___T2148_120616+84], %f26;
+	mov.f32 	%f36, 0f3ccccccd;    	// 0.025
+	st.local.f32 	[__cuda___cuda___T2148_120616+88], %f36;
+	mov.f32 	%f37, 0f3ccccccd;    	// 0.025
+	st.local.f32 	[__cuda___cuda___T2148_120616+100], %f37;
+	.loc	6	203	0
+	mov.f32 	%f38, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2148_120616+4], %f38;
+	mov.f32 	%f39, 0fc0000000;    	// -2
+	st.local.f32 	[__cuda___cuda___T2148_120616+8], %f39;
+	mov.f32 	%f40, 0fc2c80000;    	// -100
+	st.local.f32 	[__cuda___cuda___T2148_120616+12], %f40;
+	mov.f32 	%f41, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f42, %f29, %f41;
+	st.local.f32 	[__cuda___cuda___T2148_120616+16], %f42;
+	mov.f32 	%f43, 0fbf800000;    	// -1
+	st.local.f32 	[__cuda___cuda___T2148_120616+20], %f43;
+	st.local.f32 	[__cuda___cuda___T2148_120616+24], %f22;
+	.loc	4	404	0
+	mov.f32 	%f44, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2148_120616+92], %f44;
+	st.local.f32 	[__cuda___cuda___T2148_120616+96], %f26;
+	mov.f32 	%f45, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2148_120616+12], %f45;
+	st.local.f32 	[__cuda___cuda___T2148_120616+24], %f29;
+	.loc	4	509	0
+	mov.u32 	%r3, __cuda___cuda___T2148_120616;
+	mov.u32 	%r4, __cuda___cuda_local_var_19853_33_non_const_x_16512;
+	mov.s32 	%r5, %r3;
+	mov.s32 	%r6, %r4;
+	mov.s32 	%r7, 26;
+$L_1_258:
+ //<loop> Loop body line 509, nesting depth: 1, iterations: 26
+	ld.local.u32 	%r8, [%r5+0];
+	st.local.u32 	[%r6+0], %r8;
+	add.u32 	%r5, %r5, 4;
+	add.u32 	%r6, %r6, 4;
+	sub.s32 	%r7, %r7, 1;
+	mov.u32 	%r9, 0;
+	setp.gt.s32 	%p1, %r7, %r9;
+	@%p1 bra 	$L_1_258;
+	.loc	4	570	0
+	ld.param.u32 	%r10, [__cudaparm__Z6boundsiPf_result];
+	mov.f32 	%f46, 0f7cf0bdc2;    	// 1e+37
+	st.global.f32 	[%r10+0], %f46;
+	mov.f32 	%f47, 0f7cf0bdc2;    	// 1e+37
+	st.global.f32 	[%r10+4], %f47;
+	mov.f32 	%f48, 0f7cf0bdc2;    	// 1e+37
+	st.global.f32 	[%r10+8], %f48;
+	mov.f32 	%f49, 0ffcf0bdc2;    	// -1e+37
+	st.global.f32 	[%r10+12], %f49;
+	mov.f32 	%f50, 0ffcf0bdc2;    	// -1e+37
+	st.global.f32 	[%r10+16], %f50;
+	mov.f32 	%f51, 0ffcf0bdc2;    	// -1e+37
+	st.global.f32 	[%r10+20], %f51;
+	.loc	4	384	0
+	ld.local.f32 	%f52, [__cuda___cuda_local_var_19853_33_non_const_x_16512+4];
+	mov.f32 	%f53, 0f7cf0bdc2;    	// 1e+37
+	min.f32 	%f54, %f52, %f53;
+	st.global.f32 	[%r10+0], %f54;
+	ld.local.f32 	%f55, [__cuda___cuda_local_var_19853_33_non_const_x_16512+8];
+	mov.f32 	%f56, 0f7cf0bdc2;    	// 1e+37
+	min.f32 	%f57, %f55, %f56;
+	st.global.f32 	[%r10+4], %f57;
+	ld.local.f32 	%f58, [__cuda___cuda_local_var_19853_33_non_const_x_16512+12];
+	mov.f32 	%f59, 0f7cf0bdc2;    	// 1e+37
+	min.f32 	%f60, %f58, %f59;
+	st.global.f32 	[%r10+8], %f60;
+	ld.local.f32 	%f61, [__cuda___cuda_local_var_19853_33_non_const_x_16512+16];
+	mov.f32 	%f62, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f63, %f61, %f62;
+	st.global.f32 	[%r10+12], %f63;
+	ld.local.f32 	%f64, [__cuda___cuda_local_var_19853_33_non_const_x_16512+20];
+	mov.f32 	%f65, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f66, %f64, %f65;
+	st.global.f32 	[%r10+16], %f66;
+	ld.local.f32 	%f67, [__cuda___cuda_local_var_19853_33_non_const_x_16512+24];
+	mov.f32 	%f68, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f69, %f67, %f68;
+	st.global.f32 	[%r10+20], %f69;
+	.loc	4	574	0
+	exit;
+$LDWend__Z6boundsiPf:
+	} // _Z6boundsiPf
+	.global .f32 isect_t;
+	.global .align 4 .b8 top_shadower[4];
+	.global .u32 shadowsActive;
+	.global .align 16 .b8 sphere[16];
+	.global .align 16 .b8 prd_radiance[20];
+
+	.entry _Z23block_floor_ch_radiancev
+	{
+	.reg .u32 %ra1;
+	.reg .u32 %r<123>;
+	.reg .f32 %f<449>;
+	.reg .pred %p<64>;
+	.local .align 4 .b8 __cuda___cuda___T2239_16720[104];
+	.local .align 4 .b8 __cuda___cuda___T295_120824[108];
+	.local .align 4 .b8 __cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932[108];
+	.local .align 4 .b8 __cuda___cuda_local_var_19876_23_non_const_prd_shd_3361040[12];
+	.loc	4	577	0
+$LDWbegin__Z23block_floor_ch_radiancev:
+	.loc	4	404	0
+	mov.u32 	%r1, 320;
+	st.local.u32 	[__cuda___cuda___T2239_16720+0], %r1;
+	.loc	5	194	0
+	mov.f32 	%f1, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda___T2239_16720+4], %f1;
+	mov.f32 	%f2, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda___T2239_16720+8], %f2;
+	mov.f32 	%f3, 0f7cf0bdc2;     	// 1e+37
+	st.local.f32 	[__cuda___cuda___T2239_16720+12], %f3;
+	.loc	5	195	0
+	mov.f32 	%f4, 0ffcf0bdc2;     	// -1e+37
+	st.local.f32 	[__cuda___cuda___T2239_16720+16], %f4;
+	mov.f32 	%f5, 0ffcf0bdc2;     	// -1e+37
+	st.local.f32 	[__cuda___cuda___T2239_16720+20], %f5;
+	mov.f32 	%f6, 0ffcf0bdc2;     	// -1e+37
+	st.local.f32 	[__cuda___cuda___T2239_16720+24], %f6;
+	.loc	4	404	0
+	mov.u32 	%r2, 320;
+	st.local.u32 	[__cuda___cuda___T2239_16720+28], %r2;
+	mov.f32 	%f7, 0fc2c80ccd;     	// -100.025
+	st.local.f32 	[__cuda___cuda___T2239_16720+32], %f7;
+	mov.f32 	%f8, 0fc0000000;     	// -2
+	st.local.f32 	[__cuda___cuda___T2239_16720+36], %f8;
+	mov.f32 	%f9, 0fc2c80000;     	// -100
+	st.local.f32 	[__cuda___cuda___T2239_16720+40], %f9;
+	mov.f32 	%f10, 0f43480000;    	// 200
+	mov.f32 	%f11, 0f43a00000;    	// 320
+	div.approx.f32 	%f12, %f10, %f11;
+	mov.f32 	%f13, 0fc2c80000;    	// -100
+	add.f32 	%f14, %f12, %f13;
+	mov.f32 	%f15, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f16, %f14, %f15;
+	mov.f32 	%f17, 0f42c80000;    	// 100
+	add.f32 	%f18, %f16, %f17;
+	mov.f32 	%f19, 0f3d4ccccd;    	// 0.05
+	add.f32 	%f20, %f18, %f19;
+	mov.f32 	%f21, 0fc2c80ccd;    	// -100.025
+	mov.f32 	%f22, 0f43a00000;    	// 320
+	mad.f32 	%f23, %f22, %f20, %f21;
+	st.local.f32 	[__cuda___cuda___T2239_16720+44], %f23;
+	mov.f32 	%f24, 0fbf800000;    	// -1
+	st.local.f32 	[__cuda___cuda___T2239_16720+48], %f24;
+	st.local.f32 	[__cuda___cuda___T2239_16720+52], %f16;
+	mov.f32 	%f25, 0fc2c80000;    	// -100
+	st.local.f32 	[__cuda___cuda___T2239_16720+56], %f25;
+	mov.f32 	%f26, 0fc0000000;    	// -2
+	st.local.f32 	[__cuda___cuda___T2239_16720+60], %f26;
+	mov.f32 	%f27, 0fc2c80000;    	// -100
+	st.local.f32 	[__cuda___cuda___T2239_16720+64], %f27;
+	st.local.f32 	[__cuda___cuda___T2239_16720+68], %f14;
+	mov.f32 	%f28, 0fbf800000;    	// -1
+	st.local.f32 	[__cuda___cuda___T2239_16720+72], %f28;
+	st.local.f32 	[__cuda___cuda___T2239_16720+76], %f14;
+	mov.f32 	%f29, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2239_16720+80], %f29;
+	st.local.f32 	[__cuda___cuda___T2239_16720+84], %f20;
+	mov.f32 	%f30, 0f3ccccccd;    	// 0.025
+	st.local.f32 	[__cuda___cuda___T2239_16720+88], %f30;
+	mov.f32 	%f31, 0f3ccccccd;    	// 0.025
+	st.local.f32 	[__cuda___cuda___T2239_16720+100], %f31;
+	.loc	6	203	0
+	mov.f32 	%f32, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2239_16720+4], %f32;
+	mov.f32 	%f33, 0fc0000000;    	// -2
+	st.local.f32 	[__cuda___cuda___T2239_16720+8], %f33;
+	mov.f32 	%f34, 0fc2c80000;    	// -100
+	st.local.f32 	[__cuda___cuda___T2239_16720+12], %f34;
+	mov.f32 	%f35, 0ffcf0bdc2;    	// -1e+37
+	max.f32 	%f36, %f23, %f35;
+	st.local.f32 	[__cuda___cuda___T2239_16720+16], %f36;
+	mov.f32 	%f37, 0fbf800000;    	// -1
+	st.local.f32 	[__cuda___cuda___T2239_16720+20], %f37;
+	st.local.f32 	[__cuda___cuda___T2239_16720+24], %f16;
+	.loc	4	404	0
+	mov.f32 	%f38, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2239_16720+92], %f38;
+	st.local.f32 	[__cuda___cuda___T2239_16720+96], %f20;
+	mov.f32 	%f39, 0fc2c80ccd;    	// -100.025
+	st.local.f32 	[__cuda___cuda___T2239_16720+12], %f39;
+	st.local.f32 	[__cuda___cuda___T2239_16720+24], %f23;
+	.loc	6	256	0
+	mov.f32 	%f40, 0f00000000;    	// 0
+	st.local.f32 	[__cuda___cuda___T295_120824+0], %f40;
+	mov.u32 	%r3, __cuda___cuda___T2239_16720;
+	mov.u32 	%r4, __cuda___cuda___T295_120824+4;
+	mov.s32 	%r5, %r3;
+	mov.s32 	%r6, %r4;
+	mov.s32 	%r7, 26;
+$L_2_85506:
+ //<loop> Loop body line 256, nesting depth: 1, iterations: 26
+	ld.local.u32 	%r8, [%r5+0];
+	st.local.u32 	[%r6+0], %r8;
+	add.u32 	%r5, %r5, 4;
+	add.u32 	%r6, %r6, 4;
+	sub.s32 	%r7, %r7, 1;
+	mov.u32 	%r9, 0;
+	setp.gt.s32 	%p1, %r7, %r9;
+	@%p1 bra 	$L_2_85506;
+	.loc	4	585	0
+	mov.u32 	%r10, __cuda___cuda___T295_120824;
+	mov.u32 	%r11, __cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932;
+	mov.s32 	%r12, %r10;
+	mov.s32 	%r13, %r11;
+	mov.s32 	%r14, 27;
+$L_2_85762:
+ //<loop> Loop body line 585, nesting depth: 1, iterations: 27
+	ld.local.u32 	%r15, [%r12+0];
+	st.local.u32 	[%r13+0], %r15;
+	add.u32 	%r12, %r12, 4;
+	add.u32 	%r13, %r13, 4;
+	sub.s32 	%r14, %r14, 1;
+	mov.u32 	%r16, 0;
+	setp.gt.s32 	%p2, %r14, %r16;
+	@%p2 bra 	$L_2_85762;
+	.loc	6	129	0
+	mov.f32 	%f41, 0f3f800000;    	// 1
+	.loc	6	130	0
+	mov.f32 	%f42, 0f00000000;    	// 0
+	.loc	6	133	0
+	ld.global.f32 	%f43, [isect_t];
+	ld.global.f32 	%f44, [ray+12];
+	mul.f32 	%f45, %f44, %f43;
+	ld.global.v4.f32 	{%f46,%f47,%f48,_}, [ray+0];
+	add.f32 	%f49, %f46, %f45;
+	mov.f32 	%f50, %f49;
+	ld.global.v2.f32 	{%f51,%f52}, [ray+16];
+	mul.f32 	%f53, %f51, %f43;
+	add.f32 	%f54, %f47, %f53;
+	mov.f32 	%f55, %f54;
+	mul.f32 	%f56, %f52, %f43;
+	add.f32 	%f57, %f48, %f56;
+	mov.f32 	%f58, %f57;
+	mov.f32 	%f59, 0f00000000;    	// 0
+	.loc	6	135	0
+	mov.u32 	%r17, 0;
+	ld.local.f32 	%f60, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+64];
+	ld.local.f32 	%f61, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+76];
+	sub.f32 	%f62, %f61, %f60;
+	ld.local.u32 	%r18, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+32];
+	sub.u32 	%r19, %r18, 1;
+	ld.local.u32 	%r20, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+4];
+	sub.u32 	%r21, %r20, 1;
+	ld.global.v4.f32 	{%f63,%f64,%f65,_}, [normal+0];
+	mov.f32 	%f66, 0f3eb33333;    	// 0.35
+	mul.f32 	%f67, %f63, %f66;
+	mov.f32 	%f68, 0f3eb33333;    	// 0.35
+	mul.f32 	%f69, %f64, %f68;
+	mov.f32 	%f70, 0f3eb33333;    	// 0.35
+	mul.f32 	%f71, %f65, %f70;
+	cvt.rn.f32.u32 	%f72, %r19;
+	cvt.rn.f32.u32 	%f73, %r21;
+	ld.global.v4.f32 	{%f74,%f75,%f76,%f77}, [sphere+0];
+	ld.local.f32 	%f78, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+68];
+	ld.local.f32 	%f79, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+60];
+	ld.global.f32 	%f80, [floor_time];
+	ld.local.f32 	%f81, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+48];
+	ld.local.f32 	%f82, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+28];
+$Lt_2_62466:
+ //<loop> Loop body line 135, nesting depth: 1, iterations: 5
+	.loc	6	139	0
+	mov.f32 	%f83, %f58;
+	mov.f32 	%f84, %f83;
+	.loc	4	325	0
+	mov.f32 	%f85, 0f00000000;    	// 0
+	setp.gt.f32 	%p3, %f83, %f82;
+	@!%p3 bra 	$Lt_2_62978;
+	.loc	4	330	0
+	ld.local.f32 	%f86, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+100];
+	sub.f32 	%f87, %f82, %f86;
+	ld.local.f32 	%f88, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+96];
+	sub.f32 	%f89, %f87, %f88;
+	sub.f32 	%f84, %f83, %f89;
+	.loc	4	331	0
+	mov.f32 	%f85, %f73;
+	bra.uni 	$Lt_2_62722;
+$Lt_2_62978:
+	ld.local.f32 	%f90, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+16];
+	setp.le.f32 	%p4, %f90, %f83;
+	@!%p4 bra 	$Lt_2_63234;
+	.loc	4	337	0
+	ld.local.f32 	%f91, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+96];
+	sub.f32 	%f92, %f83, %f91;
+	.loc	4	120	0
+	ld.local.f32 	%f93, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+100];
+	div.approx.f32 	%f94, %f92, %f93;
+	cvt.rmi.f32.f32 	%f95, %f94;
+	mov.f32 	%f85, %f95;
+	.loc	4	121	0
+	mul.f32 	%f96, %f95, %f93;
+	sub.f32 	%f97, %f92, %f96;
+	add.f32 	%f98, %f97, %f93;
+	mov.f32 	%f99, 0f00000000;    	// 0
+	setp.lt.f32 	%p5, %f92, %f99;
+	selp.f32 	%f100, %f98, %f97, %p5;
+	.loc	4	343	0
+	add.f32 	%f84, %f91, %f100;
+$Lt_2_63234:
+$Lt_2_62722:
+	.loc	4	346	0
+	mov.f32 	%f101, %f50;
+	mov.f32 	%f102, %f101;
+	.loc	4	180	0
+	mov.f32 	%f103, 0f00000000;   	// 0
+	setp.gt.f32 	%p6, %f101, %f81;
+	@!%p6 bra 	$Lt_2_64002;
+	.loc	4	185	0
+	ld.local.f32 	%f104, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	sub.f32 	%f105, %f81, %f104;
+	ld.local.f32 	%f106, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+84];
+	sub.f32 	%f107, %f105, %f106;
+	sub.f32 	%f102, %f101, %f107;
+	.loc	4	186	0
+	mov.f32 	%f103, %f72;
+	bra.uni 	$Lt_2_63746;
+$Lt_2_64002:
+	ld.local.f32 	%f108, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+36];
+	setp.le.f32 	%p7, %f108, %f101;
+	@!%p7 bra 	$Lt_2_64258;
+	.loc	4	192	0
+	ld.local.f32 	%f109, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+84];
+	sub.f32 	%f110, %f101, %f109;
+	.loc	4	120	0
+	ld.local.f32 	%f111, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	div.approx.f32 	%f112, %f110, %f111;
+	cvt.rmi.f32.f32 	%f113, %f112;
+	mov.f32 	%f103, %f113;
+	.loc	4	121	0
+	mul.f32 	%f114, %f113, %f111;
+	sub.f32 	%f115, %f110, %f114;
+	add.f32 	%f116, %f115, %f111;
+	mov.f32 	%f117, 0f00000000;   	// 0
+	setp.lt.f32 	%p8, %f110, %f117;
+	selp.f32 	%f118, %f116, %f115, %p8;
+	.loc	4	198	0
+	add.f32 	%f102, %f118, %f109;
+$Lt_2_64258:
+$Lt_2_63746:
+	.loc	4	93	0
+	cvt.rzi.u32.f32 	%r22, %f103;
+	shr.u32 	%r23, %r22, 16;
+	xor.b32 	%r24, %r22, %r23;
+	xor.b32 	%r25, %r24, 61;
+	shl.b32 	%r26, %r25, 3;
+	add.u32 	%r27, %r25, %r26;
+	shr.u32 	%r28, %r27, 4;
+	xor.b32 	%r29, %r27, %r28;
+	mul.lo.u32 	%r30, %r29, 668265261;
+	shr.u32 	%r31, %r30, 15;
+	xor.b32 	%r32, %r30, %r31;
+	cvt.rzi.u32.f32 	%r33, %f85;
+	add.u32 	%r34, %r33, %r32;
+	shr.u32 	%r35, %r34, 16;
+	xor.b32 	%r36, %r34, %r35;
+	xor.b32 	%r37, %r36, 61;
+	shl.b32 	%r38, %r37, 3;
+	add.u32 	%r39, %r37, %r38;
+	shr.u32 	%r40, %r39, 4;
+	xor.b32 	%r41, %r39, %r40;
+	mul.lo.u32 	%r42, %r41, 668265261;
+	shr.u32 	%r43, %r42, 15;
+	xor.b32 	%r44, %r42, %r43;
+	.loc	5	349	0
+	cvt.rn.f32.u32 	%f119, %r44;
+	mov.f32 	%f120, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f121, %f119, %f120;
+	cvt.rn.f32.u32 	%f122, %r22;
+	add.f32 	%f123, %f122, %f80;
+	sin.approx.f32 	%f124, %f123;
+	mov.f32 	%f125, 0f3f800000;   	// 1
+	add.f32 	%f126, %f124, %f125;
+	mov.f32 	%f127, 0f3f000000;   	// 0.5
+	mul.f32 	%f128, %f126, %f127;
+	mul.f32 	%f129, %f121, %f128;
+	mad.f32 	%f130, %f129, %f62, %f60;
+	sub.f32 	%f131, %f130, %f60;
+	sub.f32 	%f132, %f102, %f79;
+	mov.f32 	%f133, 0f00000000;   	// 0
+	setp.lt.f32 	%p9, %f132, %f133;
+	@!%p9 bra 	$Lt_2_65026;
+	.loc	5	363	0
+	mov.f32 	%f134, %f132;
+	bra.uni 	$Lt_2_64770;
+$Lt_2_65026:
+	.loc	5	364	0
+	ld.local.f32 	%f135, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+72];
+	sub.f32 	%f136, %f135, %f79;
+	sub.f32 	%f137, %f132, %f136;
+	mov.f32 	%f138, 0f00000000;   	// 0
+	setp.gt.f32 	%p10, %f132, %f136;
+	selp.f32 	%f134, %f137, %f138, %p10;
+$Lt_2_64770:
+	.loc	5	366	0
+	mul.f32 	%f139, %f134, %f134;
+	sub.f32 	%f140, %f55, %f60;
+	mov.f32 	%f141, 0f00000000;   	// 0
+	setp.lt.f32 	%p11, %f140, %f141;
+	@!%p11 bra 	$Lt_2_65538;
+	.loc	5	370	0
+	mov.f32 	%f134, %f140;
+	bra.uni 	$Lt_2_65282;
+$Lt_2_65538:
+	.loc	5	371	0
+	sub.f32 	%f142, %f140, %f131;
+	mov.f32 	%f143, 0f00000000;   	// 0
+	setp.gt.f32 	%p12, %f140, %f131;
+	selp.f32 	%f134, %f142, %f143, %p12;
+$Lt_2_65282:
+	.loc	5	373	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	sub.f32 	%f144, %f84, %f78;
+	mov.f32 	%f145, 0f00000000;   	// 0
+	setp.lt.f32 	%p13, %f144, %f145;
+	@!%p13 bra 	$Lt_2_66050;
+	.loc	5	377	0
+	mov.f32 	%f134, %f144;
+	bra.uni 	$Lt_2_65794;
+$Lt_2_66050:
+	.loc	5	378	0
+	ld.local.f32 	%f146, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+80];
+	sub.f32 	%f147, %f146, %f78;
+	sub.f32 	%f148, %f144, %f147;
+	mov.f32 	%f149, 0f00000000;   	// 0
+	setp.gt.f32 	%p14, %f144, %f147;
+	selp.f32 	%f134, %f148, %f149, %p14;
+$Lt_2_65794:
+	.loc	5	380	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	.loc	4	201	0
+	sqrt.approx.f32 	%f150, %f139;
+	mov.f32 	%f151, 0f00000000;   	// 0
+	setp.gt.f32 	%p15, %f103, %f151;
+	@!%p15 bra 	$Lt_2_66306;
+	.loc	4	93	0
+	mov.f32 	%f152, 0fbf800000;   	// -1
+	add.f32 	%f153, %f103, %f152;
+	cvt.rzi.u32.f32 	%r45, %f153;
+	shr.u32 	%r46, %r45, 16;
+	xor.b32 	%r47, %r45, %r46;
+	xor.b32 	%r48, %r47, 61;
+	shl.b32 	%r49, %r48, 3;
+	add.u32 	%r50, %r48, %r49;
+	shr.u32 	%r51, %r50, 4;
+	xor.b32 	%r52, %r50, %r51;
+	mul.lo.u32 	%r53, %r52, 668265261;
+	shr.u32 	%r54, %r53, 15;
+	xor.b32 	%r32, %r53, %r54;
+	add.u32 	%r34, %r33, %r32;
+	shr.u32 	%r35, %r34, 16;
+	xor.b32 	%r36, %r34, %r35;
+	xor.b32 	%r37, %r36, 61;
+	shl.b32 	%r38, %r37, 3;
+	add.u32 	%r39, %r37, %r38;
+	shr.u32 	%r40, %r39, 4;
+	xor.b32 	%r41, %r39, %r40;
+	mul.lo.u32 	%r42, %r41, 668265261;
+	shr.u32 	%r55, %r42, 15;
+	xor.b32 	%r44, %r42, %r55;
+	.loc	4	207	0
+	cvt.rn.f32.u32 	%f154, %r44;
+	mov.f32 	%f155, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f156, %f154, %f155;
+	cvt.rn.f32.u32 	%f157, %r45;
+	add.f32 	%f158, %f157, %f80;
+	sin.approx.f32 	%f159, %f158;
+	mov.f32 	%f160, 0f3f800000;   	// 1
+	add.f32 	%f161, %f159, %f160;
+	mov.f32 	%f162, 0f3f000000;   	// 0.5
+	mul.f32 	%f163, %f161, %f162;
+	mul.f32 	%f164, %f156, %f163;
+	mad.f32 	%f165, %f164, %f62, %f60;
+	ld.local.f32 	%f111, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	sub.f32 	%f166, %f79, %f111;
+	sub.f32 	%f167, %f102, %f166;
+	mov.f32 	%f168, 0f00000000;   	// 0
+	setp.lt.f32 	%p16, %f167, %f168;
+	@!%p16 bra 	$Lt_2_67074;
+	.loc	5	363	0
+	mov.f32 	%f134, %f167;
+	bra.uni 	$Lt_2_66818;
+$Lt_2_67074:
+	.loc	5	364	0
+	ld.local.f32 	%f169, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+72];
+	sub.f32 	%f170, %f169, %f111;
+	sub.f32 	%f171, %f170, %f166;
+	sub.f32 	%f172, %f167, %f171;
+	mov.f32 	%f173, 0f00000000;   	// 0
+	setp.gt.f32 	%p17, %f167, %f171;
+	selp.f32 	%f134, %f172, %f173, %p17;
+$Lt_2_66818:
+	.loc	5	366	0
+	mul.f32 	%f139, %f134, %f134;
+	@!%p11 bra 	$Lt_2_67586;
+	.loc	5	370	0
+	mov.f32 	%f134, %f140;
+	bra.uni 	$Lt_2_67330;
+$Lt_2_67586:
+	.loc	5	371	0
+	sub.f32 	%f174, %f165, %f60;
+	sub.f32 	%f175, %f140, %f174;
+	mov.f32 	%f176, 0f00000000;   	// 0
+	setp.gt.f32 	%p18, %f140, %f174;
+	selp.f32 	%f134, %f175, %f176, %p18;
+$Lt_2_67330:
+	.loc	5	373	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	@!%p13 bra 	$Lt_2_68098;
+	.loc	5	377	0
+	mov.f32 	%f134, %f144;
+	bra.uni 	$Lt_2_67842;
+$Lt_2_68098:
+	.loc	5	378	0
+	ld.local.f32 	%f177, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+80];
+	sub.f32 	%f147, %f177, %f78;
+	sub.f32 	%f178, %f144, %f147;
+	mov.f32 	%f179, 0f00000000;   	// 0
+	setp.gt.f32 	%p19, %f144, %f147;
+	selp.f32 	%f134, %f178, %f179, %p19;
+$Lt_2_67842:
+	.loc	5	380	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	.loc	4	207	0
+	sqrt.approx.f32 	%f180, %f139;
+	min.f32 	%f150, %f150, %f180;
+$Lt_2_66306:
+	setp.gt.f32 	%p20, %f72, %f103;
+	@!%p20 bra 	$Lt_2_68354;
+	.loc	4	93	0
+	mov.f32 	%f181, 0f3f800000;   	// 1
+	add.f32 	%f182, %f103, %f181;
+	cvt.rzi.u32.f32 	%r56, %f182;
+	shr.u32 	%r57, %r56, 16;
+	xor.b32 	%r58, %r56, %r57;
+	xor.b32 	%r59, %r58, 61;
+	shl.b32 	%r60, %r59, 3;
+	add.u32 	%r61, %r59, %r60;
+	shr.u32 	%r62, %r61, 4;
+	xor.b32 	%r63, %r61, %r62;
+	mul.lo.u32 	%r64, %r63, 668265261;
+	shr.u32 	%r65, %r64, 15;
+	xor.b32 	%r32, %r64, %r65;
+	add.u32 	%r34, %r33, %r32;
+	shr.u32 	%r35, %r34, 16;
+	xor.b32 	%r36, %r34, %r35;
+	xor.b32 	%r37, %r36, 61;
+	shl.b32 	%r38, %r37, 3;
+	add.u32 	%r39, %r37, %r38;
+	shr.u32 	%r40, %r39, 4;
+	xor.b32 	%r41, %r39, %r40;
+	mul.lo.u32 	%r42, %r41, 668265261;
+	shr.u32 	%r66, %r42, 15;
+	xor.b32 	%r44, %r42, %r66;
+	.loc	4	210	0
+	cvt.rn.f32.u32 	%f183, %r44;
+	mov.f32 	%f184, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f185, %f183, %f184;
+	cvt.rn.f32.u32 	%f186, %r56;
+	add.f32 	%f187, %f186, %f80;
+	sin.approx.f32 	%f188, %f187;
+	mov.f32 	%f189, 0f3f800000;   	// 1
+	add.f32 	%f190, %f188, %f189;
+	mov.f32 	%f191, 0f3f000000;   	// 0.5
+	mul.f32 	%f192, %f190, %f191;
+	mul.f32 	%f193, %f185, %f192;
+	mad.f32 	%f194, %f193, %f62, %f60;
+	ld.local.f32 	%f111, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	add.f32 	%f195, %f79, %f111;
+	sub.f32 	%f196, %f102, %f195;
+	mov.f32 	%f197, 0f00000000;   	// 0
+	setp.lt.f32 	%p21, %f196, %f197;
+	@!%p21 bra 	$Lt_2_69122;
+	.loc	5	363	0
+	mov.f32 	%f134, %f196;
+	bra.uni 	$Lt_2_68866;
+$Lt_2_69122:
+	.loc	5	364	0
+	ld.local.f32 	%f198, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+72];
+	add.f32 	%f199, %f198, %f111;
+	sub.f32 	%f200, %f199, %f195;
+	sub.f32 	%f201, %f196, %f200;
+	mov.f32 	%f202, 0f00000000;   	// 0
+	setp.gt.f32 	%p22, %f196, %f200;
+	selp.f32 	%f134, %f201, %f202, %p22;
+$Lt_2_68866:
+	.loc	5	366	0
+	mul.f32 	%f139, %f134, %f134;
+	@!%p11 bra 	$Lt_2_69634;
+	.loc	5	370	0
+	mov.f32 	%f134, %f140;
+	bra.uni 	$Lt_2_69378;
+$Lt_2_69634:
+	.loc	5	371	0
+	sub.f32 	%f203, %f194, %f60;
+	sub.f32 	%f204, %f140, %f203;
+	mov.f32 	%f205, 0f00000000;   	// 0
+	setp.gt.f32 	%p23, %f140, %f203;
+	selp.f32 	%f134, %f204, %f205, %p23;
+$Lt_2_69378:
+	.loc	5	373	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	@!%p13 bra 	$Lt_2_70146;
+	.loc	5	377	0
+	mov.f32 	%f134, %f144;
+	bra.uni 	$Lt_2_69890;
+$Lt_2_70146:
+	.loc	5	378	0
+	ld.local.f32 	%f206, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+80];
+	sub.f32 	%f147, %f206, %f78;
+	sub.f32 	%f207, %f144, %f147;
+	mov.f32 	%f208, 0f00000000;   	// 0
+	setp.gt.f32 	%p24, %f144, %f147;
+	selp.f32 	%f134, %f207, %f208, %p24;
+$Lt_2_69890:
+	.loc	5	380	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	.loc	4	210	0
+	sqrt.approx.f32 	%f209, %f139;
+	min.f32 	%f150, %f150, %f209;
+$Lt_2_68354:
+	.loc	4	346	0
+	mov.f32 	%f210, %f150;
+	mov.f32 	%f211, 0f00000000;   	// 0
+	setp.gt.f32 	%p25, %f85, %f211;
+	@!%p25 bra 	$Lt_2_70402;
+	.loc	4	351	0
+	mov.f32 	%f212, %f101;
+	.loc	4	180	0
+	mov.f32 	%f103, 0f00000000;   	// 0
+	@!%p6 bra 	$Lt_2_71170;
+	.loc	4	185	0
+	ld.local.f32 	%f213, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	sub.f32 	%f214, %f81, %f213;
+	ld.local.f32 	%f215, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+84];
+	sub.f32 	%f216, %f214, %f215;
+	sub.f32 	%f212, %f101, %f216;
+	.loc	4	186	0
+	mov.f32 	%f103, %f72;
+	bra.uni 	$Lt_2_70914;
+$Lt_2_71170:
+	ld.local.f32 	%f217, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+36];
+	setp.le.f32 	%p26, %f217, %f101;
+	@!%p26 bra 	$Lt_2_71426;
+	.loc	4	192	0
+	ld.local.f32 	%f109, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+84];
+	sub.f32 	%f110, %f101, %f109;
+	.loc	4	120	0
+	ld.local.f32 	%f111, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	div.approx.f32 	%f112, %f110, %f111;
+	cvt.rmi.f32.f32 	%f113, %f112;
+	mov.f32 	%f103, %f113;
+	.loc	4	121	0
+	mul.f32 	%f218, %f113, %f111;
+	sub.f32 	%f115, %f110, %f218;
+	add.f32 	%f219, %f115, %f111;
+	mov.f32 	%f220, 0f00000000;   	// 0
+	setp.lt.f32 	%p27, %f110, %f220;
+	selp.f32 	%f118, %f219, %f115, %p27;
+	.loc	4	198	0
+	add.f32 	%f212, %f118, %f109;
+$Lt_2_71426:
+$Lt_2_70914:
+	.loc	4	93	0
+	cvt.rzi.u32.f32 	%r22, %f103;
+	shr.u32 	%r23, %r22, 16;
+	xor.b32 	%r24, %r22, %r23;
+	xor.b32 	%r25, %r24, 61;
+	shl.b32 	%r26, %r25, 3;
+	add.u32 	%r27, %r25, %r26;
+	shr.u32 	%r28, %r27, 4;
+	xor.b32 	%r29, %r27, %r28;
+	mul.lo.u32 	%r30, %r29, 668265261;
+	shr.u32 	%r67, %r30, 15;
+	xor.b32 	%r32, %r30, %r67;
+	.loc	4	92	0
+	mov.f32 	%f221, 0fbf800000;   	// -1
+	add.f32 	%f222, %f85, %f221;
+	cvt.rzi.u32.f32 	%r68, %f222;
+	add.u32 	%r69, %r68, %r32;
+	shr.u32 	%r70, %r69, 16;
+	xor.b32 	%r71, %r69, %r70;
+	xor.b32 	%r72, %r71, 61;
+	shl.b32 	%r73, %r72, 3;
+	add.u32 	%r74, %r72, %r73;
+	shr.u32 	%r75, %r74, 4;
+	xor.b32 	%r76, %r74, %r75;
+	mul.lo.u32 	%r44, %r76, 668265261;
+	.loc	5	349	0
+	shr.u32 	%r77, %r44, 15;
+	xor.b32 	%r78, %r44, %r77;
+	cvt.rn.f32.u32 	%f223, %r78;
+	mov.f32 	%f224, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f225, %f223, %f224;
+	cvt.rn.f32.u32 	%f226, %r22;
+	add.f32 	%f227, %f226, %f80;
+	sin.approx.f32 	%f228, %f227;
+	mov.f32 	%f229, 0f3f800000;   	// 1
+	add.f32 	%f230, %f228, %f229;
+	mov.f32 	%f231, 0f3f000000;   	// 0.5
+	mul.f32 	%f232, %f230, %f231;
+	mul.f32 	%f233, %f225, %f232;
+	mad.f32 	%f234, %f233, %f62, %f60;
+	sub.f32 	%f131, %f234, %f60;
+	sub.f32 	%f235, %f212, %f79;
+	mov.f32 	%f236, 0f00000000;   	// 0
+	setp.lt.f32 	%p28, %f235, %f236;
+	@!%p28 bra 	$Lt_2_72194;
+	.loc	5	363	0
+	mov.f32 	%f134, %f235;
+	bra.uni 	$Lt_2_71938;
+$Lt_2_72194:
+	.loc	5	364	0
+	ld.local.f32 	%f237, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+72];
+	sub.f32 	%f136, %f237, %f79;
+	sub.f32 	%f238, %f235, %f136;
+	mov.f32 	%f239, 0f00000000;   	// 0
+	setp.gt.f32 	%p29, %f235, %f136;
+	selp.f32 	%f134, %f238, %f239, %p29;
+$Lt_2_71938:
+	.loc	5	366	0
+	mul.f32 	%f139, %f134, %f134;
+	@!%p11 bra 	$Lt_2_72706;
+	.loc	5	370	0
+	mov.f32 	%f134, %f140;
+	bra.uni 	$Lt_2_72450;
+$Lt_2_72706:
+	.loc	5	371	0
+	sub.f32 	%f240, %f140, %f131;
+	mov.f32 	%f241, 0f00000000;   	// 0
+	setp.gt.f32 	%p30, %f140, %f131;
+	selp.f32 	%f134, %f240, %f241, %p30;
+$Lt_2_72450:
+	.loc	5	373	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	ld.local.f32 	%f93, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+100];
+	sub.f32 	%f242, %f78, %f93;
+	sub.f32 	%f243, %f84, %f242;
+	mov.f32 	%f244, 0f00000000;   	// 0
+	setp.lt.f32 	%p31, %f243, %f244;
+	@!%p31 bra 	$Lt_2_73218;
+	.loc	5	377	0
+	mov.f32 	%f134, %f243;
+	bra.uni 	$Lt_2_72962;
+$Lt_2_73218:
+	.loc	5	378	0
+	ld.local.f32 	%f245, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+80];
+	sub.f32 	%f246, %f245, %f93;
+	sub.f32 	%f247, %f246, %f242;
+	sub.f32 	%f248, %f243, %f247;
+	mov.f32 	%f249, 0f00000000;   	// 0
+	setp.gt.f32 	%p32, %f243, %f247;
+	selp.f32 	%f134, %f248, %f249, %p32;
+$Lt_2_72962:
+	.loc	5	380	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	.loc	4	201	0
+	sqrt.approx.f32 	%f150, %f139;
+	mov.f32 	%f250, 0f00000000;   	// 0
+	setp.gt.f32 	%p33, %f103, %f250;
+	@!%p33 bra 	$Lt_2_73474;
+	.loc	4	93	0
+	mov.f32 	%f251, 0fbf800000;   	// -1
+	add.f32 	%f153, %f103, %f251;
+	cvt.rzi.u32.f32 	%r45, %f153;
+	shr.u32 	%r46, %r45, 16;
+	xor.b32 	%r47, %r45, %r46;
+	xor.b32 	%r48, %r47, 61;
+	shl.b32 	%r49, %r48, 3;
+	add.u32 	%r50, %r48, %r49;
+	shr.u32 	%r51, %r50, 4;
+	xor.b32 	%r52, %r50, %r51;
+	mul.lo.u32 	%r53, %r52, 668265261;
+	shr.u32 	%r79, %r53, 15;
+	xor.b32 	%r32, %r53, %r79;
+	.loc	4	92	0
+	add.u32 	%r69, %r68, %r32;
+	shr.u32 	%r70, %r69, 16;
+	xor.b32 	%r71, %r69, %r70;
+	xor.b32 	%r72, %r71, 61;
+	shl.b32 	%r73, %r72, 3;
+	add.u32 	%r74, %r72, %r73;
+	shr.u32 	%r80, %r74, 4;
+	xor.b32 	%r81, %r74, %r80;
+	mul.lo.u32 	%r44, %r81, 668265261;
+	.loc	4	207	0
+	shr.u32 	%r82, %r44, 15;
+	xor.b32 	%r83, %r44, %r82;
+	cvt.rn.f32.u32 	%f252, %r83;
+	mov.f32 	%f253, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f254, %f252, %f253;
+	cvt.rn.f32.u32 	%f255, %r45;
+	add.f32 	%f256, %f255, %f80;
+	sin.approx.f32 	%f257, %f256;
+	mov.f32 	%f258, 0f3f800000;   	// 1
+	add.f32 	%f259, %f257, %f258;
+	mov.f32 	%f260, 0f3f000000;   	// 0.5
+	mul.f32 	%f261, %f259, %f260;
+	mul.f32 	%f262, %f254, %f261;
+	mad.f32 	%f165, %f262, %f62, %f60;
+	ld.local.f32 	%f111, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	sub.f32 	%f166, %f79, %f111;
+	sub.f32 	%f263, %f212, %f166;
+	mov.f32 	%f264, 0f00000000;   	// 0
+	setp.lt.f32 	%p34, %f263, %f264;
+	@!%p34 bra 	$Lt_2_74242;
+	.loc	5	363	0
+	mov.f32 	%f134, %f263;
+	bra.uni 	$Lt_2_73986;
+$Lt_2_74242:
+	.loc	5	364	0
+	ld.local.f32 	%f265, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+72];
+	sub.f32 	%f170, %f265, %f111;
+	sub.f32 	%f171, %f170, %f166;
+	sub.f32 	%f266, %f263, %f171;
+	mov.f32 	%f267, 0f00000000;   	// 0
+	setp.gt.f32 	%p35, %f263, %f171;
+	selp.f32 	%f134, %f266, %f267, %p35;
+$Lt_2_73986:
+	.loc	5	366	0
+	mul.f32 	%f139, %f134, %f134;
+	@!%p11 bra 	$Lt_2_74754;
+	.loc	5	370	0
+	mov.f32 	%f134, %f140;
+	bra.uni 	$Lt_2_74498;
+$Lt_2_74754:
+	.loc	5	371	0
+	sub.f32 	%f174, %f165, %f60;
+	sub.f32 	%f268, %f140, %f174;
+	mov.f32 	%f269, 0f00000000;   	// 0
+	setp.gt.f32 	%p36, %f140, %f174;
+	selp.f32 	%f134, %f268, %f269, %p36;
+$Lt_2_74498:
+	.loc	5	373	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	@!%p31 bra 	$Lt_2_75266;
+	.loc	5	377	0
+	mov.f32 	%f134, %f243;
+	bra.uni 	$Lt_2_75010;
+$Lt_2_75266:
+	.loc	5	378	0
+	ld.local.f32 	%f270, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+80];
+	sub.f32 	%f246, %f270, %f93;
+	sub.f32 	%f247, %f246, %f242;
+	sub.f32 	%f271, %f243, %f247;
+	mov.f32 	%f272, 0f00000000;   	// 0
+	setp.gt.f32 	%p37, %f243, %f247;
+	selp.f32 	%f134, %f271, %f272, %p37;
+$Lt_2_75010:
+	.loc	5	380	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	.loc	4	207	0
+	sqrt.approx.f32 	%f273, %f139;
+	min.f32 	%f150, %f150, %f273;
+$Lt_2_73474:
+	setp.gt.f32 	%p38, %f72, %f103;
+	@!%p38 bra 	$Lt_2_75522;
+	.loc	4	93	0
+	mov.f32 	%f274, 0f3f800000;   	// 1
+	add.f32 	%f182, %f103, %f274;
+	cvt.rzi.u32.f32 	%r56, %f182;
+	shr.u32 	%r57, %r56, 16;
+	xor.b32 	%r58, %r56, %r57;
+	xor.b32 	%r59, %r58, 61;
+	shl.b32 	%r60, %r59, 3;
+	add.u32 	%r61, %r59, %r60;
+	shr.u32 	%r62, %r61, 4;
+	xor.b32 	%r63, %r61, %r62;
+	mul.lo.u32 	%r64, %r63, 668265261;
+	shr.u32 	%r84, %r64, 15;
+	xor.b32 	%r32, %r64, %r84;
+	.loc	4	92	0
+	add.u32 	%r69, %r68, %r32;
+	shr.u32 	%r70, %r69, 16;
+	xor.b32 	%r71, %r69, %r70;
+	xor.b32 	%r72, %r71, 61;
+	shl.b32 	%r73, %r72, 3;
+	add.u32 	%r74, %r72, %r73;
+	shr.u32 	%r85, %r74, 4;
+	xor.b32 	%r86, %r74, %r85;
+	mul.lo.u32 	%r44, %r86, 668265261;
+	.loc	4	210	0
+	shr.u32 	%r87, %r44, 15;
+	xor.b32 	%r88, %r44, %r87;
+	cvt.rn.f32.u32 	%f275, %r88;
+	mov.f32 	%f276, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f277, %f275, %f276;
+	cvt.rn.f32.u32 	%f278, %r56;
+	add.f32 	%f279, %f278, %f80;
+	sin.approx.f32 	%f280, %f279;
+	mov.f32 	%f281, 0f3f800000;   	// 1
+	add.f32 	%f282, %f280, %f281;
+	mov.f32 	%f283, 0f3f000000;   	// 0.5
+	mul.f32 	%f284, %f282, %f283;
+	mul.f32 	%f285, %f277, %f284;
+	mad.f32 	%f194, %f285, %f62, %f60;
+	ld.local.f32 	%f111, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	add.f32 	%f195, %f79, %f111;
+	sub.f32 	%f286, %f212, %f195;
+	mov.f32 	%f287, 0f00000000;   	// 0
+	setp.lt.f32 	%p39, %f286, %f287;
+	@!%p39 bra 	$Lt_2_76290;
+	.loc	5	363	0
+	mov.f32 	%f134, %f286;
+	bra.uni 	$Lt_2_76034;
+$Lt_2_76290:
+	.loc	5	364	0
+	ld.local.f32 	%f288, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+72];
+	add.f32 	%f199, %f288, %f111;
+	sub.f32 	%f200, %f199, %f195;
+	sub.f32 	%f289, %f286, %f200;
+	mov.f32 	%f290, 0f00000000;   	// 0
+	setp.gt.f32 	%p40, %f286, %f200;
+	selp.f32 	%f134, %f289, %f290, %p40;
+$Lt_2_76034:
+	.loc	5	366	0
+	mul.f32 	%f139, %f134, %f134;
+	@!%p11 bra 	$Lt_2_76802;
+	.loc	5	370	0
+	mov.f32 	%f134, %f140;
+	bra.uni 	$Lt_2_76546;
+$Lt_2_76802:
+	.loc	5	371	0
+	sub.f32 	%f203, %f194, %f60;
+	sub.f32 	%f291, %f140, %f203;
+	mov.f32 	%f292, 0f00000000;   	// 0
+	setp.gt.f32 	%p41, %f140, %f203;
+	selp.f32 	%f134, %f291, %f292, %p41;
+$Lt_2_76546:
+	.loc	5	373	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	@!%p31 bra 	$Lt_2_77314;
+	.loc	5	377	0
+	mov.f32 	%f134, %f243;
+	bra.uni 	$Lt_2_77058;
+$Lt_2_77314:
+	.loc	5	378	0
+	ld.local.f32 	%f293, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+80];
+	sub.f32 	%f246, %f293, %f93;
+	sub.f32 	%f247, %f246, %f242;
+	sub.f32 	%f294, %f243, %f247;
+	mov.f32 	%f295, 0f00000000;   	// 0
+	setp.gt.f32 	%p42, %f243, %f247;
+	selp.f32 	%f134, %f294, %f295, %p42;
+$Lt_2_77058:
+	.loc	5	380	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	.loc	4	210	0
+	sqrt.approx.f32 	%f296, %f139;
+	min.f32 	%f150, %f150, %f296;
+$Lt_2_75522:
+	.loc	4	351	0
+	min.f32 	%f210, %f210, %f150;
+$Lt_2_70402:
+	setp.gt.f32 	%p43, %f73, %f85;
+	@!%p43 bra 	$Lt_2_77570;
+	.loc	4	355	0
+	mov.f32 	%f297, %f101;
+	.loc	4	180	0
+	mov.f32 	%f103, 0f00000000;   	// 0
+	@!%p6 bra 	$Lt_2_78338;
+	.loc	4	185	0
+	ld.local.f32 	%f298, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	sub.f32 	%f299, %f81, %f298;
+	ld.local.f32 	%f300, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+84];
+	sub.f32 	%f301, %f299, %f300;
+	sub.f32 	%f297, %f101, %f301;
+	.loc	4	186	0
+	mov.f32 	%f103, %f72;
+	bra.uni 	$Lt_2_78082;
+$Lt_2_78338:
+	ld.local.f32 	%f302, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+36];
+	setp.le.f32 	%p44, %f302, %f101;
+	@!%p44 bra 	$Lt_2_78594;
+	.loc	4	192	0
+	ld.local.f32 	%f109, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+84];
+	sub.f32 	%f110, %f101, %f109;
+	.loc	4	120	0
+	ld.local.f32 	%f111, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	div.approx.f32 	%f112, %f110, %f111;
+	cvt.rmi.f32.f32 	%f113, %f112;
+	mov.f32 	%f103, %f113;
+	.loc	4	121	0
+	mul.f32 	%f303, %f113, %f111;
+	sub.f32 	%f115, %f110, %f303;
+	add.f32 	%f304, %f115, %f111;
+	mov.f32 	%f305, 0f00000000;   	// 0
+	setp.lt.f32 	%p45, %f110, %f305;
+	selp.f32 	%f118, %f304, %f115, %p45;
+	.loc	4	198	0
+	add.f32 	%f297, %f118, %f109;
+$Lt_2_78594:
+$Lt_2_78082:
+	.loc	4	93	0
+	cvt.rzi.u32.f32 	%r22, %f103;
+	shr.u32 	%r23, %r22, 16;
+	xor.b32 	%r24, %r22, %r23;
+	xor.b32 	%r25, %r24, 61;
+	shl.b32 	%r26, %r25, 3;
+	add.u32 	%r27, %r25, %r26;
+	shr.u32 	%r28, %r27, 4;
+	xor.b32 	%r29, %r27, %r28;
+	mul.lo.u32 	%r30, %r29, 668265261;
+	shr.u32 	%r89, %r30, 15;
+	xor.b32 	%r32, %r30, %r89;
+	.loc	4	92	0
+	mov.f32 	%f306, 0f3f800000;   	// 1
+	add.f32 	%f307, %f85, %f306;
+	cvt.rzi.u32.f32 	%r90, %f307;
+	add.u32 	%r91, %r90, %r32;
+	shr.u32 	%r92, %r91, 16;
+	xor.b32 	%r93, %r91, %r92;
+	xor.b32 	%r94, %r93, 61;
+	shl.b32 	%r95, %r94, 3;
+	add.u32 	%r96, %r94, %r95;
+	shr.u32 	%r97, %r96, 4;
+	xor.b32 	%r98, %r96, %r97;
+	mul.lo.u32 	%r44, %r98, 668265261;
+	.loc	5	349	0
+	shr.u32 	%r99, %r44, 15;
+	xor.b32 	%r100, %r44, %r99;
+	cvt.rn.f32.u32 	%f308, %r100;
+	mov.f32 	%f309, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f310, %f308, %f309;
+	cvt.rn.f32.u32 	%f311, %r22;
+	add.f32 	%f312, %f311, %f80;
+	sin.approx.f32 	%f313, %f312;
+	mov.f32 	%f314, 0f3f800000;   	// 1
+	add.f32 	%f315, %f313, %f314;
+	mov.f32 	%f316, 0f3f000000;   	// 0.5
+	mul.f32 	%f317, %f315, %f316;
+	mul.f32 	%f318, %f310, %f317;
+	mad.f32 	%f319, %f318, %f62, %f60;
+	sub.f32 	%f131, %f319, %f60;
+	sub.f32 	%f320, %f297, %f79;
+	mov.f32 	%f321, 0f00000000;   	// 0
+	setp.lt.f32 	%p46, %f320, %f321;
+	@!%p46 bra 	$Lt_2_79362;
+	.loc	5	363	0
+	mov.f32 	%f134, %f320;
+	bra.uni 	$Lt_2_79106;
+$Lt_2_79362:
+	.loc	5	364	0
+	ld.local.f32 	%f322, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+72];
+	sub.f32 	%f136, %f322, %f79;
+	sub.f32 	%f323, %f320, %f136;
+	mov.f32 	%f324, 0f00000000;   	// 0
+	setp.gt.f32 	%p47, %f320, %f136;
+	selp.f32 	%f134, %f323, %f324, %p47;
+$Lt_2_79106:
+	.loc	5	366	0
+	mul.f32 	%f139, %f134, %f134;
+	@!%p11 bra 	$Lt_2_79874;
+	.loc	5	370	0
+	mov.f32 	%f134, %f140;
+	bra.uni 	$Lt_2_79618;
+$Lt_2_79874:
+	.loc	5	371	0
+	sub.f32 	%f325, %f140, %f131;
+	mov.f32 	%f326, 0f00000000;   	// 0
+	setp.gt.f32 	%p48, %f140, %f131;
+	selp.f32 	%f134, %f325, %f326, %p48;
+$Lt_2_79618:
+	.loc	5	373	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	ld.local.f32 	%f93, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+100];
+	add.f32 	%f327, %f78, %f93;
+	sub.f32 	%f328, %f84, %f327;
+	mov.f32 	%f329, 0f00000000;   	// 0
+	setp.lt.f32 	%p49, %f328, %f329;
+	@!%p49 bra 	$Lt_2_80386;
+	.loc	5	377	0
+	mov.f32 	%f134, %f328;
+	bra.uni 	$Lt_2_80130;
+$Lt_2_80386:
+	.loc	5	378	0
+	ld.local.f32 	%f330, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+80];
+	add.f32 	%f331, %f330, %f93;
+	sub.f32 	%f332, %f331, %f327;
+	sub.f32 	%f333, %f328, %f332;
+	mov.f32 	%f334, 0f00000000;   	// 0
+	setp.gt.f32 	%p50, %f328, %f332;
+	selp.f32 	%f134, %f333, %f334, %p50;
+$Lt_2_80130:
+	.loc	5	380	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	.loc	4	201	0
+	sqrt.approx.f32 	%f150, %f139;
+	mov.f32 	%f335, 0f00000000;   	// 0
+	setp.gt.f32 	%p51, %f103, %f335;
+	@!%p51 bra 	$Lt_2_80642;
+	.loc	4	93	0
+	mov.f32 	%f336, 0fbf800000;   	// -1
+	add.f32 	%f153, %f103, %f336;
+	cvt.rzi.u32.f32 	%r45, %f153;
+	shr.u32 	%r46, %r45, 16;
+	xor.b32 	%r47, %r45, %r46;
+	xor.b32 	%r48, %r47, 61;
+	shl.b32 	%r49, %r48, 3;
+	add.u32 	%r50, %r48, %r49;
+	shr.u32 	%r51, %r50, 4;
+	xor.b32 	%r52, %r50, %r51;
+	mul.lo.u32 	%r53, %r52, 668265261;
+	shr.u32 	%r101, %r53, 15;
+	xor.b32 	%r32, %r53, %r101;
+	.loc	4	92	0
+	add.u32 	%r91, %r90, %r32;
+	shr.u32 	%r92, %r91, 16;
+	xor.b32 	%r93, %r91, %r92;
+	xor.b32 	%r94, %r93, 61;
+	shl.b32 	%r95, %r94, 3;
+	add.u32 	%r96, %r94, %r95;
+	shr.u32 	%r102, %r96, 4;
+	xor.b32 	%r103, %r96, %r102;
+	mul.lo.u32 	%r44, %r103, 668265261;
+	.loc	4	207	0
+	shr.u32 	%r104, %r44, 15;
+	xor.b32 	%r105, %r44, %r104;
+	cvt.rn.f32.u32 	%f337, %r105;
+	mov.f32 	%f338, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f339, %f337, %f338;
+	cvt.rn.f32.u32 	%f340, %r45;
+	add.f32 	%f341, %f340, %f80;
+	sin.approx.f32 	%f342, %f341;
+	mov.f32 	%f343, 0f3f800000;   	// 1
+	add.f32 	%f344, %f342, %f343;
+	mov.f32 	%f345, 0f3f000000;   	// 0.5
+	mul.f32 	%f346, %f344, %f345;
+	mul.f32 	%f347, %f339, %f346;
+	mad.f32 	%f165, %f347, %f62, %f60;
+	ld.local.f32 	%f111, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	sub.f32 	%f166, %f79, %f111;
+	sub.f32 	%f348, %f297, %f166;
+	mov.f32 	%f349, 0f00000000;   	// 0
+	setp.lt.f32 	%p52, %f348, %f349;
+	@!%p52 bra 	$Lt_2_81410;
+	.loc	5	363	0
+	mov.f32 	%f134, %f348;
+	bra.uni 	$Lt_2_81154;
+$Lt_2_81410:
+	.loc	5	364	0
+	ld.local.f32 	%f350, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+72];
+	sub.f32 	%f170, %f350, %f111;
+	sub.f32 	%f171, %f170, %f166;
+	sub.f32 	%f351, %f348, %f171;
+	mov.f32 	%f352, 0f00000000;   	// 0
+	setp.gt.f32 	%p53, %f348, %f171;
+	selp.f32 	%f134, %f351, %f352, %p53;
+$Lt_2_81154:
+	.loc	5	366	0
+	mul.f32 	%f139, %f134, %f134;
+	@!%p11 bra 	$Lt_2_81922;
+	.loc	5	370	0
+	mov.f32 	%f134, %f140;
+	bra.uni 	$Lt_2_81666;
+$Lt_2_81922:
+	.loc	5	371	0
+	sub.f32 	%f174, %f165, %f60;
+	sub.f32 	%f353, %f140, %f174;
+	mov.f32 	%f354, 0f00000000;   	// 0
+	setp.gt.f32 	%p54, %f140, %f174;
+	selp.f32 	%f134, %f353, %f354, %p54;
+$Lt_2_81666:
+	.loc	5	373	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	@!%p49 bra 	$Lt_2_82434;
+	.loc	5	377	0
+	mov.f32 	%f134, %f328;
+	bra.uni 	$Lt_2_82178;
+$Lt_2_82434:
+	.loc	5	378	0
+	ld.local.f32 	%f355, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+80];
+	add.f32 	%f331, %f355, %f93;
+	sub.f32 	%f332, %f331, %f327;
+	sub.f32 	%f356, %f328, %f332;
+	mov.f32 	%f357, 0f00000000;   	// 0
+	setp.gt.f32 	%p55, %f328, %f332;
+	selp.f32 	%f134, %f356, %f357, %p55;
+$Lt_2_82178:
+	.loc	5	380	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	.loc	4	207	0
+	sqrt.approx.f32 	%f358, %f139;
+	min.f32 	%f150, %f150, %f358;
+$Lt_2_80642:
+	setp.gt.f32 	%p56, %f72, %f103;
+	@!%p56 bra 	$Lt_2_82690;
+	.loc	4	93	0
+	mov.f32 	%f359, 0f3f800000;   	// 1
+	add.f32 	%f182, %f103, %f359;
+	cvt.rzi.u32.f32 	%r56, %f182;
+	shr.u32 	%r57, %r56, 16;
+	xor.b32 	%r58, %r56, %r57;
+	xor.b32 	%r59, %r58, 61;
+	shl.b32 	%r60, %r59, 3;
+	add.u32 	%r61, %r59, %r60;
+	shr.u32 	%r62, %r61, 4;
+	xor.b32 	%r63, %r61, %r62;
+	mul.lo.u32 	%r64, %r63, 668265261;
+	shr.u32 	%r106, %r64, 15;
+	xor.b32 	%r32, %r64, %r106;
+	.loc	4	92	0
+	add.u32 	%r91, %r90, %r32;
+	shr.u32 	%r92, %r91, 16;
+	xor.b32 	%r93, %r91, %r92;
+	xor.b32 	%r94, %r93, 61;
+	shl.b32 	%r95, %r94, 3;
+	add.u32 	%r96, %r94, %r95;
+	shr.u32 	%r107, %r96, 4;
+	xor.b32 	%r108, %r96, %r107;
+	mul.lo.u32 	%r44, %r108, 668265261;
+	.loc	4	210	0
+	shr.u32 	%r109, %r44, 15;
+	xor.b32 	%r110, %r44, %r109;
+	cvt.rn.f32.u32 	%f360, %r110;
+	mov.f32 	%f361, 0f4f800000;   	// 4.29497e+09
+	div.approx.f32 	%f362, %f360, %f361;
+	cvt.rn.f32.u32 	%f363, %r56;
+	add.f32 	%f364, %f363, %f80;
+	sin.approx.f32 	%f365, %f364;
+	mov.f32 	%f366, 0f3f800000;   	// 1
+	add.f32 	%f367, %f365, %f366;
+	mov.f32 	%f368, 0f3f000000;   	// 0.5
+	mul.f32 	%f369, %f367, %f368;
+	mul.f32 	%f370, %f362, %f369;
+	mad.f32 	%f194, %f370, %f62, %f60;
+	ld.local.f32 	%f111, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+88];
+	add.f32 	%f195, %f79, %f111;
+	sub.f32 	%f371, %f297, %f195;
+	mov.f32 	%f372, 0f00000000;   	// 0
+	setp.lt.f32 	%p57, %f371, %f372;
+	@!%p57 bra 	$Lt_2_83458;
+	.loc	5	363	0
+	mov.f32 	%f134, %f371;
+	bra.uni 	$Lt_2_83202;
+$Lt_2_83458:
+	.loc	5	364	0
+	ld.local.f32 	%f373, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+72];
+	add.f32 	%f199, %f373, %f111;
+	sub.f32 	%f200, %f199, %f195;
+	sub.f32 	%f374, %f371, %f200;
+	mov.f32 	%f375, 0f00000000;   	// 0
+	setp.gt.f32 	%p58, %f371, %f200;
+	selp.f32 	%f134, %f374, %f375, %p58;
+$Lt_2_83202:
+	.loc	5	366	0
+	mul.f32 	%f139, %f134, %f134;
+	@!%p11 bra 	$Lt_2_83970;
+	.loc	5	370	0
+	mov.f32 	%f134, %f140;
+	bra.uni 	$Lt_2_83714;
+$Lt_2_83970:
+	.loc	5	371	0
+	sub.f32 	%f203, %f194, %f60;
+	sub.f32 	%f376, %f140, %f203;
+	mov.f32 	%f377, 0f00000000;   	// 0
+	setp.gt.f32 	%p59, %f140, %f203;
+	selp.f32 	%f134, %f376, %f377, %p59;
+$Lt_2_83714:
+	.loc	5	373	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	@!%p49 bra 	$Lt_2_84482;
+	.loc	5	377	0
+	mov.f32 	%f134, %f328;
+	bra.uni 	$Lt_2_84226;
+$Lt_2_84482:
+	.loc	5	378	0
+	ld.local.f32 	%f378, [__cuda___cuda___cudaparm__Z23magic_ambient_occlusionILj5E19DistanceToPrimitiveI14PrimitiveUnionI6Sphere16PrimitiveRepeatZI16PrimitiveRepeatXIN5optix4AabbELb1EELb1EEEEEfRK6float3SD_ffT0__distance_228932+80];
+	add.f32 	%f331, %f378, %f93;
+	sub.f32 	%f332, %f331, %f327;
+	sub.f32 	%f379, %f328, %f332;
+	mov.f32 	%f380, 0f00000000;   	// 0
+	setp.gt.f32 	%p60, %f328, %f332;
+	selp.f32 	%f134, %f379, %f380, %p60;
+$Lt_2_84226:
+	.loc	5	380	0
+	mad.f32 	%f139, %f134, %f134, %f139;
+	.loc	4	210	0
+	sqrt.approx.f32 	%f381, %f139;
+	min.f32 	%f150, %f150, %f381;
+$Lt_2_82690:
+	.loc	4	355	0
+	min.f32 	%f210, %f210, %f150;
+$Lt_2_77570:
+	.loc	6	139	0
+	sub.f32 	%f382, %f55, %f75;
+	sub.f32 	%f383, %f101, %f74;
+	sub.f32 	%f384, %f83, %f76;
+	mul.f32 	%f385, %f382, %f382;
+	mad.f32 	%f386, %f383, %f383, %f385;
+	mad.f32 	%f387, %f384, %f384, %f386;
+	sqrt.approx.f32 	%f388, %f387;
+	sub.f32 	%f389, %f388, %f77;
+	mov.f32 	%f390, 0f00000000;   	// 0
+	max.f32 	%f391, %f389, %f390;
+	min.f32 	%f392, %f210, %f391;
+	sub.f32 	%f393, %f59, %f392;
+	mad.f32 	%f42, %f41, %f393, %f42;
+	.loc	6	135	0
+	mov.f32 	%f394, 0f3f000000;   	// 0.5
+	mul.f32 	%f41, %f41, %f394;
+	add.f32 	%f50, %f67, %f101;
+	add.f32 	%f55, %f69, %f55;
+	add.f32 	%f58, %f71, %f83;
+	mov.f32 	%f395, 0f3eb33333;   	// 0.35
+	add.f32 	%f59, %f59, %f395;
+	add.u32 	%r17, %r17, 1;
+	mov.u32 	%r111, 5;
+	setp.ne.u32 	%p61, %r17, %r111;
+	@%p61 bra 	$Lt_2_62466;
+	.loc	4	586	0
+	mov.f32 	%f396, 0f3f800000;   	// 1
+	sub.f32 	%f397, %f396, %f42;
+	mov.f32 	%f398, 0f3f800000;   	// 1
+	min.f32 	%f399, %f397, %f398;
+	mov.f32 	%f400, 0f00000000;   	// 0
+	max.f32 	%f401, %f399, %f400;
+	st.global.v2.f32 	[prd_radiance+0], {%f401,%f401};
+	st.global.f32 	[prd_radiance+8], %f401;
+	ld.global.u32 	%r112, [shadowsActive];
+	mov.u32 	%r113, 0;
+	setp.eq.u32 	%p62, %r112, %r113;
+	@%p62 bra 	$Lt_2_84994;
+	.loc	4	590	0
+	mov.f32 	%f402, 0f3f800000;   	// 1
+	st.local.f32 	[__cuda___cuda_local_var_19876_23_non_const_prd_shd_3361040+0], %f402;
+	mov.f32 	%f403, 0f3f800000;   	// 1
+	st.local.f32 	[__cuda___cuda_local_var_19876_23_non_const_prd_shd_3361040+4], %f403;
+	mov.f32 	%f404, 0f3f800000;   	// 1
+	st.local.f32 	[__cuda___cuda_local_var_19876_23_non_const_prd_shd_3361040+8], %f404;
+	.loc	4	592	0
+	ld.global.u32 	%r114, [top_shadower+0];
+	mov.f32 	%f405, %f49;
+	mov.f32 	%f406, %f54;
+	mov.f32 	%f407, %f57;
+	.loc	21	97	0
+	mov.u32 	%ra1, __cuda___cuda_local_var_19876_23_non_const_prd_shd_3361040;
+	call.uni _ZN5optix16rt_undefined_useEi, (%ra1);
+	.loc	21	99	0
+	mov.u32 	%r115, %r114;
+	mov.f32 	%f408, %f405;
+	mov.f32 	%f409, %f406;
+	mov.f32 	%f410, %f407;
+	mov.f32 	%f411, 0f00000000;   	// 0
+	mov.f32 	%f412, %f411;
+	mov.f32 	%f413, 0f3f800000;   	// 1
+	mov.f32 	%f414, %f413;
+	mov.f32 	%f415, 0f00000000;   	// 0
+	mov.f32 	%f416, %f415;
+	mov.u32 	%r116, 1;
+	mov.u32 	%r117, %r116;
+	mov.f32 	%f417, 0f3e4ccccd;   	// 0.2
+	mov.f32 	%f418, %f417;
+	mov.f32 	%f419, 0f6c4ecb8f;   	// 1e+27
+	mov.f32 	%f420, %f419;
+	mov.u32 	%r118, __cuda___cuda_local_var_19876_23_non_const_prd_shd_3361040;
+	mov.u32 	%r119, %r118;
+	mov.u32 	%r120, 12;
+	mov.u32 	%r121, %r120;
+	call _rt_trace, (%r115, %f408, %f409, %f410, %f412, %f414, %f416, %r117, %f418, %f420, %r119, %r121);
+	ld.global.v4.f32 	{%f421,%f422,%f423,_}, [prd_radiance+0];
+	.loc	4	593	0
+	mov.f32 	%f424, 0f3f800000;   	// 1
+	mov.f32 	%f425, 0f3f800000;   	// 1
+	ld.local.f32 	%f426, [__cuda___cuda_local_var_19876_23_non_const_prd_shd_3361040+0];
+	sub.f32 	%f427, %f425, %f426;
+	mov.f32 	%f428, 0f3e99999a;   	// 0.3
+	mul.f32 	%f429, %f427, %f428;
+	sub.f32 	%f430, %f424, %f429;
+	mul.f32 	%f431, %f421, %f430;
+	mov.f32 	%f432, 0f3f800000;   	// 1
+	mov.f32 	%f433, 0f3f800000;   	// 1
+	ld.local.f32 	%f434, [__cuda___cuda_local_var_19876_23_non_const_prd_shd_3361040+4];
+	sub.f32 	%f435, %f433, %f434;
+	mov.f32 	%f436, 0f3e99999a;   	// 0.3
+	mul.f32 	%f437, %f435, %f436;
+	sub.f32 	%f438, %f432, %f437;
+	mul.f32 	%f439, %f422, %f438;
+	st.global.v2.f32 	[prd_radiance+0], {%f431,%f439};
+	mov.f32 	%f440, 0f3f800000;   	// 1
+	mov.f32 	%f441, 0f3f800000;   	// 1
+	ld.local.f32 	%f442, [__cuda___cuda_local_var_19876_23_non_const_prd_shd_3361040+8];
+	sub.f32 	%f443, %f441, %f442;
+	mov.f32 	%f444, 0f3e99999a;   	// 0.3
+	mul.f32 	%f445, %f443, %f444;
+	sub.f32 	%f446, %f440, %f445;
+	mul.f32 	%f447, %f423, %f446;
+	st.global.f32 	[prd_radiance+8], %f447;
+$Lt_2_84994:
+	.loc	4	595	0
+	exit;
+$LDWend__Z23block_floor_ch_radiancev:
+	} // _Z23block_floor_ch_radiancev
+
+	.entry _Z21block_floor_ah_shadowv
+	{
+	.loc	4	597	0
+$LDWbegin__Z21block_floor_ah_shadowv:
+	.loc	21	133	0
+	call _rt_terminate_ray, ();
+	.loc	4	600	0
+	exit;
+$LDWend__Z21block_floor_ah_shadowv:
+	} // _Z21block_floor_ah_shadowv
+
+	.func _ZN5optix16rt_undefined_useEi (.reg .u32 %ra1)
+	{
+	.loc	21	39	0
+$LDWbegin__ZN5optix16rt_undefined_useEi:
+	.loc	21	41	0
+	ret;
+$LDWend__ZN5optix16rt_undefined_useEi:
+	} // _ZN5optix16rt_undefined_useEi
+	.global .u32 _ZN21rti_internal_register20reg_bitness_detectorE;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail0E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail1E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail2E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail3E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail4E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail5E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail6E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail7E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail8E;
+	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail9E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail0E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail1E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail2E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail3E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail4E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail5E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail6E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail7E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail8E;
+	.global .u32 _ZN21rti_internal_register21reg_exception_detail9E;
+	.global .u32 _ZN21rti_internal_register14reg_rayIndex_xE;
+	.global .u32 _ZN21rti_internal_register14reg_rayIndex_yE;
+	.global .u32 _ZN21rti_internal_register14reg_rayIndex_zE;
+	.const .align 4 .b8 u01[256] = {0,0,128,60,0,0,248,62,0,0,192,61,0,0,112,63,0,0,24,63,0,0,64,62,0,0,80,62,0,0,96,63,0,0,200,62,0,0,108,63,0,0,168,62,0,0,120,63,0,0,0,63,0,0,48,63,0,0,48,62,0,0,68,63,0,0,36,63,0,0,80,63,0,0,12,63,0,0,52,63,0,0,8,63,0,0,16,63,0,0,4,63,0,0,112,62,0,0,100,63,0,0,64,61,0,0,152,62,0,0,224,61,0,0,96,62,0,0,60,63,0,0,136,62,0,0,0,0,0,0,0,61,0,0,128,62,0,0,128,61,0,0,56,63,0,0,44,63,0,0,32,62,0,0,160,62,0,0,192,62,0,0,232,62,0,0,40,63,0,0,88,63,0,0,72,63,0,0,144,62,0,0,104,63,0,0,76,63,0,0,216,62,0,0,20,63,0,0,176,62,0,0,28,63,0,0,224,62,0,0,32,63,0,0,0,62,0,0,208,62,0,0,92,63,0,0,124,63,0,0,160,61,0,0,64,63,0,0,116,63,0,0,16,62,0,0,84,63,0,0,240,62,0,0,184,62};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo10floor_timeE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo6sphereE[8] = {82,97,121,0,16,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo3rayE[8] = {82,97,121,0,36,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo7isect_tE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo6normalE[8] = {82,97,121,0,12,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo12prd_radianceE[8] = {82,97,121,0,20,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo12top_shadowerE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 4 .b8 _ZN21rti_internal_typeinfo13shadowsActiveE[8] = {82,97,121,0,4,0,0,0};
+	.global .align 1 .b8 _ZN21rti_internal_typename10floor_timeE[6] = {0x66,0x6c,0x6f,0x61,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename6sphereE[7] = {0x66,0x6c,0x6f,0x61,0x74,0x34,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename3rayE[11] = {0x6f,0x70,0x74,0x69,0x78,0x3a,0x3a,0x52,0x61,0x79,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename7isect_tE[6] = {0x66,0x6c,0x6f,0x61,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename6normalE[7] = {0x66,0x6c,0x6f,0x61,0x74,0x33,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename12prd_radianceE[20] = {0x50,0x65,0x72,0x52,0x61,0x79,0x44,0x61,0x74,0x61,0x5f,0x72,0x61,0x64,0x69,0x61,0x6e,0x63,0x65,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename12top_shadowerE[9] = {0x72,0x74,0x4f,0x62,0x6a,0x65,0x63,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_typename13shadowsActiveE[13] = {0x75,0x6e,0x73,0x69,0x67,0x6e,0x65,0x64,0x20,0x69,0x6e,0x74,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic10floor_timeE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic6sphereE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic3rayE[13] = {0x72,0x74,0x43,0x75,0x72,0x72,0x65,0x6e,0x74,0x52,0x61,0x79,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic7isect_tE[23] = {0x72,0x74,0x49,0x6e,0x74,0x65,0x72,0x73,0x65,0x63,0x74,0x69,0x6f,0x6e,0x44,0x69,0x73,0x74,0x61,0x6e,0x63,0x65,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic6normalE[17] = {0x61,0x74,0x74,0x72,0x69,0x62,0x75,0x74,0x65,0x20,0x6e,0x6f,0x72,0x6d,0x61,0x6c,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic12prd_radianceE[10] = {0x72,0x74,0x50,0x61,0x79,0x6c,0x6f,0x61,0x64,0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic12top_shadowerE[1] = {0x0};
+	.global .align 1 .b8 _ZN21rti_internal_semantic13shadowsActiveE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation10floor_timeE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation6sphereE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation3rayE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation7isect_tE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation6normalE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation12prd_radianceE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation12top_shadowerE[1] = {0x0};
+	.global .align 1 .b8 _ZN23rti_internal_annotation13shadowsActiveE[1] = {0x0};
+
