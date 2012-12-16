@@ -3,9 +3,8 @@
 # Adapted from starter code graciously provided by CS195-U: 3D Game Engines
 #
 
-QT += opengl xml
-#QT += core gui opengl xml
-
+#QT += opengl xml
+QT += core gui opengl xml
 TARGET = final
 TEMPLATE = app
 

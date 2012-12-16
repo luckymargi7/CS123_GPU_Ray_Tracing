@@ -1,7 +1,12 @@
 #include <QtGui/QApplication>
 #include "ui/mainwindow.h"
 #include "lib/CS123XmlSceneParser.h"
+#include "CS123Algebra.h"
+#include <cmath>
 #include "scenegraph/Scene.h"
+
+//#include <QString>
+//#include <QFileDialog>
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +21,7 @@ int main(int argc, char *argv[])
         //at this point "scene" has a prim list, a light list, and the global data.  The definition of
         //a simplePrimitive is found in CS123SceneData.h.
     }
+
 
 
     //What they gave us is below here
