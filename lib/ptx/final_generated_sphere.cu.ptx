@@ -4,7 +4,7 @@
 	// nvopencc 4.1 built on 2012-04-05
 
 	//-----------------------------------------------------------
-	// Compiling /tmp/tmpxft_00004f40_00000000-9_sphere.cpp3.i (/tmp/ccBI#.9WynYZ)
+	// Compiling /tmp/tmpxft_00003800_00000000-9_sphere.cpp3.i (/tmp/ccBI#.EWWNm5)
 	//-----------------------------------------------------------
 
 	//-----------------------------------------------------------
@@ -17,11 +17,11 @@
 	//-----------------------------------------------------------
 
 	.file	1	"<command-line>"
-	.file	2	"/tmp/tmpxft_00004f40_00000000-8_sphere.cudafe2.gpu"
+	.file	2	"/tmp/tmpxft_00003800_00000000-8_sphere.cudafe2.gpu"
 	.file	3	"/home/mk20/course/include/internal/optix_datatypes.h"
 	.file	4	"/home/mk20/course/include/optixu/optixu_aabb_namespace.h"
 	.file	5	"/home/mk20/course/include/internal/optix_defines.h"
-	.file	6	"/tmp/tmpxft_00004f40_00000000-1_sphere.cudafe1.gpu"
+	.file	6	"/tmp/tmpxft_00003800_00000000-1_sphere.cudafe1.gpu"
 	.file	7	"/gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/bin/../lib/gcc/i686-pc-linux-gnu/4.6.3/include/stddef.h"
 	.file	8	"/usr/include/crt/device_runtime.h"
 	.file	9	"/usr/include/host_defines.h"

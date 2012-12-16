@@ -52,7 +52,7 @@ using namespace optix;
 
 Mouse*         GLUTDisplay::_mouse                = 0;
 PinholeCamera* GLUTDisplay::_camera               = 0;
-SampleScene*   GLUTDisplay::_scene                = 0;
+Scene*   GLUTDisplay::_scene                = 0;
 
 double         GLUTDisplay::_last_frame_time      = 0.0;
 unsigned int   GLUTDisplay::_last_frame_count     = 0;
@@ -254,7 +254,7 @@ void GLUTDisplay::init( int& argc, char** argv )
   glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
 }
 
-void GLUTDisplay::run( const std::string& title, SampleScene* scene, contDraw_E continuous_mode )
+void GLUTDisplay::run( const std::string& title, Scene* scene, contDraw_E continuous_mode )
 {
   if ( !_initialized ) {
     std::cerr << "ERROR - GLUTDisplay::run() called before GLUTDisplay::init()" << std::endl;
@@ -306,14 +306,14 @@ void GLUTDisplay::run( const std::string& title, SampleScene* scene, contDraw_E 
   int buffer_height;
   try {
     // Set up scene
-    SampleScene::InitialCameraData camera_data;
+    Scene::InitialCameraData camera_data;
     _scene->initScene( camera_data );
 
     if( _initial_window_width > 0 && _initial_window_height > 0)
       _scene->resize( _initial_window_width, _initial_window_height );
 
     if ( !_camera_pose.empty() )
-      camera_data = SampleScene::InitialCameraData( _camera_pose );
+      camera_data = Scene::InitialCameraData( _camera_pose );
 
     // Initialize camera according to scene params
     _camera = new PinholeCamera( camera_data.eye,
@@ -370,7 +370,7 @@ void GLUTDisplay::run( const std::string& title, SampleScene* scene, contDraw_E 
   glutMainLoop();
 }
 
-void GLUTDisplay::setCamera(SampleScene::InitialCameraData& camera_data)
+void GLUTDisplay::setCamera(Scene::InitialCameraData& camera_data)
 {
   _camera->setParameters(camera_data.eye,
                          camera_data.lookat,
@@ -436,7 +436,7 @@ void GLUTDisplay::drawText( const std::string& text, float x, float y, void* fon
 void GLUTDisplay::runBenchmarkNoDisplay( )
 {
   // Set up scene
-  SampleScene::InitialCameraData initial_camera_data;
+  Scene::InitialCameraData initial_camera_data;
   _scene->setUseVBOBuffer( false );
   _scene->initScene( initial_camera_data );
 
@@ -444,7 +444,7 @@ void GLUTDisplay::runBenchmarkNoDisplay( )
     _scene->resize( _initial_window_width, _initial_window_height );
 
   if ( !_camera_pose.empty() )
-    initial_camera_data = SampleScene::InitialCameraData( _camera_pose );
+    initial_camera_data = Scene::InitialCameraData( _camera_pose );
 
   // Initialize camera according to scene params
   _camera = new PinholeCamera( initial_camera_data.eye,
@@ -458,7 +458,7 @@ void GLUTDisplay::runBenchmarkNoDisplay( )
 
   float3 eye, U, V, W;
   _camera->getEyeUVW( eye, U, V, W );
-  SampleScene::RayGenCameraData camera_data( eye, U, V, W );
+  Scene::RayGenCameraData camera_data( eye, U, V, W );
 
   // Warmup frames
   if ( _cur_continuous_mode == CDBenchmarkTimed ) {
@@ -827,7 +827,7 @@ void GLUTDisplay::display()
     _camera->getEyeUVW( eye, U, V, W );
     // Don't be tempted to just start filling in the values outside of a constructor, 
     // because if you add a parameter it's easy to forget to add it here.
-    SampleScene::RayGenCameraData camera_data( eye, U, V, W );
+    Scene::RayGenCameraData camera_data( eye, U, V, W );
     _scene->trace( camera_data );
 
     // Always count rendered frames
@@ -934,7 +934,7 @@ void GLUTDisplay::quit(int return_code)
       _scene->cleanUp();
       if (_scene->getContext().get() != 0)
       {
-        sutilReportError( "Derived scene class failed to call SampleScene::cleanUp()" );
+        sutilReportError( "Derived scene class failed to call Scene::cleanUp()" );
         exit(2);
       }
     }

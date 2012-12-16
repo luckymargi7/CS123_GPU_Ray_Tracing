@@ -6,7 +6,7 @@
 	.func _ZN5optix16rt_undefined_useEi (.reg .u32 %ra1)
 
 	//-----------------------------------------------------------
-	// Compiling /tmp/tmpxft_00004c08_00000000-9_phong.cpp3.i (/tmp/ccBI#.NpRSV6)
+	// Compiling /tmp/tmpxft_00003696_00000000-9_phong.cpp3.i (/tmp/ccBI#.EgNJ3W)
 	//-----------------------------------------------------------
 
 	//-----------------------------------------------------------
@@ -19,7 +19,7 @@
 	//-----------------------------------------------------------
 
 	.file	1	"<command-line>"
-	.file	2	"/tmp/tmpxft_00004c08_00000000-8_phong.cudafe2.gpu"
+	.file	2	"/tmp/tmpxft_00003696_00000000-8_phong.cudafe2.gpu"
 	.file	3	"/home/mk20/course/include/internal/optix_defines.h"
 	.file	4	"/home/mk20/course/include/optix_device.h"
 	.file	5	"/home/mk20/course/CS123_GPU_Ray_Tracing/cuda/commonStructs.h"

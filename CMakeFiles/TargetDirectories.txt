@@ -1,2 +1,3 @@
 /home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/CMakeFiles/final.dir
+/home/mk20/course/CS123_GPU_Ray_Tracing/CMakeFiles/finalproj.dir
 /home/mk20/course/CS123_GPU_Ray_Tracing/sutil/CMakeFiles/sutil.dir

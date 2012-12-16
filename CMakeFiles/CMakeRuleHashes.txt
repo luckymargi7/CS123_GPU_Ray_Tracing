@@ -1,4 +1,9 @@
 # Hashes of file build rules.
+404e71d54ce8d8f4f898c26e5f2ca08d /home/mk20/course/CS123_GPU_Ray_Tracing/lib/ptx/cuda_compile_ptx_generated_obj_material.cu.ptx
+52960c1c16a939a473948338da28cc41 /home/mk20/course/CS123_GPU_Ray_Tracing/lib/ptx/cuda_compile_ptx_generated_phong.cu.ptx
+96b742a88997bac1e37dcfe56b565e0b /home/mk20/course/CS123_GPU_Ray_Tracing/lib/ptx/cuda_compile_ptx_generated_triangle_mesh.cu.ptx
+da6c6520cae506a60ef860f455ef43f6 /home/mk20/course/CS123_GPU_Ray_Tracing/lib/ptx/cuda_compile_ptx_generated_triangle_mesh_small.cu.ptx
+2f5d257111b0e76732ddd9576e91b347 /home/mk20/course/CS123_GPU_Ray_Tracing/lib/ptx/final_generated_sphere.cu.ptx
 1ef8cae94eec5a5975c2d3e9c7f11990 lib/ptx/ambocc_generated_ambocc.cu.ptx
 df10ccced75484bc7c93c094f2f1ef9a lib/ptx/ambocc_generated_constantbg.cu.ptx
 7686ff420db4eea7b6f78f5fd212b309 lib/ptx/ambocc_generated_parallelogram.cu.ptx
@@ -158,3 +163,5 @@ fa69225a8662e769f1af698ce0786545 lib/ptx/whitted_generated_parallelogram.cu.ptx
 6556b75f7670a055a6d75be7acaec2fb lib/ptx/whitted_generated_sphere.cu.ptx
 c2b9f1e7946461b2ade9ffa1663b9a52 lib/ptx/whitted_generated_sphere_shell.cu.ptx
 6014fa363d192f80a800919883f0ffe7 lib/ptx/zoneplate_generated_zoneplate.cu.ptx
+3d5270425a3cdd4b2a2bb85a1b844161 moc_mainwindow.cxx
+521ac91c4454a79f4fe9a497d24ba26d ui_mainwindow.h

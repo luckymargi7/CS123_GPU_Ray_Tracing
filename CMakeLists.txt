@@ -90,34 +90,12 @@ include (CompilerInfo)
 # Check for specific machine/compiler options.
 include (ConfigCompilerFlags)
 
-# For Qt4
-INCLUDE(QApplication)
-INCLUDE(QString)
-INCLUDE(QStringList)
-INCLUDE(QFile)
-#ADD_DEFINITIONS(${QT_DEFINITIONS})
-
 # Turn off the warning that NVCC issues when generating PTX from our CUDA samples.  This
 # is a custom extension to the FindCUDA code distributed by CMake.
 OPTION(CUDA_REMOVE_GLOBAL_MEMORY_SPACE_WARNING "Suppress the \"Advisory: Cannot tell what pointer points to, assuming global memory space\" warning nvcc makes." ON)
 
 # Find at least a 2.3 version of CUDA.
 find_package(CUDA 2.3 REQUIRED)
-
-#for Qt4
-find_package(Qt4 REQUIRED)
-SET(finalproj_SOURCES main.cpp ui/mainwindow.cpp)
-SET(finalproj_HEADERS mainwindow.h)
-SET(finalproj_FORMS mainwindow.ui)
-
-QT4_WRAP_CPP(finalproj_HEADERS_MOC ${finalproj_HEADERS})
-QT4_WRAP_UI(finalproj_FORMS_HEADERS ${finalproj_FORMS})
-
-
-ADD_EXECUTABLE(finalproj ${finalproj_SOURCES} 
-    ${finalproj_HEADERS_MOC} 
-    ${finalproj_FORMS_HEADERS})
-TARGET_LINK_LIBRARIES(finalproj ${QT_LIBRARIES})
 
 # Present the CUDA_64_BIT_DEVICE_CODE on the default set of options.
 mark_as_advanced(CLEAR CUDA_64_BIT_DEVICE_CODE)

@@ -1,30 +1,9 @@
-
-/*
- * Copyright (c) 2008 - 2009 NVIDIA Corporation.  All rights reserved.
- *
- * NVIDIA Corporation and its licensors retain all intellectual property and proprietary
- * rights in and to this software, related documentation and any modifications thereto.
- * Any use, reproduction, disclosure or distribution of this software and related
- * documentation without an express license agreement from NVIDIA Corporation is strictly
- * prohibited.
- *
- * TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED *AS IS*
- * AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS OR IMPLIED,
- * INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
- * PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA OR ITS SUPPLIERS BE LIABLE FOR ANY
- * SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT
- * LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF
- * BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR
- * INABILITY TO USE THIS SOFTWARE, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGES
- */
-
 #pragma once
 
 #include <string>
 #include <optixu/optixpp_namespace.h>
 #include <sutil.h>
-#include <SampleScene.h>
+#include "Scene.h"
 
 class Mouse;
 class PinholeCamera;
@@ -42,7 +21,7 @@ public:
   enum contDraw_E { CDNone=0, CDProgressive=1, CDAnimated=2, CDBenchmark=3, CDBenchmarkTimed=4 };
 
   SUTILAPI static void init( int& argc, char** argv );
-  SUTILAPI static void run( const std::string& title, SampleScene* scene, contDraw_E continuous_mode = CDNone );
+  SUTILAPI static void run( const std::string& title, Scene* scene, contDraw_E continuous_mode = CDNone );
   SUTILAPI static void printUsage();
 
   SUTILAPI static void setTextColor( const optix::float3& c )
@@ -56,12 +35,12 @@ public:
 
   SUTILAPI static contDraw_E getContinuousMode() { return _app_continuous_mode; }
   SUTILAPI static void setContinuousMode(contDraw_E continuous_mode);
-  SUTILAPI static void setCamera(SampleScene::InitialCameraData& camera_data);
+  SUTILAPI static void setCamera(Scene::InitialCameraData& camera_data);
 
   SUTILAPI static bool isBenchmark() { return _cur_continuous_mode == CDBenchmark || _cur_continuous_mode == CDBenchmarkTimed ||
     _app_continuous_mode == CDBenchmark || _app_continuous_mode == CDBenchmarkTimed; }
 
-  // Make sure you only call this from the callback functions found in SampleScene:
+  // Make sure you only call this from the callback functions found in Scene:
   // initScene, trace, getOutputBuffer, cleanUp, resize, doResize, and keyPressed.
   SUTILAPI static void postRedisplay();
 
@@ -104,7 +83,7 @@ private:
 
   static Mouse*         _mouse;
   static PinholeCamera* _camera;
-  static SampleScene*   _scene;
+  static Scene*   _scene;
 
   static double         _last_frame_time;
   static unsigned int   _last_frame_count;

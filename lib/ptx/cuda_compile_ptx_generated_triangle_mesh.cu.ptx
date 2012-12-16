@@ -6,7 +6,7 @@
 	.func _ZN5optix16rt_undefined_useEi (.reg .u32 %ra1)
 
 	//-----------------------------------------------------------
-	// Compiling /tmp/tmpxft_00004c79_00000000-9_triangle_mesh.cpp3.i (/tmp/ccBI#.o3Jx9k)
+	// Compiling /tmp/tmpxft_00003707_00000000-9_triangle_mesh.cpp3.i (/tmp/ccBI#.jva358)
 	//-----------------------------------------------------------
 
 	//-----------------------------------------------------------
@@ -19,12 +19,12 @@
 	//-----------------------------------------------------------
 
 	.file	1	"<command-line>"
-	.file	2	"/tmp/tmpxft_00004c79_00000000-8_triangle_mesh.cudafe2.gpu"
+	.file	2	"/tmp/tmpxft_00003707_00000000-8_triangle_mesh.cudafe2.gpu"
 	.file	3	"/home/mk20/course/include/internal/optix_datatypes.h"
 	.file	4	"/home/mk20/course/include/optixu/optixu_aabb_namespace.h"
 	.file	5	"/home/mk20/course/include/optix_device.h"
 	.file	6	"/home/mk20/course/include/internal/optix_defines.h"
-	.file	7	"/tmp/tmpxft_00004c79_00000000-1_triangle_mesh.cudafe1.gpu"
+	.file	7	"/tmp/tmpxft_00003707_00000000-1_triangle_mesh.cudafe1.gpu"
 	.file	8	"/gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/bin/../lib/gcc/i686-pc-linux-gnu/4.6.3/include/stddef.h"
 	.file	9	"/usr/include/crt/device_runtime.h"
 	.file	10	"/usr/include/host_defines.h"

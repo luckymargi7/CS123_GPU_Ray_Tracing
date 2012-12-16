@@ -19,6 +19,7 @@ if(GLUT_FOUND AND OPENGL_FOUND)
     cylinder.cu
     sphere.cu
     )
+
 else()
   # GLUT or OpenGL not found
   message("Disabling rayDifferentials, which requires glut and opengl.")
