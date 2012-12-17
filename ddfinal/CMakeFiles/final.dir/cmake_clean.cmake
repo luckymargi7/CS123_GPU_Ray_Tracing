@@ -3,7 +3,7 @@ FILE(REMOVE_RECURSE
   "../lib/ptx/final_generated_RayScene.cu.ptx"
   "CMakeFiles/final.dir/Scene.cpp.o"
   "CMakeFiles/final.dir/DataProcessor.cpp.o"
-  "CMakeFiles/final.dir/main.cpp.o"
+  "CMakeFiles/final.dir/__/main.cpp.o"
   "../lib/ptx/final_generated_cube.cu.ptx"
   "../lib/ptx/final_generated_cone.cu.ptx"
   "../lib/ptx/final_generated_cylinder.cu.ptx"

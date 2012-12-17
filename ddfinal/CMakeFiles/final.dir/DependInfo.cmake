@@ -7,7 +7,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/DataProcessor.cpp" "/home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/CMakeFiles/final.dir/DataProcessor.cpp.o"
   "/home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/RayScene.cpp" "/home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/CMakeFiles/final.dir/RayScene.cpp.o"
   "/home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/Scene.cpp" "/home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/CMakeFiles/final.dir/Scene.cpp.o"
-  "/home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/main.cpp" "/home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/CMakeFiles/final.dir/main.cpp.o"
+  "/home/mk20/course/CS123_GPU_Ray_Tracing/main.cpp" "/home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/CMakeFiles/final.dir/__/main.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

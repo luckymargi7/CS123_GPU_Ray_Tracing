@@ -74,7 +74,7 @@ set(CUDA_NVCC_EXECUTABLE "/usr/bin/nvcc") # path
 set(CUDA_NVCC_FLAGS --use_fast_math ;; ) # list
 
 set(nvcc_flags -m32;-DGLUT_FOUND;-DGLUT_NO_LIB_PRAGMA) # list
-set(CUDA_NVCC_INCLUDE_ARGS "-I/usr/include;-I/usr/lib/qt4;-I/home/mk20/course/include;-I/home/mk20/course/CS123_GPU_Ray_Tracing/sutil;-I/home/mk20/course/include/optixu;-I/home/mk20/course/CS123_GPU_Ray_Tracing;-I/usr/include;-I/home/mk20/course/CS123_GPU_Ray_Tracing/cuda") # list (needs to be in quotes to handle spaces properly).
+set(CUDA_NVCC_INCLUDE_ARGS "-I/usr/include;-I/home/mk20/course/include;-I/home/mk20/course/CS123_GPU_Ray_Tracing/sutil;-I/home/mk20/course/include/optixu;-I/home/mk20/course/CS123_GPU_Ray_Tracing;-I/usr/include;-I/home/mk20/course/CS123_GPU_Ray_Tracing/cuda") # list (needs to be in quotes to handle spaces properly).
 set(format_flag "-ptx") # string
 
 if(build_cubin AND NOT generated_cubin_file)

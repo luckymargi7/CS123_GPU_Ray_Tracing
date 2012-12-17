@@ -4,7 +4,7 @@
 	// nvopencc 4.1 built on 2012-04-05
 
 	//-----------------------------------------------------------
-	// Compiling /tmp/tmpxft_00003800_00000000-9_sphere.cpp3.i (/tmp/ccBI#.EWWNm5)
+	// Compiling /tmp/tmpxft_0000443e_00000000-9_sphere.cpp3.i (/tmp/ccBI#.8usg8j)
 	//-----------------------------------------------------------
 
 	//-----------------------------------------------------------
@@ -17,11 +17,11 @@
 	//-----------------------------------------------------------
 
 	.file	1	"<command-line>"
-	.file	2	"/tmp/tmpxft_00003800_00000000-8_sphere.cudafe2.gpu"
+	.file	2	"/tmp/tmpxft_0000443e_00000000-8_sphere.cudafe2.gpu"
 	.file	3	"/home/mk20/course/include/internal/optix_datatypes.h"
 	.file	4	"/home/mk20/course/include/optixu/optixu_aabb_namespace.h"
 	.file	5	"/home/mk20/course/include/internal/optix_defines.h"
-	.file	6	"/tmp/tmpxft_00003800_00000000-1_sphere.cudafe1.gpu"
+	.file	6	"/tmp/tmpxft_0000443e_00000000-1_sphere.cudafe1.gpu"
 	.file	7	"/gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/bin/../lib/gcc/i686-pc-linux-gnu/4.6.3/include/stddef.h"
 	.file	8	"/usr/include/crt/device_runtime.h"
 	.file	9	"/usr/include/host_defines.h"
@@ -271,65 +271,34 @@ $Lt_1_4354:
 	exit;
 $LDWend__Z16robust_intersecti:
 	} // _Z16robust_intersecti
-	.global .align 16 .b8 sphere[16];
 
 	.entry _Z6boundsiPf (
 		.param .s32 __cudaparm__Z6boundsiPf___T257,
 		.param .u32 __cudaparm__Z6boundsiPf_result)
 	{
-	.reg .u32 %r<4>;
-	.reg .f32 %f<21>;
-	.reg .pred %p<4>;
+	.reg .u32 %r<3>;
+	.reg .f32 %f<8>;
 	.loc	19	68	0
 $LDWbegin__Z6boundsiPf:
-	.loc	19	75	0
-	ld.global.f32 	%f1, [sphere+12];
-	mov.f32 	%f2, 0f00000000;     	// 0
-	setp.gt.f32 	%p1, %f1, %f2;
-	@!%p1 bra 	$Lt_2_1282;
-	abs.f32 	%f3, %f1;
-	mov.f32 	%f4, 0f7f800000;     	// ((1.0F)/(0.0F))
-	setp.eq.f32 	%p2, %f3, %f4;
-	@%p2 bra 	$Lt_2_514;
-	ld.global.v4.f32 	{%f5,%f6,%f7,_}, [sphere+0];
-	.loc	19	76	0
+	.loc	19	73	0
 	ld.param.u32 	%r1, [__cudaparm__Z6boundsiPf_result];
-	sub.f32 	%f8, %f5, %f1;
-	st.global.f32 	[%r1+0], %f8;
-	sub.f32 	%f9, %f6, %f1;
-	st.global.f32 	[%r1+4], %f9;
-	sub.f32 	%f10, %f7, %f1;
-	st.global.f32 	[%r1+8], %f10;
-	.loc	19	77	0
-	add.f32 	%f11, %f5, %f1;
-	st.global.f32 	[%r1+12], %f11;
-	add.f32 	%f12, %f6, %f1;
-	st.global.f32 	[%r1+16], %f12;
-	add.f32 	%f13, %f7, %f1;
-	st.global.f32 	[%r1+20], %f13;
-	.loc	19	75	0
-	bra.uni 	$Lt_2_1026;
-$Lt_2_1282:
-$Lt_2_514:
-	.loc	19	79	0
-	ld.param.u32 	%r2, [__cudaparm__Z6boundsiPf_result];
-	mov.f32 	%f14, 0f7cf0bdc2;    	// 1e+37
-	st.global.f32 	[%r2+0], %f14;
-	mov.f32 	%f15, 0f7cf0bdc2;    	// 1e+37
-	st.global.f32 	[%r2+4], %f15;
-	mov.f32 	%f16, 0f7cf0bdc2;    	// 1e+37
-	st.global.f32 	[%r2+8], %f16;
-	mov.f32 	%f17, 0ffcf0bdc2;    	// -1e+37
-	st.global.f32 	[%r2+12], %f17;
-	mov.f32 	%f18, 0ffcf0bdc2;    	// -1e+37
-	st.global.f32 	[%r2+16], %f18;
-	mov.f32 	%f19, 0ffcf0bdc2;    	// -1e+37
-	st.global.f32 	[%r2+20], %f19;
-$Lt_2_1026:
-	.loc	19	81	0
+	mov.f32 	%f1, 0fbf000000;     	// -0.5
+	st.global.f32 	[%r1+0], %f1;
+	mov.f32 	%f2, 0fbf000000;     	// -0.5
+	st.global.f32 	[%r1+4], %f2;
+	mov.f32 	%f3, 0fbf000000;     	// -0.5
+	st.global.f32 	[%r1+8], %f3;
+	mov.f32 	%f4, 0f3f000000;     	// 0.5
+	st.global.f32 	[%r1+12], %f4;
+	mov.f32 	%f5, 0f3f000000;     	// 0.5
+	st.global.f32 	[%r1+16], %f5;
+	mov.f32 	%f6, 0f3f000000;     	// 0.5
+	st.global.f32 	[%r1+20], %f6;
+	.loc	19	74	0
 	exit;
 $LDWend__Z6boundsiPf:
 	} // _Z6boundsiPf
+	.global .align 16 .b8 sphere[16];
 	.global .u32 _ZN21rti_internal_register20reg_bitness_detectorE;
 	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail0E;
 	.global .u64 _ZN21rti_internal_register24reg_exception_64_detail1E;

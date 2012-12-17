@@ -163,5 +163,3 @@ fa69225a8662e769f1af698ce0786545 lib/ptx/whitted_generated_parallelogram.cu.ptx
 6556b75f7670a055a6d75be7acaec2fb lib/ptx/whitted_generated_sphere.cu.ptx
 c2b9f1e7946461b2ade9ffa1663b9a52 lib/ptx/whitted_generated_sphere_shell.cu.ptx
 6014fa363d192f80a800919883f0ffe7 lib/ptx/zoneplate_generated_zoneplate.cu.ptx
-3d5270425a3cdd4b2a2bb85a1b844161 moc_mainwindow.cxx
-521ac91c4454a79f4fe9a497d24ba26d ui_mainwindow.h

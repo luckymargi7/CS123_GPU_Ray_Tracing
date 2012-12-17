@@ -3,7 +3,7 @@
 #include <string>
 #include <optixu/optixpp_namespace.h>
 #include <sutil.h>
-#include "Scene.h"
+#include "../ddfinal/Scene.h"
 
 class Mouse;
 class PinholeCamera;

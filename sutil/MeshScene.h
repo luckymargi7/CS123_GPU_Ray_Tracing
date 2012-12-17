@@ -32,6 +32,7 @@
 #include <optixu/optixu_math_namespace.h>
 #include <optixu/optixu_aabb_namespace.h>
 #include <sutil.h>
+#include "SampleScene.h"
 #include <string>
 
 //------------------------------------------------------------------------------
@@ -39,8 +40,7 @@
 // MeshScene class
 //
 //------------------------------------------------------------------------------
-class MeshScene : public SampleScene
-{
+class MeshScene : public SampleScene{
 public:
   SUTILAPI MeshScene();
   SUTILAPI MeshScene(bool accel_cache_loaded, bool accel_caching_on, bool accel_large_mesh);

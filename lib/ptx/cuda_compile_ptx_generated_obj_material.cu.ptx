@@ -6,7 +6,7 @@
 	.func _ZN5optix16rt_undefined_useEi (.reg .u32 %ra1)
 
 	//-----------------------------------------------------------
-	// Compiling /tmp/tmpxft_00003625_00000000-9_obj_material.cpp3.i (/tmp/ccBI#.IUvGze)
+	// Compiling /tmp/tmpxft_000041ee_00000000-9_obj_material.cpp3.i (/tmp/ccBI#.T619w2)
 	//-----------------------------------------------------------
 
 	//-----------------------------------------------------------
@@ -19,7 +19,7 @@
 	//-----------------------------------------------------------
 
 	.file	1	"<command-line>"
-	.file	2	"/tmp/tmpxft_00003625_00000000-8_obj_material.cudafe2.gpu"
+	.file	2	"/tmp/tmpxft_000041ee_00000000-8_obj_material.cudafe2.gpu"
 	.file	3	"/home/mk20/course/include/internal/optix_defines.h"
 	.file	4	"/home/mk20/course/include/optix_device.h"
 	.file	5	"/home/mk20/course/CS123_GPU_Ray_Tracing/cuda/commonStructs.h"

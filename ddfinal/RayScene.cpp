@@ -110,32 +110,32 @@ void RayScene::createGeometry()
 { 
     //Load Each Basic Shape
     std::string cube_ptx(ptxpath("tutorial","cube.cu"));
-    Program cube_bounds = _contex->createProgramFromPTXFile(cube_ptx, "cube_bounds");
-    Program cube_bounds = _contex->createProgramFromPTXFile(cube_ptx, "cube_intersect");
+    Program cube_bounds = _context->createProgramFromPTXFile(cube_ptx, "cube_bounds");
+    Program cube_intersect = _context->createProgramFromPTXFile(cube_ptx, "cube_intersect");
     Geometry cube = _context->createGeometry();
     cube->setPrimitiveCount(1u);
     cube->setBoundingBoxProgram(cube_bounds);
     cube->setIntersectionProgram(cube_intersect);
 
     std::string cone_ptx(ptxpath("tutorial","cone.cu"));
-    Program cone_bounds = _contex->createProgramFromPTXFile(cone_ptx, "cone_bounds");
-    Program cone_bounds = _contex->createProgramFromPTXFile(cone_ptx, "cone_intersect");
+    Program cone_bounds = _context->createProgramFromPTXFile(cone_ptx, "cone_bounds");
+    Program cone_intersect = _context->createProgramFromPTXFile(cone_ptx, "cone_intersect");
     Geometry cone = _context->createGeometry();
     cone->setPrimitiveCount(1u);
     cone->setBoundingBoxProgram(cone_bounds);
     cone->setIntersectionProgram(cone_intersect);
 
     std::string sphere_ptx(ptxpath("tutorial","sphere.cu"));
-    Program sphere_bounds = _contex->createProgramFromPTXFile(sphere_ptx, "sphere_bounds");
-    Program sphere_bounds = _contex->createProgramFromPTXFile(sphere_ptx, "sphere_intersect");
+    Program sphere_bounds = _context->createProgramFromPTXFile(sphere_ptx, "sphere_bounds");
+    Program sphere_intersect = _context->createProgramFromPTXFile(sphere_ptx, "sphere_intersect");
     Geometry sphere = _context->createGeometry();
     sphere->setPrimitiveCount(1u);
     sphere->setBoundingBoxProgram(sphere_bounds);
     sphere->setIntersectionProgram(sphere_intersect);
 
     std::string cylinder_ptx(ptxpath("tutorial","cylinder.cu"));
-    Program cylinder_bounds = _contex->createProgramFromPTXFile(cylinder_ptx, "cylinder_bounds");
-    Program cylinder_bounds = _contex->createProgramFromPTXFile(cylinder_ptx, "cylinder_intersect");
+    Program cylinder_bounds = _context->createProgramFromPTXFile(cylinder_ptx, "cylinder_bounds");
+    Program cylinder_intersect = _context->createProgramFromPTXFile(cylinder_ptx, "cylinder_intersect");
     Geometry cylinder = _context->createGeometry();
     cylinder->setPrimitiveCount(1u);
     cylinder->setBoundingBoxProgram(cylinder_bounds);
@@ -165,10 +165,10 @@ void RayScene::createGeometry()
         Material cmatl = _context->createMaterial();
         Program closestHitP = _context->createProgramFromPTXFile(_ptx_path, "closest_hit");
         cmatl->setClosestHitProgram(0,closestHitP);
-        if(useShadows){
+        /*if(useShadows){
             Program anyHitP = _context->createProgramFromPTXFile(_ptx_path, "any_hit_shadow");
             cmatl->setAnyHitProgram(1,anyHitP);
-        }
+        }*/
         cmatl["cDiffuse"]->setFloat(gdata.kd*smatl.cDiffuse.r,gdata.kd*smatl.cDiffuse.g,gdata.kd*smatl.cDiffuse.b);
         cmatl["cAmbient"]->setFloat(gdata.ka*smatl.cAmbient.r,gdata.ka*smatl.cAmbient.g,gdata.ka*smatl.cAmbient.b);
         cmatl["cSpecular"]->setFloat(gdata.ks*smatl.cSpecular.r,gdata.ks*smatl.cSpecular.g,gdata.ks*smatl.cSpecular.b);
@@ -177,7 +177,7 @@ void RayScene::createGeometry()
         cmatl["ior"]->setFloat(smatl.ior);
         //we'll do texture when we get the rest working
 
-        rtGeometryInstance cinstance;
+        GeometryInstance cinstance;
         switch(cprim.type) {
             case PRIMITIVE_CUBE:
                 cinstance = _context->createGeometryInstance(cube, &cmatl, &cmatl+1);
@@ -196,7 +196,7 @@ void RayScene::createGeometry()
                 break;
         }
 
-        rtGeometryGroup cgroup = _context->createGeometryGroup();
+        GeometryGroup cgroup = _context->createGeometryGroup();
         cgroup->setChildCount(1);
         cgroup->setChild(0,cinstance);
 

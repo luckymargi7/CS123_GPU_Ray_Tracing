@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-#include <QMessageBox>
 
 // from http://en.wikipedia.org/wiki/Assertion_(computing)
 #define COMPILE_TIME_ASSERT(pred) switch(0){case 0:case pred:;}
@@ -162,18 +161,6 @@ struct CS123Rectangle {
 
 #define EQ(a, b) (fabs((a) - (b)) < _EPSILON_)
 #define NEQ(a, b) (fabs((a) - (b)) > _EPSILON_)
-
-
-#define NYI(f) { \
-       char ss[999]; \
-       (sprintf(ss, "Not yet implemented: %s, file %s, line %d\n", \
-                              f, __FILE__, __LINE__)); \
-       QMessageBox mb; \
-       mb.setText(QString(ss)); \
-       mb.setIcon(QMessageBox::Critical); \
-       mb.exec(); \
-       exit(0xf); \
-   }
 
 
 #endif

@@ -7,11 +7,11 @@
 
 # compile C with /usr/bin/gcc
 # compile CXX with /usr/bin/c++
-C_FLAGS =     -fPIC -DM_PI=3.14159265358979323846 -march=opteron -mtune=opteron   -msse -msse2 -msse3 -mfpmath=sse  -O3 -DNDEBUG -g3 -funroll-loops -fPIC -I/usr/lib/qt4 -I/home/mk20/course/include -I/home/mk20/course/CS123_GPU_Ray_Tracing/sutil -I/home/mk20/course/include/optixu -I/home/mk20/course/CS123_GPU_Ray_Tracing -I/home/mk20/course/CS123_GPU_Ray_Tracing/cuda  
+C_FLAGS =     -fPIC -DM_PI=3.14159265358979323846 -march=opteron -mtune=opteron   -msse -msse2 -msse3 -mfpmath=sse  -O3 -DNDEBUG -g3 -funroll-loops -fPIC -I/home/mk20/course/include -I/home/mk20/course/CS123_GPU_Ray_Tracing/sutil -I/home/mk20/course/include/optixu -I/home/mk20/course/CS123_GPU_Ray_Tracing -I/home/mk20/course/CS123_GPU_Ray_Tracing/cuda  
 
 C_DEFINES = -Dsutil_EXPORTS -DGLUT_FOUND -DGLUT_NO_LIB_PRAGMA
 
-CXX_FLAGS =     -fPIC -march=opteron -mtune=opteron   -msse -msse2 -msse3 -mfpmath=sse  -O3 -DNDEBUG -g3 -funroll-loops -fPIC -I/usr/lib/qt4 -I/home/mk20/course/include -I/home/mk20/course/CS123_GPU_Ray_Tracing/sutil -I/home/mk20/course/include/optixu -I/home/mk20/course/CS123_GPU_Ray_Tracing -I/home/mk20/course/CS123_GPU_Ray_Tracing/cuda  
+CXX_FLAGS =     -fPIC -march=opteron -mtune=opteron   -msse -msse2 -msse3 -mfpmath=sse  -O3 -DNDEBUG -g3 -funroll-loops -fPIC -I/home/mk20/course/include -I/home/mk20/course/CS123_GPU_Ray_Tracing/sutil -I/home/mk20/course/include/optixu -I/home/mk20/course/CS123_GPU_Ray_Tracing -I/home/mk20/course/CS123_GPU_Ray_Tracing/cuda  
 
 CXX_DEFINES = -Dsutil_EXPORTS -DGLUT_FOUND -DGLUT_NO_LIB_PRAGMA
 

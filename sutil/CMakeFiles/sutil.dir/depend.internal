@@ -75,12 +75,12 @@ sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o
  /home/mk20/course/include/optixu/optixu_matrix_namespace.h
  /home/mk20/course/include/optixu/optixu_vector_functions.h
  /home/mk20/course/include/optixu/optixu_vector_types.h
+ sutil/../ddfinal/Scene.h
  sutil/DeviceMemoryLogger.h
  sutil/GL/glew.h
  sutil/GL/wglew.h
  sutil/GLUTDisplay.h
  sutil/Mouse.h
- sutil/SampleScene.h
  sutil/sutil.h
 sutil/CMakeFiles/sutil.dir/HDRLoader.cpp.o
  /home/mk20/course/CS123_GPU_Ray_Tracing/sutil/HDRLoader.cpp
@@ -176,10 +176,10 @@ sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o
  /home/mk20/course/include/optixu/optixu_vector_types.h
  cuda/commonStructs.h
  cuda/random.h
+ sutil/../ddfinal/Scene.h
  sutil/GLUTDisplay.h
  sutil/ObjLoader.h
  sutil/PlyLoader.h
- sutil/SampleScene.h
  sutil/glm.h
  sutil/sutil.h
 sutil/CMakeFiles/sutil.dir/ModelLoader.cpp.o

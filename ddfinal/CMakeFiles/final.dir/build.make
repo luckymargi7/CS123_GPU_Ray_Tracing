@@ -70,7 +70,201 @@ ddfinal/CMakeFiles/final.dir/RayScene.cpp.o.provides: ddfinal/CMakeFiles/final.d
 ddfinal/CMakeFiles/final.dir/RayScene.cpp.o.provides.build: ddfinal/CMakeFiles/final.dir/RayScene.cpp.o
 .PHONY : ddfinal/CMakeFiles/final.dir/RayScene.cpp.o.provides.build
 
-lib/ptx/final_generated_RayScene.cu.ptx: ddfinal/CMakeFiles/final.dir/final_generated_RayScene.cu.ptx.depend
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/backward/binders.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/allocator.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/basic_ios.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/basic_ios.tcc
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/basic_string.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/basic_string.tcc
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/char_traits.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/concept_check.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/cpp_type_traits.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/cxxabi_forced.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/exception_defines.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/functexcept.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/ios_base.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/istream.tcc
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/locale_classes.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/locale_classes.tcc
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/locale_facets.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/locale_facets.tcc
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/localefwd.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/move.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/ostream.tcc
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/ostream_insert.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/postypes.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/range_access.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/sstream.tcc
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stl_algobase.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stl_bvector.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stl_construct.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stl_function.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stl_iterator.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stl_iterator_base_funcs.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stl_iterator_base_types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stl_pair.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stl_uninitialized.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stl_vector.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stream_iterator.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/streambuf.tcc
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/streambuf_iterator.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/stringfwd.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/bits/vector.tcc
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/cctype
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/clocale
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/cmath
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/cstdlib
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/cstring
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/cwchar
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/cwctype
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/debug/debug.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/exception
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/ext/atomicity.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/ext/new_allocator.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/ext/numeric_traits.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/ext/type_traits.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/i686-pc-linux-gnu/bits/atomic_word.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/i686-pc-linux-gnu/bits/c++allocator.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/i686-pc-linux-gnu/bits/c++config.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/i686-pc-linux-gnu/bits/c++locale.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/i686-pc-linux-gnu/bits/cpu_defines.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/i686-pc-linux-gnu/bits/ctype_base.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/i686-pc-linux-gnu/bits/ctype_inline.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/i686-pc-linux-gnu/bits/gthr-default.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/i686-pc-linux-gnu/bits/gthr.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/i686-pc-linux-gnu/bits/os_defines.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/initializer_list
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/ios
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/iosfwd
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/iostream
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/istream
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/iterator
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/new
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/ostream
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/sstream
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/streambuf
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/string
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/include/c++/4.6.3/vector
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/lib/gcc/i686-pc-linux-gnu/4.6.3/include-fixed/limits.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/lib/gcc/i686-pc-linux-gnu/4.6.3/include-fixed/syslimits.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/lib/gcc/i686-pc-linux-gnu/4.6.3/include/stdarg.h
+lib/ptx/final_generated_RayScene.cu.ptx: /gpfs/main/sys/shared/psfu/contrib/projects/gcc-4.6/4.6.3.i686/lib/gcc/i686-pc-linux-gnu/4.6.3/include/stddef.h
+lib/ptx/final_generated_RayScene.cu.ptx: ddfinal/DataProcessor.h
+lib/ptx/final_generated_RayScene.cu.ptx: ddfinal/RayScene.cu
+lib/ptx/final_generated_RayScene.cu.ptx: ddfinal/RayScene.h
+lib/ptx/final_generated_RayScene.cu.ptx: ddfinal/Scene.h
+lib/ptx/final_generated_RayScene.cu.ptx: ddfinal/commonStructs.h
+lib/ptx/final_generated_RayScene.cu.ptx: lib/CS123Common.h
+lib/ptx/final_generated_RayScene.cu.ptx: lib/CS123SceneData.h
+lib/ptx/final_generated_RayScene.cu.ptx: math/CS123Algebra.h
+lib/ptx/final_generated_RayScene.cu.ptx: math/CS123Matrix.inl
+lib/ptx/final_generated_RayScene.cu.ptx: math/CS123Vector.inl
+lib/ptx/final_generated_RayScene.cu.ptx: sutil/GLUTDisplay.h
+lib/ptx/final_generated_RayScene.cu.ptx: sutil/ImageLoader.h
+lib/ptx/final_generated_RayScene.cu.ptx: sutil/sutil.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/internal/optix_datatypes.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/internal/optix_declarations.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/internal/optix_defines.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/internal/optix_internal.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/optix.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/optix_device.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/optix_gl_interop.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/optix_math.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/optix_sizet.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/optixu/optixpp_namespace.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/optixu/optixu_math.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/optixu/optixu_math_namespace.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/optixu/optixu_vector_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /home/mk20/course/include/optixu/optixu_vector_types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/_G_config.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/alloca.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/assert.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/byteswap.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/confname.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/endian.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/environments.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/huge_val.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/huge_valf.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/huge_vall.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/inf.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/local_lim.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/locale.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/mathcalls.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/mathdef.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/nan.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/posix1_lim.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/posix2_lim.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/posix_opt.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/predefs.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/pthreadtypes.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/sched.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/select.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/setjmp.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/sigset.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/stdio_lim.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/sys_errlist.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/time.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/typesizes.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/waitflags.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/waitstatus.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/wchar.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/wordsize.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/bits/xopen_lim.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/builtin_types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/channel_descriptor.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/common_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/ctype.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/cuda_runtime_api.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/cuda_surface_types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/cuda_texture_types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/device_launch_parameters.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/device_types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/driver_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/driver_types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/endian.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/features.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/getopt.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/gnu/stubs-32.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/gnu/stubs.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/host_config.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/host_defines.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/libio.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/limits.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/linux/limits.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/locale.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/math.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/math_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/math_functions_dbl_ptx1.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/pthread.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sched.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/signal.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sm_11_atomic_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sm_12_atomic_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sm_13_double_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sm_20_atomic_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sm_20_intrinsics.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sm_30_intrinsics.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/stdio.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/stdlib.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/string.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/surface_types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sys/cdefs.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sys/select.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sys/sysmacros.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/sys/types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/texture_fetch_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/texture_types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/time.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/unistd.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/vector_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/vector_types.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/wchar.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/wctype.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/include/xlocale.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/lib/nvidia-cuda-toolkit/include/cuda_runtime.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/lib/nvidia-cuda-toolkit/include/device_functions.h
+lib/ptx/final_generated_RayScene.cu.ptx: /usr/lib/nvidia-cuda-toolkit/include/surface_functions.h
 lib/ptx/final_generated_RayScene.cu.ptx: ddfinal/CMakeFiles/final.dir/final_generated_RayScene.cu.ptx.cmake
 lib/ptx/final_generated_RayScene.cu.ptx: ddfinal/RayScene.cu
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/mk20/course/CS123_GPU_Ray_Tracing/CMakeFiles $(CMAKE_PROGRESS_2)
@@ -126,29 +320,29 @@ ddfinal/CMakeFiles/final.dir/DataProcessor.cpp.o.provides: ddfinal/CMakeFiles/fi
 ddfinal/CMakeFiles/final.dir/DataProcessor.cpp.o.provides.build: ddfinal/CMakeFiles/final.dir/DataProcessor.cpp.o
 .PHONY : ddfinal/CMakeFiles/final.dir/DataProcessor.cpp.o.provides.build
 
-ddfinal/CMakeFiles/final.dir/main.cpp.o: ddfinal/CMakeFiles/final.dir/flags.make
-ddfinal/CMakeFiles/final.dir/main.cpp.o: ddfinal/main.cpp
+ddfinal/CMakeFiles/final.dir/__/main.cpp.o: ddfinal/CMakeFiles/final.dir/flags.make
+ddfinal/CMakeFiles/final.dir/__/main.cpp.o: main.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/mk20/course/CS123_GPU_Ray_Tracing/CMakeFiles $(CMAKE_PROGRESS_5)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object ddfinal/CMakeFiles/final.dir/main.cpp.o"
-	cd /home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/final.dir/main.cpp.o -c /home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object ddfinal/CMakeFiles/final.dir/__/main.cpp.o"
+	cd /home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/final.dir/__/main.cpp.o -c /home/mk20/course/CS123_GPU_Ray_Tracing/main.cpp
 
-ddfinal/CMakeFiles/final.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/final.dir/main.cpp.i"
-	cd /home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/main.cpp > CMakeFiles/final.dir/main.cpp.i
+ddfinal/CMakeFiles/final.dir/__/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/final.dir/__/main.cpp.i"
+	cd /home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/mk20/course/CS123_GPU_Ray_Tracing/main.cpp > CMakeFiles/final.dir/__/main.cpp.i
 
-ddfinal/CMakeFiles/final.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/final.dir/main.cpp.s"
-	cd /home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal/main.cpp -o CMakeFiles/final.dir/main.cpp.s
+ddfinal/CMakeFiles/final.dir/__/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/final.dir/__/main.cpp.s"
+	cd /home/mk20/course/CS123_GPU_Ray_Tracing/ddfinal && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/mk20/course/CS123_GPU_Ray_Tracing/main.cpp -o CMakeFiles/final.dir/__/main.cpp.s
 
-ddfinal/CMakeFiles/final.dir/main.cpp.o.requires:
-.PHONY : ddfinal/CMakeFiles/final.dir/main.cpp.o.requires
+ddfinal/CMakeFiles/final.dir/__/main.cpp.o.requires:
+.PHONY : ddfinal/CMakeFiles/final.dir/__/main.cpp.o.requires
 
-ddfinal/CMakeFiles/final.dir/main.cpp.o.provides: ddfinal/CMakeFiles/final.dir/main.cpp.o.requires
-	$(MAKE) -f ddfinal/CMakeFiles/final.dir/build.make ddfinal/CMakeFiles/final.dir/main.cpp.o.provides.build
-.PHONY : ddfinal/CMakeFiles/final.dir/main.cpp.o.provides
+ddfinal/CMakeFiles/final.dir/__/main.cpp.o.provides: ddfinal/CMakeFiles/final.dir/__/main.cpp.o.requires
+	$(MAKE) -f ddfinal/CMakeFiles/final.dir/build.make ddfinal/CMakeFiles/final.dir/__/main.cpp.o.provides.build
+.PHONY : ddfinal/CMakeFiles/final.dir/__/main.cpp.o.provides
 
-ddfinal/CMakeFiles/final.dir/main.cpp.o.provides.build: ddfinal/CMakeFiles/final.dir/main.cpp.o
-.PHONY : ddfinal/CMakeFiles/final.dir/main.cpp.o.provides.build
+ddfinal/CMakeFiles/final.dir/__/main.cpp.o.provides.build: ddfinal/CMakeFiles/final.dir/__/main.cpp.o
+.PHONY : ddfinal/CMakeFiles/final.dir/__/main.cpp.o.provides.build
 
 lib/ptx/final_generated_cube.cu.ptx: ddfinal/CMakeFiles/final.dir/final_generated_cube.cu.ptx.depend
 lib/ptx/final_generated_cube.cu.ptx: ddfinal/CMakeFiles/final.dir/final_generated_cube.cu.ptx.cmake
@@ -360,7 +554,7 @@ final_OBJECTS = \
 "CMakeFiles/final.dir/RayScene.cpp.o" \
 "CMakeFiles/final.dir/Scene.cpp.o" \
 "CMakeFiles/final.dir/DataProcessor.cpp.o" \
-"CMakeFiles/final.dir/main.cpp.o"
+"CMakeFiles/final.dir/__/main.cpp.o"
 
 # External object files for target final
 final_EXTERNAL_OBJECTS =
@@ -368,7 +562,7 @@ final_EXTERNAL_OBJECTS =
 bin/final: ddfinal/CMakeFiles/final.dir/RayScene.cpp.o
 bin/final: ddfinal/CMakeFiles/final.dir/Scene.cpp.o
 bin/final: ddfinal/CMakeFiles/final.dir/DataProcessor.cpp.o
-bin/final: ddfinal/CMakeFiles/final.dir/main.cpp.o
+bin/final: ddfinal/CMakeFiles/final.dir/__/main.cpp.o
 bin/final: lib/libsutil.so
 bin/final: /home/mk20/course/lib/liboptix.so
 bin/final: /usr/lib/libcuda.so
@@ -394,7 +588,7 @@ ddfinal/CMakeFiles/final.dir/build: bin/final
 ddfinal/CMakeFiles/final.dir/requires: ddfinal/CMakeFiles/final.dir/RayScene.cpp.o.requires
 ddfinal/CMakeFiles/final.dir/requires: ddfinal/CMakeFiles/final.dir/Scene.cpp.o.requires
 ddfinal/CMakeFiles/final.dir/requires: ddfinal/CMakeFiles/final.dir/DataProcessor.cpp.o.requires
-ddfinal/CMakeFiles/final.dir/requires: ddfinal/CMakeFiles/final.dir/main.cpp.o.requires
+ddfinal/CMakeFiles/final.dir/requires: ddfinal/CMakeFiles/final.dir/__/main.cpp.o.requires
 .PHONY : ddfinal/CMakeFiles/final.dir/requires
 
 ddfinal/CMakeFiles/final.dir/clean:

@@ -74,12 +74,12 @@ sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: /home/mk20/course/include/optixu/o
 sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: /home/mk20/course/include/optixu/optixu_matrix_namespace.h
 sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: /home/mk20/course/include/optixu/optixu_vector_functions.h
 sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: /home/mk20/course/include/optixu/optixu_vector_types.h
+sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: sutil/../ddfinal/Scene.h
 sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: sutil/DeviceMemoryLogger.h
 sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: sutil/GL/glew.h
 sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: sutil/GL/wglew.h
 sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: sutil/GLUTDisplay.h
 sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: sutil/Mouse.h
-sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: sutil/SampleScene.h
 sutil/CMakeFiles/sutil.dir/GLUTDisplay.cpp.o: sutil/sutil.h
 
 sutil/CMakeFiles/sutil.dir/HDRLoader.cpp.o: sutil/HDRLoader.cpp
@@ -175,10 +175,10 @@ sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: /home/mk20/course/include/optixu/opt
 sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: /home/mk20/course/include/optixu/optixu_vector_types.h
 sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: cuda/commonStructs.h
 sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: cuda/random.h
+sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: sutil/../ddfinal/Scene.h
 sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: sutil/GLUTDisplay.h
 sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: sutil/ObjLoader.h
 sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: sutil/PlyLoader.h
-sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: sutil/SampleScene.h
 sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: sutil/glm.h
 sutil/CMakeFiles/sutil.dir/MeshScene.cpp.o: sutil/sutil.h
 

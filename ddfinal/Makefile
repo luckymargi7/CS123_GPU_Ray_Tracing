@@ -181,29 +181,29 @@ Scene.cpp.s:
 	cd /home/mk20/course/CS123_GPU_Ray_Tracing && $(MAKE) -f ddfinal/CMakeFiles/final.dir/build.make ddfinal/CMakeFiles/final.dir/Scene.cpp.s
 .PHONY : Scene.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+__/main.o: __/main.cpp.o
+.PHONY : __/main.o
 
 # target to build an object file
-main.cpp.o:
-	cd /home/mk20/course/CS123_GPU_Ray_Tracing && $(MAKE) -f ddfinal/CMakeFiles/final.dir/build.make ddfinal/CMakeFiles/final.dir/main.cpp.o
-.PHONY : main.cpp.o
+__/main.cpp.o:
+	cd /home/mk20/course/CS123_GPU_Ray_Tracing && $(MAKE) -f ddfinal/CMakeFiles/final.dir/build.make ddfinal/CMakeFiles/final.dir/__/main.cpp.o
+.PHONY : __/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+__/main.i: __/main.cpp.i
+.PHONY : __/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	cd /home/mk20/course/CS123_GPU_Ray_Tracing && $(MAKE) -f ddfinal/CMakeFiles/final.dir/build.make ddfinal/CMakeFiles/final.dir/main.cpp.i
-.PHONY : main.cpp.i
+__/main.cpp.i:
+	cd /home/mk20/course/CS123_GPU_Ray_Tracing && $(MAKE) -f ddfinal/CMakeFiles/final.dir/build.make ddfinal/CMakeFiles/final.dir/__/main.cpp.i
+.PHONY : __/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+__/main.s: __/main.cpp.s
+.PHONY : __/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	cd /home/mk20/course/CS123_GPU_Ray_Tracing && $(MAKE) -f ddfinal/CMakeFiles/final.dir/build.make ddfinal/CMakeFiles/final.dir/main.cpp.s
-.PHONY : main.cpp.s
+__/main.cpp.s:
+	cd /home/mk20/course/CS123_GPU_Ray_Tracing && $(MAKE) -f ddfinal/CMakeFiles/final.dir/build.make ddfinal/CMakeFiles/final.dir/__/main.cpp.s
+.PHONY : __/main.cpp.s
 
 # Help Target
 help:
@@ -223,9 +223,9 @@ help:
 	@echo "... Scene.o"
 	@echo "... Scene.i"
 	@echo "... Scene.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... __/main.o"
+	@echo "... __/main.i"
+	@echo "... __/main.s"
 .PHONY : help
 
 

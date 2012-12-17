@@ -11,7 +11,7 @@ if(GLUT_FOUND AND OPENGL_FOUND)
     Scene.h
     DataProcessor.cpp
     DataProcessor.h
-    main.cpp
+    ../main.cpp
     commonStructs.h
 
     cube.cu
