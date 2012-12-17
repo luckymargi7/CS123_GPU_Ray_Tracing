@@ -142,7 +142,7 @@ void RayScene::createGeometry()
     cylinder->setIntersectionProgram(cylinder_intersect);
 
     //Load Image
-    std::vector<RTtransform> transes;
+    std::vector<Transform> transes;
     std::vector<SimplePrimitive>* prims = _dp.getPrimLists();
     CS123SceneGlobalData gdata = _dp.getGlobalData();
 
@@ -151,14 +151,13 @@ void RayScene::createGeometry()
         (*prims).pop_back();
 
         //make transformation
-        RTtransform currt;
-        rtTransformCreate(_context, &currt);
+        Transform currt = _context->createTransform();
         Matrix4x4 om = cprim.transMat;
         const float tm[16] = {om.a,om.b,om.c,om.d,
                               om.e,om.f,om.g,om.h,
                               om.i,om.j,om.k,om.l,
                               om.m,om.n,om.o,om.p };
-        rtTransformSetMatrix(currt, 0, tm, 0);
+        currt->setMatrix(false, tm, NULL);
 
         //make material
         CS123SceneMaterial smatl = cprim.material;
@@ -200,45 +199,36 @@ void RayScene::createGeometry()
         cgroup->setChildCount(1);
         cgroup->setChild(0,cinstance);
 
-        rtTransformSetChild(currt, cgroup);
+        currt->setChild(i,cgroup);
         transes.push_back(currt);
     }
 
     //Create Scene Group and add all transforms to it
-    rtGroup sceneGroup;
-    rtGroupCreate(_context, &sceneGroup);
-    rtGroupSetChildCount(sceneGroup, transes.size());
+    Group sceneGroup = _context->createGroup();
+    sceneGroup->setChildCount(transes.size());
 
-    rtAcceleration sceneAcceleration;
-    rtAccelerationCreate(_context, &sceneAcceleration);
-    rtAccelerationSetBuilder(sceneAcceleration,"Sbvh");
-    rtAccelerationSetTraverser(sceneAcceleration,"bvhCompact");
-    rtGroupSetAcceleration(sceneGroup,sceneAcceleration);
+    Acceleration sceneAccleration = context->createAcceleration("Sbvh", "bchCompact");
+    sceneGroup->setAcceleration(sceneAcceleration);
 
     for(int i=0; i<transes.size(); i++)
-        rtGroupSetChild(sceneGroup, transes[i]);
+        sceneGroup->setChild(i,transes[i]);
 
     //Create the Top Group and its transform
-    rtGroup topGroup;
-    rtGroupCreate(_context, &topGroup);
-    rtGroupSetChildCount(topGroup, 1);
+    Group topGroup = _context->createGroup();
+    topGroup->setChildCount(1);
     
-    rtAcceleration topAcceleration;
-    rtAccelerationCreate(_context, &topAcceleration);
-    rtAccelerationSetBuilder(topAcceleration, "NoAccel");
-    rtAccelerationSetTraverser(topAcceleration, "NoAccel");
-    rtGroupSetAcceleration(topGroup, topAcceleration);
+    Acceleration topAcceleration = context->createAcceleration("NoAccel","NoAccel");
+    topGroup->setAcceleration(topAcceleration);
 
-    RTtransform topTrans;
-    rtTransformCreate(_context, &topTrans);
+    Transform topTrans = _context->createTransform();
     const float tm[16] = {1,0,0,0,
                           0,1,0,0,
                           0,0,1,0,
                           0,0,0,1 };
-    rtTransformSetMatrix(topTrans,0,tm,0);
-    rtTransformSetChild(topTrans,sceneGroup);
+    topTrans->setMatrix(false,tm,NULL);
+    topTrans->setChild(0,sceneGroup);
 
-    rtGroupSetChild(topGroup,topTrans);
+    topGroup->setChild(0,topTrans);
 
     //Finish up
     _context["top_object"]->set(topGroup);
