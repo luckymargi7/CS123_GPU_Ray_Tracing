@@ -46,7 +46,7 @@ RT_PROGRAM void camera(){
 //Miss Method
 rtDeclareVariable(float3, bg_color, , );
 RT_PROGRAM void miss(){
-    rd_lighting.result = bg_color;
+    rd_lighting.result = normalize(rtTransformNormal(RT_OBJECT_TO_WORLD, shading_normal))*.5f+.5f;
 }
 
 //Shading

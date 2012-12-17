@@ -1,8 +1,6 @@
 #include "DataProcessor.h"
 #include "lib/CS123SceneData.h"
-#include "lib/CS123ISceneParser.h"
-#include <QtGlobal>
-
+//#include "lib/CS123ISceneParser.h"
 
 DataProcessor::DataProcessor()
 {}
@@ -24,7 +22,7 @@ std::vector<CS123SceneLightData>* DataProcessor::getLightLists(){
 
 void DataProcessor::parse(CS123ISceneParser *parser)
 {
-    CS123SceneGlobalData gdata;
+    /*CS123SceneGlobalData gdata;
     parser->getGlobalData(gdata);
     setGlobal(gdata);
 
@@ -34,7 +32,39 @@ void DataProcessor::parse(CS123ISceneParser *parser)
         addLight(ldata);
     }
 
-    finishParsing(*parser->getRootNode(), Matrix4x4::identity());
+    finishParsing(*parser->getRootNode(), Matrix4x4::identity());*/
+
+    m_globalData.ka = 1;
+    m_globalData.ks = 0;
+    m_globalData.kd = 0;
+    m_globalData.kt = 0;
+
+    SimplePrimitive cprim;
+    CS123SceneMaterial cmat;
+    CS123SceneColor acolor;
+    acolor.r = 100; acolor.b = 200; acolor.g = 100;
+    cmat.cAmbient = acolor;
+    cmat.cDiffuse = acolor;
+    cprim.material = cmat;
+    cprim.type = PRIMITIVE_CUBE;
+    Matrix4x4 cMat;
+    cMat.a = 2; cMat.b = 0; cMat.c = 0; cMat.d = 0;
+    cMat.e = 0; cMat.f = 1; cMat.g = 0; cMat.h = 0;
+    cMat.i = 0; cMat.j = 0; cMat.k = 1; cMat.l = 0;
+    cMat.m = 0; cMat.n = 0; cMat.o = 0; cMat.p = 1;
+    cprim.transMat = cMat;
+    m_primLists.push_back(cprim);
+
+    CS123SceneLightData cldata;
+    cldata.id = 0;
+    cldata.type = 
+    CS123SceneColor bcolor;
+    bcolor.r = 255; bcolor.g = 255; bcolor.b = 255;
+    cldata.color = bcolor;
+    cldata.pos = Vector4(0,2,0,1);
+
+    m_lightLists.push_back(cldata);
+
 }
 
 void DataProcessor::addPrimitive(const CS123ScenePrimitive &scenePrimitive, const Matrix4x4 &matrix){
